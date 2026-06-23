@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "v-jay personal site",
+    "type": "static-portfolio",
+    "status": "online",
+    "owner_github": "andrewyin15-source",
+    "repo": "https://github.com/andrewyin15-source/personal-site",
+    "local_root": "C:\\Users\\12497\\Documents\\个人\\personal-site",
+    "deploy_platform": "vercel",
+    "vercel_project_name_display": "测试人员-15",
+    "vercel_deployment_alias": "personal-site-psi-eight-44"
+  },
+  "domain": {
+    "primary": "v-jay.com",
+    "www": "www.v-jay.com",
+    "dns_provider": "字节火山引擎 · 云解析 DNS（专业版）",
+    "ns_records": ["vip1.volcengine-dns.com", "vip2.volcengine-dns.com"],
+    "a_records": [
+      { "host": "@",   "type": "A",     "value": "216.198.79.1", "ttl": 600, "line": "默认" },
+      { "host": "www", "type": "CNAME", "value": "ef1cd518b7728280.vercel-dns-017.com", "ttl": 600, "line": "默认" }
+    ],
+    "stale_records_can_be_removed": [
+      { "host": "@",       "type": "A",     "value": "76.76.21.21", "reason": "Vercel 新 IP 段，仍可用但已弃用" },
+      { "host": "www",     "type": "CNAME", "value": "cname.vercel-dns.com", "reason": "已替换为项目专属子域名" },
+      { "host": "ceshi",   "type": "A",     "value": "115.190.218.50", "reason": "用户旧测试记录" },
+      { "host": "yinyiwu", "type": "A",     "value": "115.190.218.50", "reason": "用户旧测试记录" }
+    ]
+  },
+  "urls": {
+    "primary": "https://v-jay.com",
+    "www": "https://www.v-jay.com",
+    "vercel_temp": "https://personal-site-psi-eight-44.vercel.app"
+  },
+  "tech": {
+    "stack": "html+css+vanilla-js",
+    "animations": ["gsap@3.12.5", "aos@2.3.4"],
+    "fonts": "Google Fonts: Inter + JetBrains Mono",
+    "build": "none (pure static)",
+    "vercel_config": "vercel.json with cleanUrls, trailingSlash:false, security headers"
+  },
+  "site_structure": [
+    {"id": "home",     "title": "Hero",        "components": ["gradient title", "rotator", "CTA", "scroll hint"]},
+    {"id": "about",    "title": "About",       "components": ["avatar (CSS)", "intro", "info list"]},
+    {"id": "skills",   "title": "Skills",      "components": ["4 cards with progress bars + counters"]},
+    {"id": "projects", "title": "Projects",    "components": ["3 cards with animated covers"]},
+    {"id": "timeline", "title": "Journey",     "components": ["vertical timeline 2023-2026"]},
+    {"id": "contact",  "title": "Get in Touch","components": ["4 contact cards"]}
+  ],
+  "placeholders": {
+    "name": "Your Name",
+    "avatar_initials": "YN",
+    "city": "Your City",
+    "status": "Open to opportunities",
+    "focus": "Web · Cloud · DX",
+    "skills": { "Frontend": 90, "Backend": 80, "DevOps": 70, "Tools": 85 },
+    "projects": [
+      {"name": "Project One",   "stack": "React + Node + MySQL",   "tags": ["React", "Node", "MySQL"]},
+      {"name": "Project Two",   "stack": "Python + FastAPI",        "tags": ["Python", "FastAPI", "Docker"]},
+      {"name": "Project Three", "stack": "Next.js + Prisma + Postgres", "tags": ["Next.js", "Prisma", "Postgres"]}
+    ],
+    "timeline": [
+      {"year": "2026 · Now", "text": "做个人网站，折腾部署与动效。"},
+      {"year": "2025", "text": "某段学习 / 工作经历，简短描述。"},
+      {"year": "2024", "text": "某段学习 / 工作经历，简短描述。"},
+      {"year": "2023", "text": "开始写代码 / 第一个项目。"}
+    ],
+    "contact": { "email": "you@example.com", "github": "@yourname", "wechat": "your_wechat", "linkedin": "in/yourname" }
+  },
+  "git": {
+    "default_branch": "main",
+    "last_commit": "8fe4ee2",
+    "auth_method": "GitHub PAT via _netrc (cleaned after push)",
+    "pat_status": "应已被用户在 GitHub 后台撤销"
+  },
+  "next_steps_for_ai": [
+    "替换所有占位符为真实个人信息",
+    "可选项：换真实头像图（建议 WebP，<= 200KB）",
+    "可选项：每个 Project 加真实链接（demo / repo）",
+    "可选项：把 js 里的调试代码清掉",
+    "未来若加博客：建议引入 hexo / vitepress 并保留本仓库作为模板"
+  ],
+  "rules": [
+    "修改任何文件后必须 git add + commit + push 才会生效",
+    "Vercel 部署触发：推送到 main 分支 → 30 秒内自动生效",
+    "不要动 vercel.json 的 headers 段（已加安全头）",
+    "改完后做 3 步验证：1) 本地冒烟 200 2) git push 成功 3) curl https://www.v-jay.com 内容包含改动关键字"
+  ]
+}
