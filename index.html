@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>v-jay — 娃娃衣裳 · 精品馆</title>
 <meta name="description" content="v-jay 专为毛绒玩具娃娃打造的精美服装。编辑甄选，全球直邮。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23efe7d2'/><text x='16' y='23' text-anchor='middle' font-family='serif' font-weight='bold' font-style='italic' font-size='20' fill='%23ed6f5c'>V</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
@@ -47,6 +48,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;bac
 .topbar-inner .coral{color:var(--coral)}
 .topbar .pulse{width:6px;height:6px;border-radius:50%;background:var(--coral);display:inline-block;margin-right:6px;animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes float{0%,100%{transform:translateY(0)}33%{transform:translateY(-10px)}66%{transform:translateY(-4px)}}
+@keyframes slowSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes sparkleFloat{0%,100%{opacity:0;transform:translateY(0) scale(0)}40%{opacity:1;transform:translateY(-30px) scale(1)}100%{opacity:0;transform:translateY(-60px) scale(0)}}
+.hero-art .mascot{animation:float 6s ease-in-out infinite}
 
 /* ---- HEADROOM NAV ---- */
 .nav{padding:22px 0;position:sticky;top:0;z-index:50;background:var(--paper);transform:translateY(0);transition:transform 360ms cubic-bezier(.22,.61,.36,1),box-shadow 220ms ease,border-color 220ms ease;border-bottom:1px solid transparent;will-change:transform}
@@ -132,6 +137,7 @@ section.tight{padding:90px 0}
 .hero-art .index span .n{color:var(--coral);margin-right:6px;font-weight:700}
 .hero-art .index span.on{color:var(--ink);font-weight:700}
 .hero-art .index span.on .n{color:var(--coral)}
+.hero-sparkle{position:absolute;font-size:14px;color:var(--coral);pointer-events:none;animation:sparkleFloat 3.6s ease-in-out infinite}
 
 /* ---- WIRE / TICKER (dual marquee) ---- */
 .wire{border-bottom:1px solid var(--line);padding:26px 0 28px;background:var(--paper);position:relative;overflow:hidden}
@@ -260,7 +266,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
 /* ---- RESPONSIVE ---- */
 @media(max-width:1280px){.container{padding:0 44px}.work{margin:0 44px;padding:90px 44px}.side-rail{display:none}}
-@media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.hero-grid{grid-template-columns:1fr;gap:50px}.hero-art{max-width:400px;margin:0 auto}.cat-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr;gap:50px}.cta-grid{grid-template-columns:1fr;gap:50px}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:last-child{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}}
+@media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.hero-grid{grid-template-columns:1fr;gap:50px}.hero-art{max-width:400px;margin:0 auto}.cat-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr;gap:50px}.cta-grid{grid-template-columns:1fr;gap:50px}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:last-child{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
 @media(max-width:880px){.container{padding:0 24px}.nav-links{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}section{padding:80px 0}.product-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.topbar-inner{font-size:9px}.cat-card-title{font-size:22px}.hero-stats{flex-wrap:wrap}.work-arrows{display:none}}
 </style>
@@ -298,7 +304,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   <div class="container"><div class="sec-rule">
     <span class="roman">I.</span>
     <span class="meta-grp"><span>Hero · Cover Plate</span><span class="dot-mark">•</span><span>Summer 2026</span></span>
-    <span>001 / 007</span>
+    <span>001 / 009</span>
   </div></div>
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -325,6 +331,12 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
       <span class="annot annot-tl coord">FIG. 01 / VJ-26</span>
       <span class="annot annot-br">Composed in&nbsp;<span style="color:var(--coral);">v-jay</span></span>
       <div class="mascot">🧸<span class="mascot-label">v-jay · Doll Couture</span></div>
+      <span class="hero-sparkle" style="top:14%;left:18%;animation-delay:0s">✦</span>
+      <span class="hero-sparkle" style="top:22%;right:16%;animation-delay:0.6s">✧</span>
+      <span class="hero-sparkle" style="bottom:20%;left:22%;animation-delay:1.2s">✦</span>
+      <span class="hero-sparkle" style="bottom:16%;right:20%;animation-delay:1.8s">✧</span>
+      <span class="hero-sparkle" style="top:50%;left:8%;animation-delay:0.3s">·</span>
+      <span class="hero-sparkle" style="top:45%;right:10%;animation-delay:0.9s">·</span>
       <div class="index">
         <span><span class="n">01</span>连衣裙</span>
         <span class="on"><span class="n">02</span>套装系列</span>
@@ -386,7 +398,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     <div class="sec-rule">
       <span class="roman">II.</span>
       <span class="meta-grp"><span>Categories</span><span class="dot-mark">•</span><span>Three Collections</span></span>
-      <span>002 / 007</span>
+      <span>002 / 009</span>
     </div>
     <div style="margin-bottom:48px;" data-reveal>
       <span class="label">Explore</span>
@@ -430,7 +442,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     <div class="sec-rule">
       <span class="roman">III.</span>
       <span class="meta-grp"><span>Products</span><span class="dot-mark">•</span><span>Curated Selection</span></span>
-      <span>003 / 007</span>
+      <span>003 / 009</span>
     </div>
     <div style="margin-bottom:48px;" data-reveal>
       <span class="label">Featured</span>
@@ -468,6 +480,36 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
         <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">梦幻蕾丝裙</div><div class="product-stars">★★★★★<span class="count">(201)</span></div><div class="product-price"><span class="price-now">$35.99</span></div></div>
         <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
       </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:420ms">
+        <div class="product-img d-3"><span>🦄</span><span class="product-badge">New</span></div>
+        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">独角兽睡衣</div><div class="product-stars">★★★★☆<span class="count">(62)</span></div><div class="product-price"><span class="price-now">$22.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:490ms">
+        <div class="product-img d-4"><span>🍓</span></div>
+        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">草莓派对发箍</div><div class="product-stars">★★★★★<span class="count">(117)</span></div><div class="product-price"><span class="price-now">$12.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:560ms">
+        <div class="product-img d-1"><span>🌸</span><span class="product-badge">Hot</span></div>
+        <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">樱花晨露裙</div><div class="product-stars">★★★★★<span class="count">(89)</span></div><div class="product-price"><span class="price-now">$29.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:630ms">
+        <div class="product-img d-2"><span>🦋</span></div>
+        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">蝴蝶结发带</div><div class="product-stars">★★★★☆<span class="count">(134)</span></div><div class="product-price"><span class="price-now">$9.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:700ms">
+        <div class="product-img d-3"><span>💎</span><span class="product-badge">New</span></div>
+        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">宫廷茶会套装</div><div class="product-stars">★★★★★<span class="count">(56)</span></div><div class="product-price"><span class="price-now">$42.99</span><span class="price-old">$49.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
+      <a class="product-card" href="#" data-reveal style="--reveal-delay:770ms">
+        <div class="product-img d-4"><span>🌙</span></div>
+        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">星月项链</div><div class="product-stars">★★★★★<span class="count">(198)</span></div><div class="product-price"><span class="price-now">$14.99</span></div></div>
+        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
+      </a>
     </div>
   </div>
 </section>
@@ -478,7 +520,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     <div class="work-rule">
       <span class="roman">IV.</span>
       <span style="display:inline-flex;gap:24px;"><span>Why v-jay</span><span style="color:var(--coral);">•</span><span>Quality Promise</span></span>
-      <span>004 / 007</span>
+      <span>004 / 009</span>
     </div>
     <div class="work-grid">
       <div class="work-copy" data-reveal>
@@ -508,13 +550,83 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   </div>
 </section>
 
+<!-- ===== HOW IT WORKS (method-style steps) ===== -->
+<section>
+  <div class="container">
+    <div class="sec-rule">
+      <span class="roman">V.</span>
+      <span class="meta-grp"><span>How It Works</span><span class="dot-mark">•</span><span>From Order to Door</span></span>
+      <span>005 / 009</span>
+    </div>
+    <div style="margin-bottom:48px;" data-reveal>
+      <span class="label">Process</span>
+      <h2 class="display" style="margin-top:22px;font-size:clamp(40px,4.6vw,66px);">四步，把美衣送到<br><em>你的娃娃身边</em><span class="dot">.</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;">
+      <div data-reveal style="--reveal-delay:0ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
+        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">01</div>
+        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">选购下单</h4>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">浏览连衣裙、套装和配饰三大系列，选择尺码和颜色，一键下单。</p>
+      </div>
+      <div data-reveal style="--reveal-delay:100ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
+        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">02</div>
+        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">手工精制</h4>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">独立设计师手工裁剪缝制，每件产品经过三道质检，确保完美品质。</p>
+      </div>
+      <div data-reveal style="--reveal-delay:200ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
+        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">03</div>
+        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">全球配送</h4>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">精美礼盒包装，国际物流配送，7-15 个工作日送达 200+ 国家和地区。</p>
+      </div>
+      <div data-reveal style="--reveal-delay:300ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
+        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">04</div>
+        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">终身陪伴</h4>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">30 天无忧退换，加入收藏家社群分享搭配灵感，获得限量款优先购。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MATERIALS (info cards) ===== -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="sec-rule">
+      <span class="roman">VI.</span>
+      <span class="meta-grp"><span>Materials</span><span class="dot-mark">•</span><span>Craft & Care</span></span>
+      <span>006 / 009</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
+      <div data-reveal style="background:var(--bone);border-radius:18px;padding:36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;">
+        <span style="font-size:40px;">🧵</span>
+        <h3 style="font-family:var(--sans);font-size:24px;font-weight:800;letter-spacing:-.014em;">面料与工艺</h3>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.7;">采用 OEKO-TEX 认证安全面料，棉涤混纺为主，柔软亲肤不伤娃娃表面。手工刺绣细节经得起放大镜检验，每件都是收藏级品质。</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">棉涤混纺</span>
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">手工刺绣</span>
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">OEKO-TEX</span>
+        </div>
+      </div>
+      <div data-reveal style="background:var(--bone);border-radius:18px;padding:36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;">
+        <span style="font-size:40px;">📐</span>
+        <h3 style="font-family:var(--sans);font-size:24px;font-weight:800;letter-spacing:-.014em;">尺码与保养</h3>
+        <p style="font-size:14px;color:var(--ink-mute);line-height:1.7;">覆盖三种娃娃尺寸：小号 10-15cm / 中号 16-25cm / 大号 26-40cm。建议手洗阴干，不用时存放于附赠的防尘袋中。</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">小号 10-15cm</span>
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">中号 16-25cm</span>
+          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">大号 26-40cm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== TESTIMONIAL ===== -->
 <section class="testimonial" id="testimonials">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">V.</span>
-      <span class="meta-grp"><span>Collectors</span><span class="dot-mark">•</span><span>Standing on shoulders</span></span>
-      <span>005 / 007</span>
+      <span class="roman">VII.</span>
+      <span class="meta-grp"><span>Collectors</span><span class="dot-mark">•</span><span>What They Say</span></span>
+      <span>007 / 009</span>
     </div>
     <div class="testimonial-grid">
       <div class="testimonial-copy" data-reveal>
@@ -533,9 +645,9 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 <section class="cta" id="contact">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">VI.</span>
+      <span class="roman">VIII.</span>
       <span class="meta-grp"><span>Newsletter</span><span class="dot-mark">•</span><span>Stay Connected</span></span>
-      <span>006 / 007</span>
+      <span>008 / 009</span>
     </div>
     <div class="cta-grid">
       <div data-reveal>
