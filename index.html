@@ -114,7 +114,9 @@ section.tight{padding:90px 0}
 .hero-stats .stat-label b{display:block;font-weight:700;color:var(--ink);font-size:12px}
 .hero-foot{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}
 .hero-foot .meta{line-height:1.4}
-.hero-art{position:relative;aspect-ratio:1/1;max-width:560px;margin-left:auto;background:var(--paper-warm);border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:560px;margin-left:auto;background:var(--paper-warm);border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid var(--line);will-change:transform;transition:transform 0s}
+.hero h1,.hero .lead,.hero-actions,.hero-stats,.hero-foot{transition:opacity .28s ease-out,transform .28s ease-out;will-change:opacity,transform}
+.hero-copy{transition:transform .28s ease-out;will-change:transform}
 .hero-art .mascot{font-size:clamp(80px,10vw,140px);text-align:center;line-height:1;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero-art .mascot-label{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--coral);letter-spacing:.04em}
 .hero-art .corner{position:absolute;width:22px;height:22px;border-color:var(--ink-faint);border-style:solid;border-width:0}
@@ -582,6 +584,23 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 </div><!-- .shell -->
 
 <script>
+/* ============================================================
+   Continuous Scroll Engine — parallax, fade, progress
+   所有元素在滚动过程中持续响应，不是仅 reveal
+   ============================================================ */
+
+/* scroll-progress bar */
+(function(){
+  var bar = document.createElement('div');
+  bar.id = 'scroll-progress';
+  bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--coral);z-index:200;width:0;transition:width 80ms linear;will-change:width';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, {passive:true});
+})();
+
 /* scroll-reveal observer */
 (function(){
   var els=document.querySelectorAll('[data-reveal]:not([data-revealed])');
@@ -612,6 +631,150 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     else if(d<-DELTA)nav.classList.remove('is-hidden');
     lastY=y;
   },{passive:true});
+})();
+
+/* ============================================================
+   CONTINUOUS SCROLL PARALLAX ENGINE
+   requestAnimationFrame loop — 60fps smooth
+   ============================================================ */
+(function(){
+  var ticking = false;
+  var heroArt = document.querySelector('.hero-art');
+  var heroCopy = document.querySelector('.hero-copy');
+  var heroSection = document.querySelector('.hero');
+  var heroH1 = heroSection ? heroSection.querySelector('h1') : null;
+  var heroLead = heroSection ? heroSection.querySelector('.lead') : null;
+  var heroActions = heroSection ? heroSection.querySelector('.hero-actions') : null;
+  var heroStats = heroSection ? heroSection.querySelector('.hero-stats') : null;
+  var heroFoot = heroSection ? heroSection.querySelector('.hero-foot') : null;
+  var sideRail = document.querySelector('.side-rail.right');
+
+  /* collect all sections for per-element parallax */
+  var parallaxEls = document.querySelectorAll('[data-parallax]');
+  var cardEls = document.querySelectorAll('.product-card, .cat-card, .work-card, .testimonial-art, .cta-art');
+
+  /* mouse tracking for hero mascot */
+  var mouseX = 0, mouseY = 0, targetMX = 0, targetMY = 0;
+  document.addEventListener('mousemove', function(e){
+    targetMX = (e.clientX / window.innerWidth - 0.5) * 2;  /* -1 to 1 */
+    targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+  function easeInOut(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function tick(){
+    ticking = false;
+
+    /* mouse lerp for 3D feel */
+    mouseX = lerp(mouseX, targetMX, 0.06);
+    mouseY = lerp(mouseY, targetMY, 0.06);
+
+    var scrollY = window.scrollY || 0;
+    var vh = window.innerHeight;
+
+    /* ---- HERO PARALLAX ---- */
+    if(heroSection && heroArt){
+      var heroRect = heroSection.getBoundingClientRect();
+      var heroHeight = heroSection.offsetHeight;
+      /* progress: 0 at top of hero, 1 when hero is fully scrolled out */
+      var heroProgress = clamp(-heroRect.top / (heroHeight - vh), 0, 1);
+
+      /* hero-art: moves upward at 0.35x scroll rate + mouse parallax */
+      var artTranslateY = scrollY * 0.18 + mouseY * 8;
+      var artTranslateX = mouseX * 6;
+      heroArt.style.transform = 'translate3d('+artTranslateX.toFixed(1)+'px,'+artTranslateY.toFixed(1)+'px,0)';
+
+      /* hero text elements fade out progressively */
+      var fadeOut = function(el, start, end){
+        if(!el)return;
+        var o = clamp(1 - (heroProgress - start) / (end - start), 0, 1);
+        el.style.opacity = o.toFixed(2);
+        el.style.transform = 'translate3d(0,'+((1-o)*24).toFixed(1)+'px,0)';
+      };
+      fadeOut(heroH1, 0.05, 0.55);
+      fadeOut(heroLead, 0.08, 0.45);
+      fadeOut(heroActions, 0.10, 0.40);
+      fadeOut(heroStats, 0.12, 0.38);
+
+      if(heroCopy){
+        heroCopy.style.transform = 'translate3d(0,'+(scrollY*0.08).toFixed(1)+'px,0)';
+      }
+    }
+
+    /* ---- SIDE RAIL scroll-linked ---- */
+    if(sideRail){
+      sideRail.style.opacity = clamp(1 - scrollY / 400, 0.2, 1).toFixed(2);
+    }
+
+    /* ---- PER-ELEMENT PARALLAX (data-parallax attribute) ---- */
+    for(var i=0;i<parallaxEls.length;i++){
+      var el = parallaxEls[i];
+      var rect = el.getBoundingClientRect();
+      var center = rect.top + rect.height/2;
+      var viewCenter = vh/2;
+      var offset = (center - viewCenter) / vh; /* -1 to 1 */
+      var speed = parseFloat(el.getAttribute('data-parallax') || '0.05');
+      el.style.transform = 'translate3d(0,'+(offset * vh * speed).toFixed(1)+'px,0)';
+    }
+
+    /* ---- CARD FLOAT ON SCROLL ---- */
+    for(var j=0;j<cardEls.length;j++){
+      var card = cardEls[j];
+      var cr = card.getBoundingClientRect();
+      var cCenter = cr.top + cr.height/2;
+      var cOffset = (cCenter - vh/2) / vh;
+      /* subtle float: cards shift up as they enter viewport, down as they leave */
+      var floatY = cOffset * -12;
+      /* Only apply if in or near viewport */
+      if(cr.bottom > -200 && cr.top < vh + 200){
+        card.style.transform = card.style.transform.replace(/translateY\([^)]+\)/,'') + ' translate3d(0,'+floatY.toFixed(1)+'px,0)';
+      }
+    }
+
+    /* ---- WORK SECTION text parallax ---- */
+    var workCopy = document.querySelector('.work-copy');
+    if(workCopy){
+      var wr = workCopy.closest('.work') ? workCopy.closest('.work').getBoundingClientRect() : null;
+      if(wr && wr.bottom > 0 && wr.top < vh){
+        var wp = (wr.top + wr.height*0.3 - vh/2) / vh;
+        workCopy.style.transform = 'translate3d(0,'+(wp * -18).toFixed(1)+'px,0)';
+      }
+    }
+
+    /* ---- TESTIMONIAL text parallax ---- */
+    var testCopy = document.querySelector('.testimonial-copy');
+    if(testCopy){
+      var tr = testCopy.closest('.testimonial') ? testCopy.closest('.testimonial').getBoundingClientRect() : null;
+      if(tr && tr.bottom > 0 && tr.top < vh){
+        var tp = (tr.top + tr.height*0.4 - vh/2) / vh;
+        testCopy.style.transform = 'translate3d(0,'+(tp * -14).toFixed(1)+'px,0)';
+      }
+    }
+
+    /* ---- CTA art subtle rotate on scroll ---- */
+    var ctaArt = document.querySelector('.cta-art');
+    if(ctaArt){
+      var car = ctaArt.getBoundingClientRect();
+      if(car.bottom > 0 && car.top < vh){
+        var cp = (car.top + car.height/2 - vh/2) / vh;
+        ctaArt.style.transform = 'rotate('+(cp * 2.5).toFixed(1)+'deg)';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(tick); }
+  }, {passive:true});
+
+  /* also run on mousemove for mouse parallax */
+  document.addEventListener('mousemove', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(tick); }
+  }, {passive:true});
+
+  /* initial call */
+  tick();
 })();
 </script>
 </body>
