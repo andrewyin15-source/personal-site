@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name · Personal Site</title>
+  <meta name="description" content="Personal portfolio of Your Name — projects, skills and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <canvas id="bg-particles"></canvas>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#home"><span class="dot"></span>your.name</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#timeline">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" aria-label="menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <p class="kicker" data-aos="fade-down">HELLO · I&#39;M</p>
+        <h1 class="title">
+          <span class="line"><span class="word" data-aos="fade-up" data-aos-delay="100">Your</span></span>
+          <span class="line"><span class="word gradient" data-aos="fade-up" data-aos-delay="200">Name</span></span>
+        </h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="400">A <span id="rotator"></span><span class="caret">|</span></p>
+        <p class="hero-desc" data-aos="fade-up" data-aos-delay="600">这里放一句个人简介，比如：喜欢把复杂问题变简单的全栈开发者，专注于 Web 体验与系统设计。随便改。</p>
+        <div class="hero-cta" data-aos="fade-up" data-aos-delay="800">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
+        </div>
+        <div class="scroll-hint" data-aos="fade" data-aos-delay="1200"><span></span>scroll</div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">About</h2>
+        <div class="about-grid">
+          <div class="avatar-wrap" data-aos="fade-right">
+            <div class="avatar"><div class="avatar-inner">YN</div><div class="ring"></div></div>
+          </div>
+          <div class="about-text" data-aos="fade-left">
+            <p>你好，我是 <b>Your Name</b>，一名<b>全栈开发者 / 系统爱好者</b>。这里随便写两段自我介绍。</p>
+            <p>日常折腾前端动效、后端服务、自动化脚本和云原生部署。喜欢把零碎的工具拼成一套顺手的工作流。</p>
+            <ul class="info">
+              <li><span>📍</span><b>所在地</b>：Your City</li>
+              <li><span>💼</span><b>状态</b>：Open to opportunities</li>
+              <li><span>🎯</span><b>方向</b>：Web · Cloud · DX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card" data-aos="zoom-in" data-aos-delay="0">
+            <div class="skill-head"><span>Frontend</span><b class="counter" data-target="90">0</b><small>%</small></div>
+            <div class="bar"><i data-target="90"></i></div>
+            <p>HTML · CSS · JavaScript · TypeScript · React · Vue</p>
+          </div>
+          <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="skill-head"><span>Backend</span><b class="counter" data-target="80">0</b><small>%</small></div>
+            <div class="bar"><i data-target="80"></i></div>
+            <p>Node.js · Python · Go · REST · GraphQL · WebSocket</p>
+          </div>
+          <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="skill-head"><span>DevOps</span><b class="counter" data-target="70">0</b><small>%</small></div>
+            <div class="bar"><i data-target="70"></i></div>
+            <p>Docker · Nginx · CI/CD · Vercel · Cloudflare · Linux</p>
+          </div>
+          <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="skill-head"><span>Tools</span><b class="counter" data-target="85">0</b><small>%</small></div>
+            <div class="bar"><i data-target="85"></i></div>
+            <p>Git · VS Code · Figma · Postman · Notion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card" data-aos="fade-up">
+            <div class="project-cover p1"><div class="cover-grid"></div></div>
+            <div class="project-body">
+              <h3>Project One</h3>
+              <p>一句话简介：解决什么问题的项目。技术栈：React + Node + MySQL。</p>
+              <div class="tags"><span>React</span><span>Node</span><span>MySQL</span></div>
+              <div class="project-links"><a href="#" class="link">Live &#8599;</a><a href="#" class="link">Code &#8599;</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-cover p2"><div class="cover-bars"></div></div>
+            <div class="project-body">
+              <h3>Project Two</h3>
+              <p>一句话简介：自动化脚本 / 工具型项目。技术栈：Python + FastAPI。</p>
+              <div class="tags"><span>Python</span><span>FastAPI</span><span>Docker</span></div>
+              <div class="project-links"><a href="#" class="link">Live &#8599;</a><a href="#" class="link">Code &#8599;</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-cover p3"><div class="cover-orbit"><span></span><span></span><span></span></div></div>
+            <div class="project-body">
+              <h3>Project Three</h3>
+              <p>一句话简介：全栈应用。技术栈：Next.js + Prisma + Postgres。</p>
+              <div class="tags"><span>Next.js</span><span>Prisma</span><span>Postgres</span></div>
+              <div class="project-links"><a href="#" class="link">Live &#8599;</a><a href="#" class="link">Code &#8599;</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section alt">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Journey</h2>
+        <ol class="timeline">
+          <li data-aos="fade-up"><div class="dot"></div><div class="content"><h4>2026 · Now</h4><p>做个人网站，折腾部署与动效。</p></div></li>
+          <li data-aos="fade-up" data-aos-delay="100"><div class="dot"></div><div class="content"><h4>2025</h4><p>某段学习 / 工作经历，简短描述。</p></div></li>
+          <li data-aos="fade-up" data-aos-delay="200"><div class="dot"></div><div class="content"><h4>2024</h4><p>某段学习 / 工作经历，简短描述。</p></div></li>
+          <li data-aos="fade-up" data-aos-delay="300"><div class="dot"></div><div class="content"><h4>2023</h4><p>开始写代码 / 第一个项目。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100">欢迎通过以下方式联系我，我会尽快回复。</p>
+        <div class="contact-grid" data-aos="fade-up" data-aos-delay="200">
+          <a class="contact-card" href="mailto:you@example.com"><span class="ic">✉</span><b>Email</b><small>you@example.com</small></a>
+          <a class="contact-card" href="#" target="_blank" rel="noopener"><span class="ic">🐙</span><b>GitHub</b><small>@yourname</small></a>
+          <a class="contact-card" href="#" target="_blank" rel="noopener"><span class="ic">💬</span><b>WeChat</b><small>your_wechat</small></a>
+          <a class="contact-card" href="#" target="_blank" rel="noopener"><span class="ic">🔗</span><b>LinkedIn</b><small>in/yourname</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Your Name · Built with ♥</div>
+    <a class="to-top" id="to-top" href="#home" aria-label="to top">↑</a>
+  </footer>
+
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
