@@ -97,7 +97,7 @@ section.tight{padding:90px 0}
 @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}.nav{transition:none!important}}
 
 /* ---- HERO ---- */
-.hero{min-height:calc(100vh - 140px);display:flex;flex-direction:column;border-bottom:1px solid var(--line);position:relative}
+.hero{min-height:calc(100vh - 140px);display:flex;flex-direction:column;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line-soft);z-index:0;display:none}
 .hero-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:36px;align-items:stretch;width:100%;position:relative}
 .hero-copy{padding:4vh 0;display:flex;flex-direction:column;position:relative}
@@ -635,7 +635,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
 /* ============================================================
    CONTINUOUS SCROLL PARALLAX ENGINE
-   requestAnimationFrame loop — 60fps smooth
+   requestAnimationFrame loop — 60fps
+   仅对 Hero 区域内元素施加视差，不越界
    ============================================================ */
 (function(){
   var ticking = false;
@@ -646,121 +647,61 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   var heroLead = heroSection ? heroSection.querySelector('.lead') : null;
   var heroActions = heroSection ? heroSection.querySelector('.hero-actions') : null;
   var heroStats = heroSection ? heroSection.querySelector('.hero-stats') : null;
-  var heroFoot = heroSection ? heroSection.querySelector('.hero-foot') : null;
   var sideRail = document.querySelector('.side-rail.right');
 
-  /* collect all sections for per-element parallax */
-  var parallaxEls = document.querySelectorAll('[data-parallax]');
-  var cardEls = document.querySelectorAll('.product-card, .cat-card, .work-card, .testimonial-art, .cta-art');
-
-  /* mouse tracking for hero mascot */
+  /* mouse tracking for hero mascot (微弱的 3D 感) */
   var mouseX = 0, mouseY = 0, targetMX = 0, targetMY = 0;
   document.addEventListener('mousemove', function(e){
-    targetMX = (e.clientX / window.innerWidth - 0.5) * 2;  /* -1 to 1 */
+    targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
     targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
   function lerp(a,b,t){ return a + (b-a)*t; }
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
-  function easeInOut(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
 
   function tick(){
     ticking = false;
 
-    /* mouse lerp for 3D feel */
     mouseX = lerp(mouseX, targetMX, 0.06);
     mouseY = lerp(mouseY, targetMY, 0.06);
 
     var scrollY = window.scrollY || 0;
     var vh = window.innerHeight;
 
-    /* ---- HERO PARALLAX ---- */
+    /* ---- HERO PARALLAX (仅在 hero 区域内生效) ---- */
     if(heroSection && heroArt){
-      var heroRect = heroSection.getBoundingClientRect();
+      var heroTop = heroSection.getBoundingClientRect().top;
       var heroHeight = heroSection.offsetHeight;
-      /* progress: 0 at top of hero, 1 when hero is fully scrolled out */
-      var heroProgress = clamp(-heroRect.top / (heroHeight - vh), 0, 1);
+      /* heroProgress: 0=hero 顶部在视口底部, 1=hero 完全滚出视口上方 */
+      var heroProgress = clamp(-heroTop / (heroHeight - vh), 0, 1);
 
-      /* hero-art: moves upward at 0.35x scroll rate + mouse parallax */
-      var artTranslateY = scrollY * 0.18 + mouseY * 8;
-      var artTranslateX = mouseX * 6;
-      heroArt.style.transform = 'translate3d('+artTranslateX.toFixed(1)+'px,'+artTranslateY.toFixed(1)+'px,0)';
+      /* hero-art: 轻微视差偏移 + 鼠标 tracking，overflow:hidden 保证不越界 */
+      if(heroTop < vh && heroTop + heroHeight > 0){
+        var artOffY = scrollY * 0.12 + mouseY * 6;
+        var artOffX = mouseX * 4;
+        heroArt.style.transform = 'translate3d('+artOffX.toFixed(1)+'px,'+artOffY.toFixed(1)+'px,0)';
+      }
 
-      /* hero text elements fade out progressively */
-      var fadeOut = function(el, start, end){
-        if(!el)return;
+      /* hero 文字逐层淡出 (仅 opacity，不改变 translate 避免溢出) */
+      var applyFade = function(el, start, end){
+        if(!el) return;
         var o = clamp(1 - (heroProgress - start) / (end - start), 0, 1);
         el.style.opacity = o.toFixed(2);
-        el.style.transform = 'translate3d(0,'+((1-o)*24).toFixed(1)+'px,0)';
       };
-      fadeOut(heroH1, 0.05, 0.55);
-      fadeOut(heroLead, 0.08, 0.45);
-      fadeOut(heroActions, 0.10, 0.40);
-      fadeOut(heroStats, 0.12, 0.38);
+      applyFade(heroH1, 0.08, 0.58);
+      applyFade(heroLead, 0.10, 0.48);
+      applyFade(heroActions, 0.12, 0.42);
+      applyFade(heroStats, 0.14, 0.40);
 
-      if(heroCopy){
-        heroCopy.style.transform = 'translate3d(0,'+(scrollY*0.08).toFixed(1)+'px,0)';
+      /* hero-copy 整体微移 (保守幅度，不会越界) */
+      if(heroCopy && heroTop < vh && heroTop + heroHeight > 0){
+        heroCopy.style.transform = 'translate3d(0,'+(scrollY * 0.05).toFixed(1)+'px,0)';
       }
     }
 
-    /* ---- SIDE RAIL scroll-linked ---- */
+    /* ---- SIDE RAIL 渐隐 ---- */
     if(sideRail){
-      sideRail.style.opacity = clamp(1 - scrollY / 400, 0.2, 1).toFixed(2);
-    }
-
-    /* ---- PER-ELEMENT PARALLAX (data-parallax attribute) ---- */
-    for(var i=0;i<parallaxEls.length;i++){
-      var el = parallaxEls[i];
-      var rect = el.getBoundingClientRect();
-      var center = rect.top + rect.height/2;
-      var viewCenter = vh/2;
-      var offset = (center - viewCenter) / vh; /* -1 to 1 */
-      var speed = parseFloat(el.getAttribute('data-parallax') || '0.05');
-      el.style.transform = 'translate3d(0,'+(offset * vh * speed).toFixed(1)+'px,0)';
-    }
-
-    /* ---- CARD FLOAT ON SCROLL ---- */
-    for(var j=0;j<cardEls.length;j++){
-      var card = cardEls[j];
-      var cr = card.getBoundingClientRect();
-      var cCenter = cr.top + cr.height/2;
-      var cOffset = (cCenter - vh/2) / vh;
-      /* subtle float: cards shift up as they enter viewport, down as they leave */
-      var floatY = cOffset * -12;
-      /* Only apply if in or near viewport */
-      if(cr.bottom > -200 && cr.top < vh + 200){
-        card.style.transform = card.style.transform.replace(/translateY\([^)]+\)/,'') + ' translate3d(0,'+floatY.toFixed(1)+'px,0)';
-      }
-    }
-
-    /* ---- WORK SECTION text parallax ---- */
-    var workCopy = document.querySelector('.work-copy');
-    if(workCopy){
-      var wr = workCopy.closest('.work') ? workCopy.closest('.work').getBoundingClientRect() : null;
-      if(wr && wr.bottom > 0 && wr.top < vh){
-        var wp = (wr.top + wr.height*0.3 - vh/2) / vh;
-        workCopy.style.transform = 'translate3d(0,'+(wp * -18).toFixed(1)+'px,0)';
-      }
-    }
-
-    /* ---- TESTIMONIAL text parallax ---- */
-    var testCopy = document.querySelector('.testimonial-copy');
-    if(testCopy){
-      var tr = testCopy.closest('.testimonial') ? testCopy.closest('.testimonial').getBoundingClientRect() : null;
-      if(tr && tr.bottom > 0 && tr.top < vh){
-        var tp = (tr.top + tr.height*0.4 - vh/2) / vh;
-        testCopy.style.transform = 'translate3d(0,'+(tp * -14).toFixed(1)+'px,0)';
-      }
-    }
-
-    /* ---- CTA art subtle rotate on scroll ---- */
-    var ctaArt = document.querySelector('.cta-art');
-    if(ctaArt){
-      var car = ctaArt.getBoundingClientRect();
-      if(car.bottom > 0 && car.top < vh){
-        var cp = (car.top + car.height/2 - vh/2) / vh;
-        ctaArt.style.transform = 'rotate('+(cp * 2.5).toFixed(1)+'deg)';
-      }
+      sideRail.style.opacity = clamp(1 - scrollY / 500, 0.15, 1).toFixed(2);
     }
   }
 
@@ -768,12 +709,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     if(!ticking){ ticking = true; requestAnimationFrame(tick); }
   }, {passive:true});
 
-  /* also run on mousemove for mouse parallax */
   document.addEventListener('mousemove', function(){
     if(!ticking){ ticking = true; requestAnimationFrame(tick); }
   }, {passive:true});
 
-  /* initial call */
   tick();
 })();
 </script>
