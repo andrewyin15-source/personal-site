@@ -93,13 +93,18 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;bac
 section{position:relative;padding:130px 0}
 section.tight{padding:90px 0}
 
-/* ---- SCROLL REVEAL (fixed — uses transform, not translate property) ---- */
-[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 900ms cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),transform 900ms cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms);will-change:opacity,transform}
-[data-reveal='left']{transform:translateX(-36px)}
-[data-reveal='right']{transform:translateX(36px)}
-[data-reveal='scale']{transform:scale(.96)}
-[data-reveal][data-revealed='true']{opacity:1;transform:translate(0,0) scale(1)}
-@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}.nav{transition:none!important}}
+/* ---- SCROLL REVEAL — JS 持续驱动，CSS 只提供丝滑过渡 ---- */
+[data-reveal]{will-change:opacity,transform;transition:opacity .25s ease-out,transform .25s ease-out}
+[data-reveal='scale']{will-change:opacity,transform,scale}
+.product-card,.cat-card{will-change:transform;transition:transform .2s ease-out}
+.hero-art{will-change:transform}
+.hero-copy{will-change:transform;transition:transform .3s ease-out}
+.hero h1,.hero .lead,.hero-actions,.hero-stats{will-change:opacity;transition:opacity .3s ease-out}
+@media(prefers-reduced-motion:reduce){
+  [data-reveal],.product-card,.cat-card,.hero-art,.hero-copy{transition:none!important;transform:none!important}
+  .hero h1,.hero .lead,.hero-actions,.hero-stats{transition:none!important;opacity:1!important}
+  .nav{transition:none!important}
+}
 
 /* ---- HERO ---- */
 .hero{min-height:calc(100vh - 140px);display:flex;flex-direction:column;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
@@ -697,8 +702,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
 <script>
 /* ============================================================
-   Continuous Scroll Engine — parallax, fade, progress
-   所有元素在滚动过程中持续响应，不是仅 reveal
+   BIDIRECTIONAL CONTINUOUS SCROLL ENGINE
+   上滑/下滑都持续响应，永不变静态
    ============================================================ */
 
 /* scroll-progress bar */
@@ -713,45 +718,29 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   }, {passive:true});
 })();
 
-/* scroll-reveal observer */
-(function(){
-  var els=document.querySelectorAll('[data-reveal]:not([data-revealed])');
-  if(!els.length)return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    for(var i=0;i<els.length;i++)els[i].dataset.revealed='true';
-    return;
-  }
-  var obs=new IntersectionObserver(function(entries){
-    for(var i=0;i<entries.length;i++){
-      if(!entries[i].isIntersecting)continue;
-      entries[i].target.dataset.revealed='true';
-      obs.unobserve(entries[i].target);
-    }
-  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-  for(var j=0;j<els.length;j++)obs.observe(els[j]);
-})();
-
 /* headroom nav */
 (function(){
-  var nav=document.querySelector('header.nav');
-  if(!nav)return;
-  var SHOW=100,DELTA=6,lastY=window.scrollY||0;
-  window.addEventListener('scroll',function(){
-    var y=window.scrollY||0,d=y-lastY;
-    if(y<=SHOW)nav.classList.remove('is-hidden');
-    else if(d>DELTA)nav.classList.add('is-hidden');
-    else if(d<-DELTA)nav.classList.remove('is-hidden');
-    lastY=y;
-  },{passive:true});
+  var nav = document.querySelector('header.nav');
+  if(!nav) return;
+  var SHOW = 100, DELTA = 6, lastY = window.scrollY || 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY || 0, d = y - lastY;
+    if(y <= SHOW) nav.classList.remove('is-hidden');
+    else if(d > DELTA) nav.classList.add('is-hidden');
+    else if(d < -DELTA) nav.classList.remove('is-hidden');
+    lastY = y;
+  }, {passive:true});
 })();
 
 /* ============================================================
-   CONTINUOUS SCROLL PARALLAX ENGINE
-   requestAnimationFrame loop — 60fps
-   仅对 Hero 区域内元素施加视差，不越界
+   MAIN BIDIRECTIONAL SCROLL LOOP
    ============================================================ */
 (function(){
-  var ticking = false;
+  var ticking = false, lastScrollY = 0;
+  var vh = window.innerHeight;
+  window.addEventListener('resize', function(){ vh = window.innerHeight; });
+
+  /* collect elements */
   var heroArt = document.querySelector('.hero-art');
   var heroCopy = document.querySelector('.hero-copy');
   var heroSection = document.querySelector('.hero');
@@ -761,59 +750,91 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   var heroStats = heroSection ? heroSection.querySelector('.hero-stats') : null;
   var sideRail = document.querySelector('.side-rail.right');
 
-  /* mouse tracking for hero mascot (微弱的 3D 感) */
-  var mouseX = 0, mouseY = 0, targetMX = 0, targetMY = 0;
+  /* all [data-reveal] elements use continuous tracking, not one-shot */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  /* all product/category cards */
+  var cardEls = document.querySelectorAll('.product-card, .cat-card');
+
+  /* mouse */
+  var mx = 0, my = 0, tmx = 0, tmy = 0;
   document.addEventListener('mousemove', function(e){
-    targetMX = (e.clientX / window.innerWidth - 0.5) * 2;
-    targetMY = (e.clientY / window.innerHeight - 0.5) * 2;
+    tmx = (e.clientX / vh - 0.5) * 3;
+    tmy = (e.clientY / vh - 0.5) * 3;
   });
 
   function lerp(a,b,t){ return a + (b-a)*t; }
-  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+  function clamp(v,min,max){ return v<min?min:v>max?max:v; }
+  function mapRange(v,inMin,inMax,outMin,outMax){
+    var t = clamp((v-inMin)/(inMax-inMin),0,1);
+    return outMin + (outMax-outMin)*t;
+  }
+
+  function getViewportProgress(el){
+    /* returns -1 to 1: -1=below viewport, 0=centered, 1=above viewport */
+    var r = el.getBoundingClientRect();
+    var mid = r.top + r.height/2;
+    return (mid - vh/2) / (vh/2 + r.height/2);
+  }
 
   function tick(){
     ticking = false;
-
-    mouseX = lerp(mouseX, targetMX, 0.06);
-    mouseY = lerp(mouseY, targetMY, 0.06);
-
     var scrollY = window.scrollY || 0;
-    var vh = window.innerHeight;
+    var scrollDir = scrollY - lastScrollY; /* positive=down, negative=up */
+    lastScrollY = scrollY;
 
-    /* ---- HERO PARALLAX (仅在 hero 区域内生效) ---- */
+    mx = lerp(mx, tmx, 0.05);
+    my = lerp(my, tmy, 0.05);
+
+    /* ---- HERO: bidirectional parallax + fade ---- */
     if(heroSection && heroArt){
-      var heroTop = heroSection.getBoundingClientRect().top;
-      var heroHeight = heroSection.offsetHeight;
-      /* heroProgress: 0=hero 顶部在视口底部, 1=hero 完全滚出视口上方 */
-      var heroProgress = clamp(-heroTop / (heroHeight - vh), 0, 1);
+      var ht = heroSection.getBoundingClientRect().top;
+      var hh = heroSection.offsetHeight;
+      var hp = clamp(-ht / (hh - vh), 0, 1); /* 0=visible, 1=scrolled past */
 
-      /* hero-art: 轻微视差偏移 + 鼠标 tracking，overflow:hidden 保证不越界 */
-      if(heroTop < vh && heroTop + heroHeight > 0){
-        var artOffY = scrollY * 0.12 + mouseY * 6;
-        var artOffX = mouseX * 4;
-        heroArt.style.transform = 'translate3d('+artOffX.toFixed(1)+'px,'+artOffY.toFixed(1)+'px,0)';
+      /* hero-art floats continuously — up when scrolling down, back when up */
+      if(ht < vh && ht + hh > 0){
+        var artY = ht * -0.15 + my * 8;
+        var artX = mx * 5;
+        heroArt.style.transform = 'translate3d('+artX.toFixed(1)+'px,'+artY.toFixed(1)+'px,0)';
       }
 
-      /* hero 文字逐层淡出 (仅 opacity，不改变 translate 避免溢出) */
-      var applyFade = function(el, start, end){
+      /* hero text fades — reversible (comes back when scrolling up) */
+      [heroH1,heroLead,heroActions,heroStats].forEach(function(el,i){
         if(!el) return;
-        var o = clamp(1 - (heroProgress - start) / (end - start), 0, 1);
-        el.style.opacity = o.toFixed(2);
-      };
-      applyFade(heroH1, 0.08, 0.58);
-      applyFade(heroLead, 0.10, 0.48);
-      applyFade(heroActions, 0.12, 0.42);
-      applyFade(heroStats, 0.14, 0.40);
-
-      /* hero-copy 整体微移 (保守幅度，不会越界) */
-      if(heroCopy && heroTop < vh && heroTop + heroHeight > 0){
-        heroCopy.style.transform = 'translate3d(0,'+(scrollY * 0.05).toFixed(1)+'px,0)';
-      }
+        var start = 0.05 + i*0.03;
+        var end = 0.42 + i*0.04;
+        el.style.opacity = clamp(1 - (hp-start)/(end-start), 0, 1).toFixed(2);
+      });
     }
 
-    /* ---- SIDE RAIL 渐隐 ---- */
+    /* ---- SIDE RAIL: bidirectional fade ---- */
     if(sideRail){
-      sideRail.style.opacity = clamp(1 - scrollY / 500, 0.15, 1).toFixed(2);
+      sideRail.style.opacity = clamp(1 - scrollY/600, 0.15, 1).toFixed(2);
+    }
+
+    /* ---- CONTINUOUS REVEAL: elements track viewport position bidirectionally ---- */
+    for(var i=0;i<revealEls.length;i++){
+      var el = revealEls[i];
+      var vp = getViewportProgress(el);
+      /* vp > 0.5 = below, vp < -0.5 = above, vp ~ 0 = centered */
+      /* transform: shift up as element enters (positive vp), settle at 0 when centered */
+      var shift = clamp(vp * 40, -40, 40);
+      var opacity = clamp(1 - Math.abs(vp) * 1.2, 0, 1);
+      el.style.opacity = opacity.toFixed(2);
+      el.style.transform = 'translate3d(0,'+shift.toFixed(1)+'px,0)';
+    }
+
+    /* ---- CARDS: subtle enter/leave float ---- */
+    for(var j=0;j<cardEls.length;j++){
+      var card = cardEls[j];
+      var cr = card.getBoundingClientRect();
+      if(cr.bottom > -100 && cr.top < vh + 100){
+        var cp = getViewportProgress(card);
+        var cShift = cp * 18;
+        /* preserve hover transform */
+        var base = '';
+        card.style.transform = 'translate3d(0,'+cShift.toFixed(1)+'px,0)';
+      }
     }
   }
 
@@ -825,6 +846,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     if(!ticking){ ticking = true; requestAnimationFrame(tick); }
   }, {passive:true});
 
+  /* initial call — set all elements to their scroll positions */
   tick();
 })();
 </script>
