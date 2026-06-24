@@ -274,6 +274,49 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 @media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.hero-grid{grid-template-columns:1fr;gap:50px}.hero-art{max-width:400px;margin:0 auto}.cat-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr;gap:50px}.cta-grid{grid-template-columns:1fr;gap:50px}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:last-child{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
 @media(max-width:880px){.container{padding:0 24px}.nav-links{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}section{padding:80px 0}.product-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.topbar-inner{font-size:9px}.cat-card-title{font-size:22px}.hero-stats{flex-wrap:wrap}.work-arrows{display:none}}
+
+/* ---- FLOATING TOOLBAR ---- */
+.float-tb{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:6px;transition:opacity .36s ease,transform .36s ease}
+.float-tb.is-hidden{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(12px)}
+.tb-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;text-decoration:none;color:var(--ink-mute);transition:all .22s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.tb-btn:hover{color:var(--coral);border-color:var(--coral);transform:translateX(-2px);box-shadow:0 6px 18px -8px rgba(237,111,92,.28)}
+.tb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.tb-btn.wechat svg{fill:currentColor;stroke:none}
+.tb-btn.back-top{opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,color .22s ease,border-color .22s ease}
+.tb-btn.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.tb-btn.back-top.visible:hover{transform:translateX(-2px) translateY(0)}
+.tb-btn .tb-tip{position:absolute;right:58px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 14px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;transform-origin:right center}
+.tb-btn .tb-tip::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--ink);border-right:none}
+.tb-btn:hover .tb-tip{opacity:1;transform:translateY(-50%) translateX(-4px)}
+.tb-dot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--coral);border:1.5px solid var(--paper);animation:pulse 2.4s ease-in-out infinite}
+
+/* ---- OVERLAY + POPUPS ---- */
+.wx-overlay{position:fixed;inset:0;background:rgba(21,20,15,.45);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.wx-overlay.open{opacity:1;pointer-events:auto}
+.wx-popup{background:var(--paper);border-radius:22px;padding:40px 36px 32px;text-align:center;box-shadow:0 40px 80px -36px rgba(21,20,15,.32);position:relative;border:1px solid var(--line);max-width:340px;width:90%;transform:translateY(12px);transition:transform .32s cubic-bezier(.22,.61,.36,1)}
+.wx-overlay.open .wx-popup{transform:translateY(0)}
+.pu-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--bone);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-mute);transition:all .18s ease}
+.pu-close:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+.pu-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.wx-qr-wrap{width:200px;height:200px;margin:0 auto 20px;border:1px solid var(--line);border-radius:14px;background:var(--bone);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.wx-qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--ink-faint)}
+.wx-qr-placeholder svg{width:60px;height:60px;stroke:var(--ink-faint);fill:none;stroke-width:1}
+.wx-qr-placeholder span{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.wx-popup h4{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:-.012em;color:var(--ink);margin-bottom:6px}
+.wx-popup .wx-sub{font-family:var(--body);font-size:13px;color:var(--ink-mute);line-height:1.5;margin-bottom:8px}
+.wx-popup .wx-id{font-family:var(--mono);font-size:12px;color:var(--coral);letter-spacing:.04em;padding:6px 16px;background:var(--bone);border:1px solid var(--line);border-radius:999px;display:inline-block}
+.cn-popup{background:var(--paper);border-radius:22px;padding:36px 30px 28px;text-align:center;box-shadow:0 40px 80px -36px rgba(21,20,15,.32);position:relative;border:1px solid var(--line);max-width:380px;width:92%;transform:translateY(12px);transition:transform .32s cubic-bezier(.22,.61,.36,1)}
+.wx-overlay.open .cn-popup{transform:translateY(0)}
+.cn-popup h4{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:-.012em;color:var(--ink);margin-bottom:6px}
+.cn-popup .cn-sub{font-family:var(--body);font-size:13px;color:var(--ink-mute);line-height:1.5;margin-bottom:18px}
+.cn-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cn-opt{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--bone);text-decoration:none;color:var(--ink);font-family:var(--sans);font-size:13px;font-weight:500;transition:all .18s ease;cursor:pointer}
+.cn-opt:hover{border-color:var(--coral);background:rgba(237,111,92,.06)}
+.cn-opt svg{width:18px;height:18px;stroke:var(--coral);fill:none;stroke-width:1.5;flex-shrink:0}
+.cn-opt.wx-opt svg{fill:currentColor;stroke:none}
+
+@media(max-width:880px){.float-tb{right:8px;gap:4px}.tb-btn{width:38px;height:38px;border-radius:10px}.tb-btn .tb-tip{display:none}}
+@media(max-width:560px){.float-tb{right:4px;gap:3px}.tb-btn{width:34px;height:34px;border-radius:8px}.tb-btn svg{width:15px;height:15px}.cn-options{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -700,6 +743,87 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
 </div><!-- .shell -->
 
+<!-- ===== FLOATING TOOLBAR ===== -->
+<div class="float-tb" id="float-tb">
+  <!-- 在线咨询 -->
+  <button class="tb-btn" id="tb-consult" title="在线咨询" aria-label="在线咨询">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2z"></path></svg>
+    <span class="tb-dot"></span>
+    <span class="tb-tip">在线咨询</span>
+  </button>
+
+  <!-- 客服微信 -->
+  <button class="tb-btn wechat" id="tb-wechat" title="客服微信" aria-label="客服微信">
+    <svg viewBox="0 0 24 24"><path d="M8.5 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 2C6.477 2 2 6.015 2 10.9c0 2.71 1.44 5.168 3.704 6.802L5 21l3.652-2.033c1.071.284 2.192.433 3.348.433 5.523 0 10-4.015 10-8.9S17.523 2 12 2z"></path></svg>
+    <span class="tb-tip">客服微信</span>
+  </button>
+
+  <!-- 联系电话 -->
+  <button class="tb-btn" id="tb-phone" title="联系电话" aria-label="联系电话">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+    <span class="tb-tip">400-888-8888</span>
+  </button>
+
+  <!-- 定制方案 -->
+  <button class="tb-btn" id="tb-custom" title="定制方案" aria-label="定制方案">
+    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+    <span class="tb-tip">定制方案</span>
+  </button>
+
+  <!-- 返回顶部 -->
+  <button class="tb-btn back-top" id="tb-back-top" title="返回顶部" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"></path></svg>
+    <span class="tb-tip">返回顶部</span>
+  </button>
+</div>
+
+<!-- ===== WECHAT QR OVERLAY ===== -->
+<div class="wx-overlay" id="wx-overlay">
+  <div class="wx-popup">
+    <button class="pu-close" id="wx-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+    </button>
+    <div class="wx-qr-wrap" id="wx-qr-wrap">
+      <div class="wx-qr-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><path d="M14 14h3v3h-3zM17 14h4v3h-4zM14 17h3v4h-3z"></path></svg>
+        <span>请替换为<br>您的微信二维码</span>
+      </div>
+    </div>
+    <h4>扫码添加客服微信</h4>
+    <p class="wx-sub">一对一咨询 · 专属定制 · 售后无忧</p>
+    <span class="wx-id">微信号: v-jay-doll</span>
+  </div>
+</div>
+
+<!-- ===== CONTACT OVERLAY ===== -->
+<div class="wx-overlay" id="cn-overlay">
+  <div class="cn-popup">
+    <button class="pu-close" id="cn-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+    </button>
+    <h4>联系我们</h4>
+    <p class="cn-sub">选择你喜欢的方式，我们随时为你服务</p>
+    <div class="cn-options">
+      <a class="cn-opt" href="mailto:hello@v-jay.com">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        邮件咨询
+      </a>
+      <button class="cn-opt wx-opt" id="cn-wechat-btn">
+        <svg viewBox="0 0 24 24"><path d="M8.5 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 2C6.477 2 2 6.015 2 10.9c0 2.71 1.44 5.168 3.704 6.802L5 21l3.652-2.033c1.071.284 2.192.433 3.348.433 5.523 0 10-4.015 10-8.9S17.523 2 12 2z"></path></svg>
+        微信客服
+      </button>
+      <a class="cn-opt" href="#contact">
+        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        定制方案
+      </a>
+      <a class="cn-opt" href="tel:400-888-8888">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+        电话咨询
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    BIDIRECTIONAL CONTINUOUS SCROLL ENGINE
@@ -848,6 +972,83 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
   /* initial call — set all elements to their scroll positions */
   tick();
+})();
+
+/* ============================================================
+   FLOATING TOOLBAR INTERACTIONS
+   ============================================================ */
+(function(){
+  var floatTb = document.getElementById('float-tb');
+  var wxOverlay = document.getElementById('wx-overlay');
+  var cnOverlay = document.getElementById('cn-overlay');
+  var backTop = document.getElementById('tb-back-top');
+
+  // ---- WeChat QR popup ----
+  document.getElementById('tb-wechat').addEventListener('click', function(){
+    wxOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('wx-close').addEventListener('click', function(){
+    wxOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  wxOverlay.addEventListener('click', function(e){
+    if(e.target === wxOverlay){ wxOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+
+  // ---- Contact popup ----
+  function openContact(){
+    cnOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('tb-consult').addEventListener('click', openContact);
+  document.getElementById('tb-custom').addEventListener('click', openContact);
+  document.getElementById('cn-close').addEventListener('click', function(){
+    cnOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  cnOverlay.addEventListener('click', function(e){
+    if(e.target === cnOverlay){ cnOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+  // "微信客服" inside contact popup swaps to WeChat QR
+  var cnWechatBtn = document.getElementById('cn-wechat-btn');
+  if(cnWechatBtn){
+    cnWechatBtn.addEventListener('click', function(){
+      cnOverlay.classList.remove('open');
+      wxOverlay.classList.add('open');
+    });
+  }
+
+  // ---- ESC to close ----
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      wxOverlay.classList.remove('open');
+      cnOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ---- Back to top visibility + smooth scroll ----
+  function updateBackTop(){
+    var scrollY = window.scrollY || 0;
+    if(scrollY > 600){
+      backTop.classList.add('visible');
+    } else {
+      backTop.classList.remove('visible');
+    }
+    // Hide toolbar near footer
+    var docH = document.documentElement.scrollHeight;
+    var winH = window.innerHeight;
+    if(floatTb){
+      floatTb.classList.toggle('is-hidden', scrollY + winH > docH - 200);
+    }
+  }
+  backTop.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', updateBackTop, {passive:true});
+  updateBackTop();
 })();
 </script>
 </body>
