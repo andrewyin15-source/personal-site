@@ -329,6 +329,86 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 }
 .uvs-card:hover::after{transform:scaleX(1);}
 
+/* ---- UIverse-style accents (round 2, 2026-08-26) ----
+   Adapted from PunGrumpy/uiverse-button-design "Universe"-pattern
+   + original CSS-only accents in the same visual idiom.   */
+
+/* uvs-tilt: 3D-tilted gradient CTA (UIverse "Universe" pattern,
+   adapted to Atelier Zero coral/paper/ink palette) */
+.uvs-tilt{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:12px;border:none;
+  background-color:#f6e9c8;
+  background-image:
+    radial-gradient(at 92% 75%, hsla(8, 82%, 67%, 1) 0px, transparent 55%),
+    radial-gradient(at 8% 8%, hsla(34, 76%, 70%, 1) 0px, transparent 55%),
+    radial-gradient(at 45% 30%, hsla(18, 70%, 75%, 1) 0px, transparent 55%),
+    radial-gradient(at 78% 50%, hsla(12, 78%, 65%, 1) 0px, transparent 55%);
+  background-size:200% 200%;background-position:0 0;
+  color:#2a1d10;font-family:var(--sans);font-size:14px;font-weight:600;
+  cursor:pointer;letter-spacing:.01em;
+  transform:rotateX(45deg) rotateZ(35deg);
+  transform-style:preserve-3d;
+  transition:transform .7s ease,box-shadow .7s ease;
+  box-shadow:
+    -1px 0 28px 0 hsla(8,82%,67%,.4),
+    36px 36px 28px -10px hsla(34,76%,70%,.3),
+    36px 36px 28px -10px hsla(18,70%,75%,.3);
+  animation:uvsTiltShift 6s ease infinite;
+  text-decoration:none;
+}
+.uvs-tilt:hover{
+  transform:translate3d(0px,-12px,0) rotateX(45deg) rotateZ(35deg);
+  box-shadow:
+    -1px 0 36px 0 hsla(8,82%,67%,.5),
+    48px 48px 32px -10px hsla(34,76%,70%,.4),
+    48px 48px 32px -10px hsla(18,70%,75%,.4);
+}
+.uvs-tilt:focus{outline:none;}
+.uvs-tilt:active{
+  transform:scale(.96) translate3d(0,0,0) rotateX(45deg) rotateZ(35deg);
+  box-shadow:0 0 0 0 rgba(0,0,0,.5);
+}
+@keyframes uvsTiltShift{
+  0%,100%{background-position:0 0}
+  50%{background-position:100% 100%}
+}
+
+/* uvs-pulse: subscribe button with double coral ring pulse */
+.uvs-pulse{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;border-radius:999px;
+  background:var(--ink);color:var(--paper);border:none;cursor:pointer;
+  font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  transition:transform .25s ease,background .25s ease;
+}
+.uvs-pulse:hover{transform:translateY(-1px);background:var(--coral);}
+.uvs-pulse::before,.uvs-pulse::after{
+  content:'';position:absolute;inset:-5px;border-radius:999px;
+  border:2px solid var(--coral);opacity:0;pointer-events:none;
+}
+.uvs-pulse::before{animation:uvsPulseRing 1.8s ease-out infinite;}
+.uvs-pulse::after{animation:uvsPulseRing 1.8s ease-out .45s infinite;}
+@keyframes uvsPulseRing{
+  0%  {transform:scale(.85);opacity:.9}
+  70% {transform:scale(1.28);opacity:0}
+  100%{transform:scale(1.28);opacity:0}
+}
+.uvs-pulse > *{position:relative;z-index:1;display:inline-flex;align-items:center;}
+
+/* uvs-shine-tag: animated badge with sweeping gradient */
+.uvs-shine-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 12px;border-radius:6px;
+  background:linear-gradient(110deg,#2a2620 0%,#5a5448 40%,#ed6f5c 50%,#5a5448 60%,#2a2620 100%);
+  background-size:220% 100%;background-position:0 0;
+  color:#fff;font-family:var(--sans);font-size:9.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  animation:uvsTagShine 4s linear infinite;
+  position:absolute;top:14px;left:14px;z-index:3;
+}
+@keyframes uvsTagShine{to{background-position:220% 0}}
+
 /* Helper for GSAP-managed hero h1 (when data-reveal is removed) */
 .gsap-hero .word,.gsap-hero .char{display:inline-block;will-change:transform,opacity;}
 
@@ -557,7 +637,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
     <div class="product-grid">
       <a class="product-card uvs-card" href="#" data-reveal style="--reveal-delay:0ms">
         <span class="uvs-shine" aria-hidden="true"></span>
-        <div class="product-img d-1"><span>👗</span><span class="product-badge">New</span></div>
+        <div class="product-img d-1"><span>👗</span><span class="uvs-shine-tag">New</span></div>
         <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">星之梦连衣裙</div><div class="product-stars">★★★★★<span class="count">(128)</span></div><div class="product-price"><span class="price-now">$24.99</span></div></div>
         <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
       </a>
@@ -632,7 +712,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
       <div class="work-copy" data-reveal>
         <span class="label">Our Promise</span>
         <h2>精工细作，<em>全球直邮</em>，给每个娃娃<em>最美的衣裳</em><span class="dot">.</span></h2>
-        <a class="work-link" href="#categories">Explore full collection</a>
+        <a class="uvs-tilt" href="#categories">Explore full collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <a class="work-card" href="#products" data-reveal>
         <div class="label-row"><span class="small-label">Featured</span><span class="card-index">Nº 01</span></div>
@@ -762,7 +842,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
         <p class="lead" style="margin-bottom:28px;">第一时间获取新品发布、限量款式和独家折扣信息。加入全球娃娃收藏家社群。</p>
         <form class="nl-form" onsubmit="event.preventDefault();alert('感谢订阅 v-jay！✨')">
           <input type="email" placeholder="输入你的邮箱地址…" required />
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+          <button type="submit" class="uvs-pulse"><span>Subscribe</span></button>
         </form>
         <div class="cta-foot">
           <span class="stamp">● Live</span>
