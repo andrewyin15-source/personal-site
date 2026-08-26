@@ -275,6 +275,63 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 @media(max-width:880px){.container{padding:0 24px}.nav-links{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}section{padding:80px 0}.product-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.topbar-inner{font-size:9px}.cat-card-title{font-size:22px}.hero-stats{flex-wrap:wrap}.work-arrows{display:none}}
 
+/* ============================================================
+   v-jay GSAP upgrade + UIverse-style accents
+   Date: 2026-08-26
+   Scope: Add SplitText hero entrance + UIverse-style CTA button + 1 shine-card
+   Revert: git revert HEAD (one commit, isolated change)
+   ============================================================ */
+
+/* UIverse-style button: ink slide-in on hover */
+.uvs-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;border-radius:999px;
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.02em;
+  border:1.5px solid var(--ink);
+  position:relative;overflow:hidden;
+  text-decoration:none;
+  transition:transform .25s ease, box-shadow .25s ease, color .35s ease;
+  box-shadow:0 6px 14px -8px rgba(21,20,15,.18);
+}
+.uvs-cta::before{
+  content:'';position:absolute;inset:0;
+  background:var(--ink);
+  transform:translateX(-101%);
+  transition:transform .42s cubic-bezier(.7,0,.3,1);
+  z-index:0;
+}
+.uvs-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 26px -16px rgba(21,20,15,.28);
+  color:var(--paper);
+}
+.uvs-cta:hover::before{transform:translateX(0);}
+.uvs-cta > *{position:relative;z-index:1;display:inline-flex;align-items:center;}
+.uvs-cta .uvs-arr{width:14px;height:14px;transition:transform .25s ease;}
+.uvs-cta:hover .uvs-arr{transform:translateX(3px);}
+
+/* UIverse-style product card: shine overlay tracks mouse */
+.uvs-card{position:relative;overflow:hidden;}
+.uvs-card .uvs-shine{
+  position:absolute;inset:0;pointer-events:none;z-index:4;
+  background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.7), rgba(255,255,255,0) 65%);
+  opacity:0;transition:opacity .28s ease;
+  mix-blend-mode:soft-light;
+}
+.uvs-card:hover .uvs-shine{opacity:1;}
+.uvs-card::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--coral);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s cubic-bezier(.7,0,.3,1);z-index:5;
+}
+.uvs-card:hover::after{transform:scaleX(1);}
+
+/* Helper for GSAP-managed hero h1 (when data-reveal is removed) */
+.gsap-hero .word,.gsap-hero .char{display:inline-block;will-change:transform,opacity;}
+
 /* ---- FLOATING TOOLBAR ---- */
 .float-tb{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:6px;transition:opacity .36s ease,transform .36s ease}
 .float-tb.is-hidden{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(12px)}
@@ -343,7 +400,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul></nav>
-    <a class="nav-cta" href="#categories">Shop Now</a>
+    <a class="uvs-cta" href="#categories"><span>Shop Now</span><svg class="uvs-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </header>
 
@@ -357,7 +414,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   <div class="container hero-grid">
     <div class="hero-copy">
       <span class="label" data-reveal>v-jay Doll Boutique</span>
-      <h1 class="display" data-reveal>给你的毛绒宝贝<br><em>最美的衣裳</em><span class="dot">.</span></h1>
+      <h1 class="display gsap-hero" id="gsap-hero">给你的毛绒宝贝<br><em>最美的衣裳</em><span class="dot">.</span></h1>
       <p class="lead" data-reveal>专为毛绒玩具娃娃设计的精致服装。从梦幻连衣裙到可爱套装，编辑甄选，全球直邮。每一件都是给收藏家的心意之作。</p>
       <div class="hero-actions" data-reveal>
         <a class="btn btn-primary" href="#categories">Shop Collection<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></span></a>
@@ -498,7 +555,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
       <p class="lead" style="margin-top:16px;">全球娃娃收藏家都在选的爆款，每件均经手工质检。全部独立编号限量发行。</p>
     </div>
     <div class="product-grid">
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:0ms">
+      <a class="product-card uvs-card" href="#" data-reveal style="--reveal-delay:0ms">
+        <span class="uvs-shine" aria-hidden="true"></span>
         <div class="product-img d-1"><span>👗</span><span class="product-badge">New</span></div>
         <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">星之梦连衣裙</div><div class="product-stars">★★★★★<span class="count">(128)</span></div><div class="product-price"><span class="price-now">$24.99</span></div></div>
         <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
@@ -824,6 +882,14 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
   </div>
 </div>
 
+<!-- ============================================================
+     v-jay GSAP upgrade 2026-08-26: SplitText hero entrance.
+     Required scripts loaded synchronously so they parse before
+     the inline engine below. CDN: jsdelivr (free, all-in-one).
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
 <script>
 /* ============================================================
    BIDIRECTIONAL CONTINUOUS SCROLL ENGINE
@@ -1049,6 +1115,53 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px}
 
   window.addEventListener('scroll', updateBackTop, {passive:true});
   updateBackTop();
+})();
+
+/* ============================================================
+   v-jay GSAP upgrade 2026-08-26
+   - SplitText character reveal on hero h1
+   - shine-card mouse tracking for UIverse-style product cards
+   ============================================================ */
+(function(){
+  /* ---- mouse-tracking shine for UIverse cards ---- */
+  var shineCards = document.querySelectorAll('.uvs-card');
+  for(var i=0;i<shineCards.length;i++){
+    shineCards[i].addEventListener('mousemove', function(e){
+      var r = this.getBoundingClientRect();
+      this.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      this.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  }
+
+  /* ---- GSAP SplitText hero entrance ---- */
+  if(!window.gsap || !window.SplitText) return;
+  function runHeroSplit(){
+    var h1 = document.getElementById('gsap-hero');
+    if(!h1 || h1.dataset.gsapSplitDone) return;
+    try {
+      var split = new window.SplitText(h1, {type:'chars,words,lines', aria:'auto'});
+      h1.dataset.gsapSplitDone = '1';
+      gsap.from(split.chars, {
+        opacity: 0, y: 22, rotateX: -45,
+        duration: 0.7, stagger: 0.022, ease: 'power3.out',
+        delay: 0.25
+      });
+      gsap.from(split.lines, {
+        opacity: 0,
+        duration: 0.6, stagger: 0.08, ease: 'power2.out',
+        delay: 0.45
+      });
+    } catch(e){
+      /* SplitText can fail if fonts not yet ready — fail silently,
+         the existing vanilla engine still controls the h1's reveal */
+    }
+  }
+  /* wait for fonts so SplitText measures correctly */
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(runHeroSplit);
+  } else {
+    window.addEventListener('load', runHeroSplit);
+  }
 })();
 </script>
 </body>
