@@ -3,1244 +3,660 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>v-jay — 娃娃衣裳 · 精品馆</title>
-<meta name="description" content="v-jay 专为毛绒玩具娃娃打造的精美服装。编辑甄选，全球直邮。" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23efe7d2'/><text x='16' y='23' text-anchor='middle' font-family='serif' font-weight='bold' font-style='italic' font-size='20' fill='%23ed6f5c'>V</text></svg>" />
+<title data-tx-zh="尹安都 · 把企业 AI 化做成基础设施" data-tx-en="Andrew Yin · AI-Native Infrastructure">尹安都 · 把企业 AI 化做成基础设施</title>
+<meta name="description" data-tx-zh="尹安都，国朗 AI 化基础设施负责人。带团队把钉钉、ERP、协作接进 AI-first 工作流。" data-tx-en="Andrew Yin leads AI infrastructure at Guolang — turning DingTalk, ERP, and daily ops into AI-first workflows.">
+<meta name="author" content="Andrew Yin / 尹安都" />
+<meta property="og:type" content="website" />
+<meta property="og:title" data-tx-zh="尹安都 · 个人站点" data-tx-en="Andrew Yin · Personal Site" />
+<meta name="theme-color" content="#f8f5ef" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1817'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Playfair Display,serif' font-weight='700' font-style='italic' font-size='20' fill='%23f8f5ef'%3EAy%3C/text%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <style>
 /* ============================================================
-   v-jay Atelier — 编辑纸质感电商
-   设计系统: Atelier Zero × UI UX Pro Max
-   全部动效复刻自 Open Design 参考
+   v0.3 (2026-08-26) — Personal Intro / Editorial Grid
+   v-jay.com re-purpose: doll-clothing store → Andrew Yin's profile
+   Style: Editorial Grid / Magazine (ui-ux-pro-max styles.css).
+   Token layer is reset; old :root variables from v0.2 are gone.
+   Bilingual via JS toggle, persisted to localStorage.
    ============================================================ */
-:root {
-  --paper: #efe7d2; --paper-warm: #ece4cf; --paper-dark: #ddd2b6;
-  --ink: #15140f; --ink-soft: #2a2620; --ink-mute: #5a5448; --ink-faint: #8b8676;
-  --coral: #ed6f5c; --coral-soft: #f08e7c; --mustard: #e9b94a; --olive: #6e7448;
-  --bone: #f7f1de;
-  --line: rgba(21,20,15,0.16); --line-soft: rgba(21,20,15,0.08); --line-faint: rgba(21,20,15,0.05);
-  --shadow: 0 30px 60px -30px rgba(21,20,15,0.18);
-  --serif: 'Playfair Display','Noto Serif SC','Times New Roman',serif;
-  --sans: 'Inter Tight','Noto Sans SC','Inter',-apple-system,system-ui,sans-serif;
-  --body: 'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;
-  --mono: 'JetBrains Mono','SF Mono',Menlo,monospace;
+
+:root{
+  /* paper-feel warm editorial palette */
+  --paper:#f8f5ef;
+  --paper-deep:#ede5d3;
+  --paper-mid:#e4dcc8;
+  --ink:#1a1817;
+  --ink-soft:#4a4642;
+  --ink-mute:#6b6259;
+  --ink-faint:#9b9388;
+  --accent:#b8482e;          /* deep terracotta */
+  --accent-hover:#9a3a23;
+  --accent-2:#d4a574;         /* muted gold */
+  --accent-2-soft:#e8c89c;
+  --line:rgba(26,24,23,.18);
+  --line-soft:rgba(26,24,23,.10);
+  --line-faint:rgba(26,24,23,.06);
+  --shadow:0 8px 30px -16px rgba(26,24,23,.22);
+  --radius:2px;
+  --radius-md:6px;
+  --serif:'Playfair Display','Noto Serif SC',Georgia,serif;
+  --sans:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scrollbar-gutter:stable}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 html,body{background:var(--paper);color:var(--ink)}
-body{font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
-/* paper texture + grain */
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(circle at 12% 18%,rgba(106,92,56,.07) 0,transparent 28%),radial-gradient(circle at 88% 72%,rgba(106,92,56,.06) 0,transparent 32%),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.16  0 0 0 0 0.12  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:auto,auto,240px 240px;mix-blend-mode:multiply;opacity:.92}
+body{
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;position:relative;
+}
+
+/* Editorial grain — subtle paper texture */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:
+    radial-gradient(circle at 12% 18%,rgba(184,72,46,.025) 0,transparent 28%),
+    radial-gradient(circle at 88% 72%,rgba(212,165,116,.04) 0,transparent 32%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.16  0 0 0 0 0.12  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size:auto,auto,240px 240px;mix-blend-mode:multiply;opacity:.85;
+}
 .shell{position:relative;z-index:2}
-.container{max-width:1360px;padding:0 64px;margin:0 auto}
+.container{max-width:1280px;margin:0 auto;padding:0 56px}
 
-/* ---- SIDE RAILS ---- */
-.side-rail{position:fixed;top:0;bottom:0;width:36px;z-index:3;pointer-events:none;display:flex;align-items:center;justify-content:center}
-.side-rail.right{right:0;border-left:1px solid var(--line-faint)}
-.side-rail .rail-text{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--ink-faint);writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+/* ---------- skip link ---------- */
+.skip-link{position:absolute;top:0;left:0;padding:8px 14px;background:var(--ink);color:var(--paper);font-size:13px;text-decoration:none;z-index:999;transform:translateY(-100%);transition:transform .2s ease}
+.skip-link:focus{transform:translateY(0)}
 
-/* ---- TOPBAR ---- */
-.topbar{border-bottom:1px solid var(--line);padding:10px 0;background:var(--paper);position:relative;z-index:4}
-.topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
-.topbar-inner b{color:var(--ink);font-weight:600}
-.topbar-inner .coral{color:var(--coral)}
-.topbar .pulse{width:6px;height:6px;border-radius:50%;background:var(--coral);display:inline-block;margin-right:6px;animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-@keyframes float{0%,100%{transform:translateY(0)}33%{transform:translateY(-10px)}66%{transform:translateY(-4px)}}
-@keyframes slowSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-@keyframes sparkleFloat{0%,100%{opacity:0;transform:translateY(0) scale(0)}40%{opacity:1;transform:translateY(-30px) scale(1)}100%{opacity:0;transform:translateY(-60px) scale(0)}}
-.hero-art .mascot{animation:float 6s ease-in-out infinite}
+/* ---------- typography ---------- */
+.label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
+.label::before{content:'';width:22px;height:1px;background:var(--accent);display:inline-block}
+.display{font-family:var(--sans);font-weight:700;letter-spacing:-.028em;line-height:1.02;color:var(--ink)}
+.display em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.018em;color:var(--accent)}
+.dropcap::first-letter{font-family:var(--serif);font-weight:700;font-size:4.4em;font-style:italic;line-height:.85;float:left;margin:.05em .14em 0 0;color:var(--accent)}
+.lead{font-size:18px;line-height:1.65;color:var(--ink-soft);max-width:36ch}
+.coord{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-mute)}
 
-/* ---- HEADROOM NAV ---- */
-.nav{padding:22px 0;position:sticky;top:0;z-index:50;background:var(--paper);transform:translateY(0);transition:transform 360ms cubic-bezier(.22,.61,.36,1),box-shadow 220ms ease,border-color 220ms ease;border-bottom:1px solid transparent;will-change:transform}
-.nav.is-hidden{transform:translateY(-100%);pointer-events:none;box-shadow:none}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:inline-flex;align-items:center;gap:14px;font-family:var(--sans);font-weight:700;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:18px}
-.brand-mark{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink)}
-.nav-links{display:flex;gap:38px;list-style:none}
-.nav-links a{color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:500;transition:color .18s ease;position:relative}
-.nav-links a:hover{color:var(--coral)}
-.nav-links a .num{font-size:9px;color:var(--ink-faint);position:absolute;top:-7px;right:-16px;letter-spacing:.04em}
-.nav-cta{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .18s ease}
-.nav-cta:hover{background:var(--coral)}
-
-/* ---- TYPOGRAPHY ---- */
-.label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);display:inline-flex;align-items:center;gap:12px}
-.label::before{content:'';width:18px;height:1px;background:var(--coral);display:inline-block}
-.display{font-family:var(--sans);font-weight:800;letter-spacing:-.028em;color:var(--ink);line-height:1.0}
-.display em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.018em}
-.display .dot{color:var(--coral)}
-.lead{font-size:16px;line-height:1.55;color:var(--ink-soft);max-width:36ch}
-.roman{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--coral)}
-.coord{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink-faint)}
-
-/* ---- BUTTONS ---- */
-.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:999px;font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:-.005em;text-decoration:none;border:1px solid transparent;transition:transform .18s ease,background .18s ease,color .18s ease;cursor:pointer;white-space:nowrap}
-.btn-primary{background:var(--coral);color:#fff;box-shadow:0 14px 26px -16px rgba(237,111,92,1)}
-.btn-primary:hover{transform:translateY(-1px);background:#e25e4a}
-.btn-ghost{background:transparent;color:var(--ink);border-color:rgba(21,20,15,.2)}
-.btn-ghost:hover{background:rgba(21,20,15,.04)}
-.btn .arrow{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.005em;text-decoration:none;border:1px solid transparent;transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;cursor:pointer;white-space:nowrap;background:none;color:var(--ink)}
+.btn-primary{background:var(--accent);color:var(--paper)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-ghost{border-color:rgba(26,24,23,.25);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn .arrow{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center}
 .btn .arrow svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
 
-/* ---- SECTION RULE ---- */
-.sec-rule{border-top:1px solid var(--line);padding-top:18px;margin-bottom:48px;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
-.sec-rule .meta-grp{display:inline-flex;gap:26px}
-.sec-rule .dot-mark{color:var(--coral)}
-
-section{position:relative;padding:130px 0}
-section.tight{padding:90px 0}
-
-/* ---- SCROLL REVEAL — JS 持续驱动，CSS 只提供丝滑过渡 ---- */
-[data-reveal]{will-change:opacity,transform;transition:opacity .25s ease-out,transform .25s ease-out}
-[data-reveal='scale']{will-change:opacity,transform,scale}
-.product-card,.cat-card{will-change:transform;transition:transform .2s ease-out}
-.hero-art{will-change:transform}
-.hero-copy{will-change:transform;transition:transform .3s ease-out}
-.hero h1,.hero .lead,.hero-actions,.hero-stats{will-change:opacity;transition:opacity .3s ease-out}
-@media(prefers-reduced-motion:reduce){
-  [data-reveal],.product-card,.cat-card,.hero-art,.hero-copy{transition:none!important;transform:none!important}
-  .hero h1,.hero .lead,.hero-actions,.hero-stats{transition:none!important;opacity:1!important}
-  .nav{transition:none!important}
-}
-
-/* ---- HERO ---- */
-.hero{min-height:calc(100vh - 140px);display:flex;flex-direction:column;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line-soft);z-index:0;display:none}
-.hero-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:36px;align-items:stretch;width:100%;position:relative}
-.hero-copy{padding:4vh 0;display:flex;flex-direction:column;position:relative}
-.hero-copy .label{margin-bottom:28px}
-.hero-copy .lead{margin-bottom:30px;max-width:38ch;font-size:16px}
-.hero h1{font-size:clamp(44px,5vw,78px);line-height:1.0;margin-bottom:28px}
-.hero-actions{display:inline-flex;align-items:center;gap:14px;margin-bottom:38px}
-.hero-stats{display:flex;align-items:center;gap:22px;flex-wrap:nowrap;margin-bottom:28px}
-.hero-stats .stat{display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
-.hero-stats .stat .ring{width:34px;height:34px;border-radius:50%;border:1px dashed var(--ink);display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;font-weight:700;flex-shrink:0}
-.hero-stats .stat .ring.solid{border-style:solid}
-.hero-stats .stat .ring.coral{border-color:var(--coral);color:var(--coral)}
-.hero-stats .stat-label{font-family:var(--sans);font-size:11px;line-height:1.25;color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase}
-.hero-stats .stat-label b{display:block;font-weight:700;color:var(--ink);font-size:12px}
-.hero-foot{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.hero-foot .meta{line-height:1.4}
-.hero-art{position:relative;aspect-ratio:1/1;max-width:560px;margin-left:auto;background:var(--paper-warm);border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid var(--line);will-change:transform;transition:transform 0s}
-.hero h1,.hero .lead,.hero-actions,.hero-stats,.hero-foot{transition:opacity .28s ease-out,transform .28s ease-out;will-change:opacity,transform}
-.hero-copy{transition:transform .28s ease-out;will-change:transform}
-.hero-art .mascot{font-size:clamp(80px,10vw,140px);text-align:center;line-height:1;display:flex;flex-direction:column;align-items:center;gap:8px}
-.hero-art .mascot-label{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--coral);letter-spacing:.04em}
-.hero-art .corner{position:absolute;width:22px;height:22px;border-color:var(--ink-faint);border-style:solid;border-width:0}
-.hero-art .corner.tl{top:0;left:0;border-top-width:1px;border-left-width:1px}
-.hero-art .corner.tr{top:0;right:0;border-top-width:1px;border-right-width:1px}
-.hero-art .corner.bl{bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}
-.hero-art .corner.br{bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
-.hero-art .annot{position:absolute;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);line-height:1.4;white-space:nowrap}
-.hero-art .annot-tl{top:14px;left:14px}
-.hero-art .annot-br{bottom:14px;right:14px;text-align:right}
-.hero-art .index{position:absolute;right:12px;top:36%;font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.16em;color:var(--ink-faint);text-transform:uppercase;background:rgba(239,231,210,.7);padding:10px 12px;border:1px solid var(--line-soft);border-radius:6px;backdrop-filter:blur(2px)}
-.hero-art .index span{display:block;line-height:1.6}
-.hero-art .index span .n{color:var(--coral);margin-right:6px;font-weight:700}
-.hero-art .index span.on{color:var(--ink);font-weight:700}
-.hero-art .index span.on .n{color:var(--coral)}
-.hero-sparkle{position:absolute;font-size:14px;color:var(--coral);pointer-events:none;animation:sparkleFloat 3.6s ease-in-out infinite}
-
-/* ---- WIRE / TICKER (dual marquee) ---- */
-.wire{border-bottom:1px solid var(--line);padding:26px 0 28px;background:var(--paper);position:relative;overflow:hidden}
-.wire-inner{display:grid;grid-template-columns:minmax(180px,220px) minmax(0,1fr);gap:32px;align-items:center}
-.wire-left{display:inline-flex;align-items:center;gap:14px;border-right:1px solid var(--line);padding-right:24px;min-height:56px}
-.wire-mark{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.wire-pulse{width:6px;height:6px;border-radius:50%;background:var(--coral);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
-.wire-title{font-family:var(--sans);font-size:11px;line-height:1.4;display:flex;flex-direction:column;gap:3px}
-.wire-title b{color:var(--ink);font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-.wire-title span{color:var(--ink-faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
-.wire-rows{display:grid;gap:8px;min-width:0}
-.wire-row{overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent)}
-.marquee-track{display:inline-flex;align-items:center;gap:36px;width:max-content;white-space:nowrap;animation:marquee-x 52s linear infinite;will-change:transform}
-.wire-row.reverse .marquee-track{animation-direction:reverse;animation-duration:64s}
-.wire-row:hover .marquee-track{animation-play-state:paused}
-@keyframes marquee-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.wire-item{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--ink-mute);text-decoration:none;flex-shrink:0}
-.wire-item .wire-dot{color:var(--coral);font-size:16px;line-height:0;position:relative;top:-1px;margin-right:2px}
-.wire-item .wire-name{text-transform:uppercase;letter-spacing:.18em;color:var(--ink);font-weight:500}
-
-/* ---- CATEGORIES (lab-style cards) ---- */
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.cat-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;text-decoration:none;box-shadow:var(--shadow);transition:transform 280ms ease,box-shadow 280ms ease}
-.cat-card:hover{transform:translateY(-4px);box-shadow:0 36px 72px -36px rgba(21,20,15,.24)}
-.cat-card-img{aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden}
-.cat-card-img .badge{position:absolute;top:12px;left:12px;background:rgba(239,231,210,.9);color:var(--ink);padding:4px 9px;border-radius:4px;font-family:var(--sans);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.cat-card:nth-child(1) .cat-card-img{background:linear-gradient(135deg,var(--coral),var(--coral-soft))}
-.cat-card:nth-child(2) .cat-card-img{background:linear-gradient(135deg,var(--olive),#8a9a5e)}
-.cat-card:nth-child(3) .cat-card-img{background:linear-gradient(135deg,var(--mustard),#d4a632)}
-.cat-card-body{padding:22px 20px 26px;display:flex;flex-direction:column;gap:6px;background:var(--bone);width:100%}
-.cat-card .tag{font-family:var(--sans);font-size:9.5px;color:var(--coral);letter-spacing:.18em;text-transform:uppercase}
-.cat-card-title{font-family:var(--sans);font-weight:800;font-size:24px;letter-spacing:-.014em;color:var(--ink)}
-.cat-card-desc{font-family:var(--body);font-size:13.5px;color:var(--ink-mute);line-height:1.55}
-.cat-card .arrow-mark{position:absolute;right:22px;bottom:22px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:all .18s ease}
-.cat-card:hover .arrow-mark{background:var(--coral);border-color:var(--coral);color:#fff}
-.cat-card .arrow-mark svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.6}
-
-/* ---- PRODUCT GRID (lab-grid style) ---- */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
-.product-card{background:var(--bone);border-radius:18px;overflow:hidden;box-shadow:var(--shadow),inset 0 0 0 1px rgba(21,20,15,.06);cursor:pointer;text-decoration:none;color:inherit;position:relative;transition:transform 280ms ease,box-shadow 280ms ease;display:flex;flex-direction:column}
-.product-card:hover{transform:translateY(-6px);box-shadow:0 36px 72px -36px rgba(21,20,15,.24)}
-.product-card:hover .arrow-mark{background:var(--coral);border-color:var(--coral);color:#fff}
-.product-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden}
-.product-img.d-1{background:linear-gradient(135deg,#fce4e0,#f8d0c8)}
-.product-img.d-2{background:linear-gradient(135deg,#e8e4d8,#d8d0c0)}
-.product-img.d-3{background:linear-gradient(135deg,#dce8e4,#c8d8d4)}
-.product-img.d-4{background:linear-gradient(135deg,#f0e8dc,#e8dcc8)}
-.product-badge{position:absolute;top:14px;left:14px;font-family:var(--sans);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:4px;background:rgba(239,231,210,.9);color:var(--ink)}
-.product-body{padding:22px 20px 26px}
-.product-cat{font-family:var(--sans);font-size:10.5px;color:var(--coral);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
-.product-name{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:-.012em;margin-bottom:4px}
-.product-stars{color:var(--mustard);font-size:13px;margin-top:4px}
-.product-stars .count{font-family:var(--body);font-size:12px;color:var(--ink-mute);margin-left:4px}
-.product-price{display:flex;align-items:baseline;gap:10px;margin-top:10px}
-.price-now{font-family:var(--sans);font-weight:700;font-size:18px;color:var(--coral)}
-.price-old{font-family:var(--sans);font-size:13px;color:var(--ink-faint);text-decoration:line-through}
-.arrow-mark{position:absolute;right:22px;bottom:22px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:all .18s ease}
-.arrow-mark svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.6}
-
-/* ---- WORK SECTION (dark bg with texture) ---- */
-.work{background:#15140f;color:var(--paper);border-radius:32px;margin:0 64px;overflow:hidden;position:relative;padding:110px 64px}
-.work::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n2'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n2)'/></svg>");background-size:240px 240px;opacity:.6;mix-blend-mode:screen}
-.work-rule{position:relative;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(247,241,222,.16);padding-top:16px;margin-bottom:60px;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,241,222,.55)}
-.work-rule .roman{color:var(--coral);font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:.04em;text-transform:none}
-.work-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:center;position:relative}
-.work .label{color:var(--coral)}
-.work .label::before{background:var(--coral)}
-.work h2{font-family:var(--sans);font-weight:800;font-size:clamp(40px,5vw,66px);line-height:1.0;letter-spacing:-.024em;margin:28px 0 36px;color:var(--paper)}
-.work h2 em{font-family:var(--serif);font-style:italic;font-weight:500}
-.work h2 .dot{color:var(--coral)}
-.work-link{display:inline-flex;align-items:center;gap:18px;color:var(--paper);font-family:var(--sans);font-size:14px;text-decoration:none;border-bottom:2px solid var(--coral);padding-bottom:12px;width:fit-content}
-.work-link::after{content:'↗';color:var(--coral)}
-.work-card{background:var(--paper);color:var(--ink);border-radius:18px;padding:32px 30px;position:relative;transform:rotate(-1.2deg);text-decoration:none;display:block;transition:transform 280ms ease,box-shadow 280ms ease}
-.work-card:hover{transform:rotate(-1.2deg) translateY(-4px);box-shadow:var(--shadow)}
-.work-card.alt{transform:rotate(2.4deg) translateY(20px);padding:28px 26px}
-.work-card.alt:hover{transform:rotate(2.4deg) translateY(16px);box-shadow:var(--shadow)}
-.work-card .label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.work-card .small-label{font-family:var(--sans);font-size:10.5px;color:var(--coral);letter-spacing:.18em;text-transform:uppercase;font-weight:600}
-.work-card .card-index{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
-.work-card h3{font-family:var(--sans);font-size:clamp(26px,2.4vw,38px);font-weight:800;letter-spacing:-.022em;line-height:1.05;margin-bottom:14px}
-.work-card p{font-family:var(--body);font-size:14px;color:var(--ink-mute);line-height:1.55;margin-bottom:22px;max-width:28ch}
-.work-card .card-img{aspect-ratio:4/3;background:var(--bone);border-radius:12px;overflow:hidden;margin-bottom:22px;display:grid;place-items:center;font-size:48px}
-.work-card .meta-row{display:flex;justify-content:space-between;color:var(--ink-faint);font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-top:1px solid var(--line);padding-top:14px}
-.work-card .year{color:var(--coral);font-weight:600}
-.work-arrows{position:absolute;right:64px;bottom:64px;display:inline-flex;align-items:center;gap:10px}
-.work-arrows .nav-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(247,241,222,.2);background:transparent;color:var(--paper);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-.work-arrows .nav-btn.active{background:var(--coral);border-color:var(--coral)}
-
-/* ---- TESTIMONIAL ---- */
-.testimonial-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
-.testimonial-copy h2{font-family:var(--sans);font-size:clamp(36px,4vw,54px);font-weight:700;letter-spacing:-.022em;line-height:1.12;margin-bottom:36px}
-.testimonial-copy h2 em{font-family:var(--serif);font-style:italic;font-weight:500}
-.author{display:flex;align-items:center;gap:18px;margin-top:22px}
-.author .avatar{width:50px;height:50px;border-radius:50%;background:var(--coral);overflow:hidden;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:24px}
-.author p{font-family:var(--sans);font-size:14px;color:var(--ink);font-weight:600}
-.author p span{display:block;color:var(--ink-mute);font-weight:400}
-.testimonial-art{position:relative;aspect-ratio:1/1;max-width:560px;background:var(--bone);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:120px;box-shadow:var(--shadow)}
-
-/* ---- NEWSLETTER / CTA ---- */
-.cta-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
-.cta h2{font-size:clamp(54px,6.6vw,100px);margin:32px 0}
-.cta-foot{display:flex;gap:28px;align-items:center;margin-top:32px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
-.cta-foot .stamp{color:var(--coral);font-weight:600}
-.cta-art{position:relative;aspect-ratio:1/1;max-width:620px;margin-left:auto;background:var(--bone);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:100px;box-shadow:var(--shadow)}
-.cta-art .cta-index{position:absolute;right:8px;top:24px;font-family:var(--serif);font-style:italic;font-size:28px;color:var(--ink-faint)}
-.nl-form{display:flex;gap:10px;max-width:480px}
-.nl-form input{flex:1;padding:14px 22px;border:1px solid var(--line);border-radius:999px;background:var(--bone);font-family:var(--body);font-size:15px;color:var(--ink)}
-.nl-form input:focus{outline:none;border-color:var(--coral)}
-.nl-form button{white-space:nowrap}
-
-/* ---- FOOTER ---- */
-footer{border-top:1px solid var(--line);padding:60px 0 30px}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:60px}
-.foot-brand .brand{margin-bottom:18px}
-.foot-brand p{font-size:13.5px;color:var(--ink-mute);line-height:1.55;max-width:38ch}
-.foot-col h5{font-family:var(--sans);font-size:11px;color:var(--ink);letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px;font-weight:700}
-.foot-col ul{list-style:none}
-.foot-col li{margin-bottom:10px}
-.foot-col a{font-size:13.5px;color:var(--ink-soft);text-decoration:none;transition:color 160ms ease}
-.foot-col a:hover{color:var(--coral)}
-.foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
-.foot-bottom .right{display:inline-flex;gap:24px;align-items:center}
-.foot-mega{margin-top:60px;padding-top:0;padding-bottom:12px;border-top:1px solid var(--line);overflow-x:hidden}
-.foot-mega .word{font-family:var(--sans);font-weight:900;font-size:clamp(70px,13vw,200px);letter-spacing:-.04em;line-height:1.05;color:var(--ink);white-space:nowrap;margin-top:30px;padding-bottom:.18em}
-.foot-mega .word em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--coral)}
-
-/* ---- RESPONSIVE ---- */
-@media(max-width:1280px){.container{padding:0 44px}.work{margin:0 44px;padding:90px 44px}.side-rail{display:none}}
-@media(max-width:1080px){.container{padding:0 32px}.hero h1{font-size:clamp(36px,4.6vw,54px)}.hero-grid{grid-template-columns:1fr;gap:50px}.hero-art{max-width:400px;margin:0 auto}.cat-grid{grid-template-columns:1fr}.testimonial-grid{grid-template-columns:1fr;gap:50px}.cta-grid{grid-template-columns:1fr;gap:50px}.work{margin:0 12px;padding:60px 24px}.work-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:2fr 1fr 1fr}.foot-grid .foot-col:last-child{display:none}.wire-inner{grid-template-columns:1fr;gap:14px}.wire-left{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:12px;min-height:0}div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
-@media(max-width:880px){.container{padding:0 24px}.nav-links{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.container{padding:0 16px}.hero h1{font-size:38px}section{padding:80px 0}.product-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.topbar-inner{font-size:9px}.cat-card-title{font-size:22px}.hero-stats{flex-wrap:wrap}.work-arrows{display:none}}
+/* ---------- section rule / dividers ---------- */
+.sec-rule{border-top:1px solid var(--line);padding-top:14px;margin-bottom:64px;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.sec-rule .meta-grp{display:inline-flex;gap:26px;align-items:center}
+.sec-rule .roman{font-family:var(--serif);font-style:italic;text-transform:none;font-size:14px;letter-spacing:.04em;color:var(--accent)}
+section{position:relative;padding:120px 0}
+section.tight{padding:80px 0}
 
 /* ============================================================
-   v-jay GSAP upgrade + UIverse-style accents
-   Date: 2026-08-26
-   Scope: Add SplitText hero entrance + UIverse-style CTA button + 1 shine-card
-   Revert: git revert HEAD (one commit, isolated change)
+   PRE-DELIVERY (ui-ux-pro-max checklist baked-in)
    ============================================================ */
 
-/* UIverse-style button: ink slide-in on hover */
-.uvs-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 18px;border-radius:999px;
-  background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:13px;font-weight:600;
-  letter-spacing:.02em;
-  border:1.5px solid var(--ink);
-  position:relative;overflow:hidden;
-  text-decoration:none;
-  transition:transform .25s ease, box-shadow .25s ease, color .35s ease;
-  box-shadow:0 6px 14px -8px rgba(21,20,15,.18);
-}
-.uvs-cta::before{
-  content:'';position:absolute;inset:0;
-  background:var(--ink);
-  transform:translateX(-101%);
-  transition:transform .42s cubic-bezier(.7,0,.3,1);
-  z-index:0;
-}
-.uvs-cta:hover{
-  transform:translateY(-1px);
-  box-shadow:0 14px 26px -16px rgba(21,20,15,.28);
-  color:var(--paper);
-}
-.uvs-cta:hover::before{transform:translateX(0);}
-.uvs-cta > *{position:relative;z-index:1;display:inline-flex;align-items:center;}
-.uvs-cta .uvs-arr{width:14px;height:14px;transition:transform .25s ease;}
-.uvs-cta:hover .uvs-arr{transform:translateX(3px);}
+/* focus visible everywhere */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-/* UIverse-style product card: shine overlay tracks mouse */
-.uvs-card{position:relative;overflow:hidden;}
-.uvs-card .uvs-shine{
-  position:absolute;inset:0;pointer-events:none;z-index:4;
-  background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
-    rgba(255,255,255,.7), rgba(255,255,255,0) 65%);
-  opacity:0;transition:opacity .28s ease;
-  mix-blend-mode:soft-light;
-}
-.uvs-card:hover .uvs-shine{opacity:1;}
-.uvs-card::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:2px;
-  background:var(--coral);transform:scaleX(0);transform-origin:left;
-  transition:transform .35s cubic-bezier(.7,0,.3,1);z-index:5;
-}
-.uvs-card:hover::after{transform:scaleX(1);}
-
-/* ---- UIverse-style accents (round 2, 2026-08-26) ----
-   Adapted from PunGrumpy/uiverse-button-design "Universe"-pattern
-   + original CSS-only accents in the same visual idiom.   */
-
-/* uvs-tilt: 3D-tilted gradient CTA (UIverse "Universe" pattern,
-   adapted to Atelier Zero coral/paper/ink palette) */
-.uvs-tilt{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 28px;border-radius:12px;border:none;
-  background-color:#f6e9c8;
-  background-image:
-    radial-gradient(at 92% 75%, hsla(8, 82%, 67%, 1) 0px, transparent 55%),
-    radial-gradient(at 8% 8%, hsla(34, 76%, 70%, 1) 0px, transparent 55%),
-    radial-gradient(at 45% 30%, hsla(18, 70%, 75%, 1) 0px, transparent 55%),
-    radial-gradient(at 78% 50%, hsla(12, 78%, 65%, 1) 0px, transparent 55%);
-  background-size:200% 200%;background-position:0 0;
-  color:#2a1d10;font-family:var(--sans);font-size:14px;font-weight:600;
-  cursor:pointer;letter-spacing:.01em;
-  transform:rotateX(45deg) rotateZ(35deg);
-  transform-style:preserve-3d;
-  transition:transform .7s ease,box-shadow .7s ease;
-  box-shadow:
-    -1px 0 28px 0 hsla(8,82%,67%,.4),
-    36px 36px 28px -10px hsla(34,76%,70%,.3),
-    36px 36px 28px -10px hsla(18,70%,75%,.3);
-  animation:uvsTiltShift 6s ease infinite;
-  text-decoration:none;
-}
-.uvs-tilt:hover{
-  transform:translate3d(0px,-12px,0) rotateX(45deg) rotateZ(35deg);
-  box-shadow:
-    -1px 0 36px 0 hsla(8,82%,67%,.5),
-    48px 48px 32px -10px hsla(34,76%,70%,.4),
-    48px 48px 32px -10px hsla(18,70%,75%,.4);
-}
-.uvs-tilt:focus{outline:none;}
-.uvs-tilt:active{
-  transform:scale(.96) translate3d(0,0,0) rotateX(45deg) rotateZ(35deg);
-  box-shadow:0 0 0 0 rgba(0,0,0,.5);
-}
-@keyframes uvsTiltShift{
-  0%,100%{background-position:0 0}
-  50%{background-position:100% 100%}
+/* reduced motion respect */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  /* GSAP-driven animations get guarded in JS too */
 }
 
-/* uvs-pulse: subscribe button with double coral ring pulse */
-.uvs-pulse{
-  position:relative;display:inline-flex;align-items:center;gap:8px;
-  padding:14px 26px;border-radius:999px;
-  background:var(--ink);color:var(--paper);border:none;cursor:pointer;
-  font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
-  transition:transform .25s ease,background .25s ease;
-}
-.uvs-pulse:hover{transform:translateY(-1px);background:var(--coral);}
-.uvs-pulse::before,.uvs-pulse::after{
-  content:'';position:absolute;inset:-5px;border-radius:999px;
-  border:2px solid var(--coral);opacity:0;pointer-events:none;
-}
-.uvs-pulse::before{animation:uvsPulseRing 1.8s ease-out infinite;}
-.uvs-pulse::after{animation:uvsPulseRing 1.8s ease-out .45s infinite;}
-@keyframes uvsPulseRing{
-  0%  {transform:scale(.85);opacity:.9}
-  70% {transform:scale(1.28);opacity:0}
-  100%{transform:scale(1.28);opacity:0}
-}
-.uvs-pulse > *{position:relative;z-index:1;display:inline-flex;align-items:center;}
+/* ============================================================
+   NAV HEADER
+   ============================================================ */
 
-/* uvs-shine-tag: animated badge with sweeping gradient */
-.uvs-shine-tag{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:6px 12px;border-radius:6px;
-  background:linear-gradient(110deg,#2a2620 0%,#5a5448 40%,#ed6f5c 50%,#5a5448 60%,#2a2620 100%);
-  background-size:220% 100%;background-position:0 0;
-  color:#fff;font-family:var(--sans);font-size:9.5px;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;
-  animation:uvsTagShine 4s linear infinite;
-  position:absolute;top:14px;left:14px;z-index:3;
-}
-@keyframes uvsTagShine{to{background-position:220% 0}}
+.nav-row{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 56px}
+.brand{display:inline-flex;align-items:center;gap:14px;font-family:var(--sans);font-weight:600;letter-spacing:.01em;color:var(--ink);text-decoration:none;font-size:15px}
+.brand-mark{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);line-height:1}
+.brand-mark em{font-style:italic;font-weight:600}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--ink-soft);font-family:var(--sans);font-size:13.5px;font-weight:500;letter-spacing:.005em;text-decoration:none;transition:color .18s ease;position:relative}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links a:hover::after{transform:scaleX(1)}
+.lang-toggle{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.lang-toggle button{background:transparent;border:none;padding:7px 12px;cursor:pointer;color:var(--ink-mute);transition:background .18s ease,color .18s ease}
+.lang-toggle button:hover{color:var(--ink)}
+.lang-toggle button.active{background:var(--ink);color:var(--paper)}
+.lang-toggle span{padding:0 4px;color:var(--ink-faint);font-size:10px}
 
-/* Helper for GSAP-managed hero h1 (when data-reveal is removed) */
-.gsap-hero .word,.gsap-hero .char{display:inline-block;will-change:transform,opacity;}
+/* ============================================================
+   HERO
+   ============================================================ */
 
-/* ---- FLOATING TOOLBAR ---- */
-.float-tb{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:6px;transition:opacity .36s ease,transform .36s ease}
-.float-tb.is-hidden{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(12px)}
-.tb-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;text-decoration:none;color:var(--ink-mute);transition:all .22s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.tb-btn:hover{color:var(--coral);border-color:var(--coral);transform:translateX(-2px);box-shadow:0 6px 18px -8px rgba(237,111,92,.28)}
+.hero{min-height:calc(100vh - 80px);display:flex;align-items:flex-end;padding:80px 0 100px}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:end;width:100%}
+.hero-copy{max-width:760px}
+.hero-eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:28px;display:inline-flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--ink-mute);display:inline-block}
+.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(54px,7.6vw,128px);line-height:.96;letter-spacing:-.034em;color:var(--ink);margin-bottom:24px}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);letter-spacing:-.018em}
+.hero .lead{font-size:18px;line-height:1.6;color:var(--ink-soft);max-width:46ch;margin-bottom:36px}
+.hero-actions{display:inline-flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-foot{padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+.hero-foot .right{display:inline-flex;align-items:center;gap:18px}
+.hero-foot .right .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+.hero-side{max-width:240px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);border-left:1px solid var(--line);padding-left:24px;line-height:1.7}
+.hero-side h6{font-family:var(--sans);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.hero-side ul{list-style:none}
+.hero-side li{margin-bottom:6px;display:flex;gap:10px}
+.hero-side li .key{color:var(--ink-mute);min-width:64px}
+.hero-side .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;display:inline-block;margin-left:6px}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+
+.about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:80px;align-items:start}
+.about-text{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:60ch}
+.about-text p{margin-bottom:22px}
+.about-text p:last-child{margin-bottom:0}
+.about-aside{border:1px solid var(--line);padding:32px 28px;background:var(--paper-deep);position:relative}
+.about-aside h6{font-family:var(--sans);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.about-aside dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:13.5px}
+.about-aside dt{color:var(--ink-mute);font-family:var(--sans);letter-spacing:.04em}
+.about-aside dd{color:var(--ink);font-weight:500}
+.about-aside dd .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;margin-left:6px}
+
+.lang-en .dropcap::first-letter{display:none}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+
+.projects-header{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
+.projects-header h2{font-family:var(--sans);font-weight:700;font-size:clamp(36px,5vw,72px);line-height:1.04;letter-spacing:-.028em}
+.projects-header h2 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
+.projects-header .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.08em;text-align:right;padding-bottom:8px}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.project{border:1px solid var(--line);padding:36px 32px;position:relative;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;display:flex;flex-direction:column;background:var(--paper)}
+.project:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--ink)}
+.project-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.project-label .label{font-size:9.5px;letter-spacing:.18em;color:var(--accent)}
+.project-label .index{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.project h3{font-family:var(--sans);font-weight:700;font-size:28px;line-height:1.1;letter-spacing:-.018em;margin-bottom:10px}
+.project h3 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
+.project .summary{font-size:14.5px;line-height:1.6;color:var(--ink-mute);margin-bottom:22px}
+.project .meta-row{display:flex;gap:18px;font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.04em;padding-top:18px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+.project .meta-row .year{color:var(--accent);font-weight:600}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.project-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-soft);padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper-deep)}
+
+/* ============================================================
+   NOW
+   ============================================================ */
+
+.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.now-block{padding:32px 0;border-top:1px solid var(--ink)}
+.now-block .label{margin-bottom:14px}
+.now-block h4{font-family:var(--sans);font-weight:700;font-size:20px;margin-bottom:10px;letter-spacing:-.014em}
+.now-block p{font-size:14.5px;line-height:1.65;color:var(--ink-mute)}
+.now-block .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;margin-left:6px}
+.now-list{list-style:none;font-size:14.5px;line-height:1.85;color:var(--ink-mute)}
+.now-list li{padding:6px 0;border-bottom:1px dashed var(--line-soft);display:flex;gap:12px}
+.now-list li .yr{font-family:var(--mono);font-size:11px;color:var(--accent);min-width:62px;letter-spacing:.04em}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.contact-card{display:flex;flex-direction:column;gap:6px;padding:24px;border:1px solid var(--line);background:var(--paper);text-decoration:none;color:inherit;transition:transform .2s ease,border-color .2s ease,background .2s ease;position:relative}
+.contact-card:hover{transform:translateY(-2px);border-color:var(--ink);background:var(--paper-deep)}
+.contact-card .label{margin-bottom:14px;color:var(--ink-mute)}
+.contact-card .ic{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--accent);display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--line);border-radius:50%}
+.contact-card .ic svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
+.contact-card b{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);margin-top:8px}
+.contact-card small{font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);letter-spacing:.04em;word-break:break-all}
+.contact-card .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;margin-left:6px}
+
+/* ============================================================
+   FOOTER (minimal)
+   ============================================================ */
+footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
+.foot-grid{display:flex;justify-content:space-between;align-items:start;gap:24px;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+.foot-grid .left{display:inline-flex;gap:24px;align-items:center}
+.foot-grid .right{font-family:var(--mono);text-transform:none;letter-spacing:.04em}
+
+/* ============================================================
+   FLOATING TOOLBAR (minimal: 3 buttons)
+   ============================================================ */
+.float-tb{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:6px;transition:opacity .36s ease}
+.float-tb.is-hidden{opacity:0;pointer-events:none}
+.tb-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;text-decoration:none;color:var(--ink-mute);transition:all .22s ease;backdrop-filter:blur(4px)}
+.tb-btn:hover{color:var(--accent);border-color:var(--accent);transform:translateX(-2px)}
 .tb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
-.tb-btn.wechat svg{fill:currentColor;stroke:none}
-.tb-btn.back-top{opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,color .22s ease,border-color .22s ease}
+.tb-btn.back-top{opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease,color .22s ease,border-color .22s ease}
 .tb-btn.back-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.tb-btn.back-top.visible:hover{transform:translateX(-2px) translateY(0)}
-.tb-btn .tb-tip{position:absolute;right:58px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 14px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;transform-origin:right center}
+.tb-btn .tb-tip{position:absolute;right:54px;top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 14px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease}
 .tb-btn .tb-tip::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--ink);border-right:none}
 .tb-btn:hover .tb-tip{opacity:1;transform:translateY(-50%) translateX(-4px)}
-.tb-dot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--coral);border:1.5px solid var(--paper);animation:pulse 2.4s ease-in-out infinite}
 
-/* ---- OVERLAY + POPUPS ---- */
-.wx-overlay{position:fixed;inset:0;background:rgba(21,20,15,.45);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.wx-overlay.open{opacity:1;pointer-events:auto}
-.wx-popup{background:var(--paper);border-radius:22px;padding:40px 36px 32px;text-align:center;box-shadow:0 40px 80px -36px rgba(21,20,15,.32);position:relative;border:1px solid var(--line);max-width:340px;width:90%;transform:translateY(12px);transition:transform .32s cubic-bezier(.22,.61,.36,1)}
-.wx-overlay.open .wx-popup{transform:translateY(0)}
-.pu-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--bone);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-mute);transition:all .18s ease}
-.pu-close:hover{background:var(--coral);border-color:var(--coral);color:#fff}
-.pu-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
-.wx-qr-wrap{width:200px;height:200px;margin:0 auto 20px;border:1px solid var(--line);border-radius:14px;background:var(--bone);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.wx-qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--ink-faint)}
-.wx-qr-placeholder svg{width:60px;height:60px;stroke:var(--ink-faint);fill:none;stroke-width:1}
-.wx-qr-placeholder span{font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
-.wx-popup h4{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:-.012em;color:var(--ink);margin-bottom:6px}
-.wx-popup .wx-sub{font-family:var(--body);font-size:13px;color:var(--ink-mute);line-height:1.5;margin-bottom:8px}
-.wx-popup .wx-id{font-family:var(--mono);font-size:12px;color:var(--coral);letter-spacing:.04em;padding:6px 16px;background:var(--bone);border:1px solid var(--line);border-radius:999px;display:inline-block}
-.cn-popup{background:var(--paper);border-radius:22px;padding:36px 30px 28px;text-align:center;box-shadow:0 40px 80px -36px rgba(21,20,15,.32);position:relative;border:1px solid var(--line);max-width:380px;width:92%;transform:translateY(12px);transition:transform .32s cubic-bezier(.22,.61,.36,1)}
-.wx-overlay.open .cn-popup{transform:translateY(0)}
-.cn-popup h4{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:-.012em;color:var(--ink);margin-bottom:6px}
-.cn-popup .cn-sub{font-family:var(--body);font-size:13px;color:var(--ink-mute);line-height:1.5;margin-bottom:18px}
-.cn-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cn-opt{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--bone);text-decoration:none;color:var(--ink);font-family:var(--sans);font-size:13px;font-weight:500;transition:all .18s ease;cursor:pointer}
-.cn-opt:hover{border-color:var(--coral);background:rgba(237,111,92,.06)}
-.cn-opt svg{width:18px;height:18px;stroke:var(--coral);fill:none;stroke-width:1.5;flex-shrink:0}
-.cn-opt.wx-opt svg{fill:currentColor;stroke:none}
-
-@media(max-width:880px){.float-tb{right:8px;gap:4px}.tb-btn{width:38px;height:38px;border-radius:10px}.tb-btn .tb-tip{display:none}}
-@media(max-width:560px){.float-tb{right:4px;gap:3px}.tb-btn{width:34px;height:34px;border-radius:8px}.tb-btn svg{width:15px;height:15px}.cn-options{grid-template-columns:1fr}}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:980px){
+  .container{padding:0 32px}
+  .nav-inner{padding:14px 32px}
+  .nav-links{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-side{max-width:none;border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:18px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .projects-grid,.projects{grid-template-columns:1fr}
+  .projects-header{grid-template-columns:1fr}
+  .projects-header .meta{text-align:left}
+  .now-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .container{padding:0 18px}
+  .nav-inner{padding:12px 18px}
+  .hero h1{font-size:clamp(42px,9vw,68px)}
+  section{padding:80px 0}
+  .float-tb{right:8px}
+  .tb-btn{width:38px;height:38px}
+}
 </style>
 </head>
-<body>
+<body data-lang="zh-CN">
 
-<div class="side-rail right"><span class="rail-text">v-jay · Doll Couture · Global Shipping · Vol. 01</span></div>
-<div class="shell">
+<a class="skip-link" href="#main" data-tx-zh="跳到正文" data-tx-en="Skip to content">跳到正文</a>
 
-<!-- ===== TOPBAR ===== -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <span><b>V-JAY</b> · 2026 · Summer Collection</span>
-    <span><b class="coral">Doll Couture</b> · Global Shipping</span>
-    <span><span class="pulse"></span>Open · Worldwide</span>
-  </div>
-</div>
-
-<!-- ===== NAV ===== -->
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="#home" class="brand"><span class="brand-mark">V</span><span>v-jay</span></a>
-    <nav><ul class="nav-links">
-      <li><a href="#categories">Categories<span class="num">03</span></a></li>
-      <li><a href="#products">Products<span class="num">48</span></a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul></nav>
-    <a class="uvs-cta" href="#categories"><span>Shop Now</span><svg class="uvs-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<!-- ============ NAV ============ -->
+<header class="nav-row">
+  <div class="nav-inner">
+    <a href="#hero" class="brand" aria-label="home">
+      <span class="brand-mark"><em>Ay</em></span>
+      <span data-tx-zh="尹安都" data-tx-en="Andrew Yin">尹安都</span>
+    </a>
+    <nav aria-label="primary">
+      <ul class="nav-links">
+        <li><a href="#about" data-tx-zh="关于" data-tx-en="About">关于</a></li>
+        <li><a href="#projects" data-tx-zh="作品" data-tx-en="Projects">作品</a></li>
+        <li><a href="#now" data-tx-zh="最近" data-tx-en="Now">最近</a></li>
+        <li><a href="#contact" data-tx-zh="联系" data-tx-en="Contact">联系</a></li>
+      </ul>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="language">
+      <button class="lang-btn active" data-target-lang="zh-CN" aria-pressed="true">ZH</button>
+      <span aria-hidden="true">·</span>
+      <button class="lang-btn" data-target-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="home">
-  <div class="container"><div class="sec-rule">
-    <span class="roman">I.</span>
-    <span class="meta-grp"><span>Hero · Cover Plate</span><span class="dot-mark">•</span><span>Summer 2026</span></span>
-    <span>001 / 009</span>
-  </div></div>
+<main id="main" class="shell">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="label" data-reveal>v-jay Doll Boutique</span>
-      <h1 class="display gsap-hero" id="gsap-hero">给你的毛绒宝贝<br><em>最美的衣裳</em><span class="dot">.</span></h1>
-      <p class="lead" data-reveal>专为毛绒玩具娃娃设计的精致服装。从梦幻连衣裙到可爱套装，编辑甄选，全球直邮。每一件都是给收藏家的心意之作。</p>
-      <div class="hero-actions" data-reveal>
-        <a class="btn btn-primary" href="#categories">Shop Collection<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></span></a>
-        <a class="btn btn-ghost" href="#about">Our Story<span class="arrow"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9 12h6M12 9v6"></path></svg></span></a>
+      <span class="hero-eyebrow" data-tx-zh="个人站点 · 个人简介" data-tx-en="Personal site · Profile">个人站点 · 个人简介</span>
+      <h1 id="hero-h1" data-tx-zh="把企业<br><em>AI 化</em><br>做成<em>基础设施</em>" data-tx-en="AI-native <em>infrastructure</em><br>for the <em>enterprise</em>.">把企业<br><em>AI 化</em><br>做成<em>基础设施</em>"</h1>
+      <p class="lead" data-tx-zh="我是尹安都。在国朗带 AI 化基础设施团队，把钉钉、ERP、日常运营接进 AI-first 工作流。">我是尹安都。在国朗带 AI 化基础设施团队，把钉钉、ERP、日常运营接进 AI-first 工作流。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact" data-tx-zh="联系合作 →" data-tx-en="Get in touch →">联系合作 →<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+        <a class="btn btn-ghost" href="#projects" data-tx-zh="看作品" data-tx-en="See work">看作品<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></span></a>
       </div>
-      <div class="hero-stats" data-reveal>
-        <div class="stat"><span class="ring solid">48</span><span class="stat-label"><b>连衣裙</b>designs</span></div>
-        <div class="stat"><span class="ring">36</span><span class="stat-label"><b>套装</b>designs</span></div>
-        <div class="stat"><span class="ring coral">52</span><span class="stat-label"><b>配饰</b>curated</span></div>
-      </div>
-      <div class="hero-foot" data-reveal>
-        <span class="meta">↳ &nbsp; Summer 2026 · Limited Edition</span>
-        <span class="coord">全球直邮 · 200+ 国家和地区</span>
+      <div class="hero-foot">
+        <span><span class="dot" aria-hidden="true"></span><span data-tx-zh="目前在杭州 · 国朗" data-tx-en="Currently Hangzhou · Guolang">目前在杭州 · 国朗</span></span>
+        <span class="right">
+          <span class="coord" data-tx-zh="自 2018 — 至今" data-tx-en="Since 2018 — present">自 2018 — 至今</span>
+          <span class="coord">v-jay.com</span>
+        </span>
       </div>
     </div>
-    <div class="hero-art" data-reveal="scale">
-      <span class="corner tl"></span><span class="corner tr"></span>
-      <span class="corner bl"></span><span class="corner br"></span>
-      <span class="annot annot-tl coord">FIG. 01 / VJ-26</span>
-      <span class="annot annot-br">Composed in&nbsp;<span style="color:var(--coral);">v-jay</span></span>
-      <div class="mascot">🧸<span class="mascot-label">v-jay · Doll Couture</span></div>
-      <span class="hero-sparkle" style="top:14%;left:18%;animation-delay:0s">✦</span>
-      <span class="hero-sparkle" style="top:22%;right:16%;animation-delay:0.6s">✧</span>
-      <span class="hero-sparkle" style="bottom:20%;left:22%;animation-delay:1.2s">✦</span>
-      <span class="hero-sparkle" style="bottom:16%;right:20%;animation-delay:1.8s">✧</span>
-      <span class="hero-sparkle" style="top:50%;left:8%;animation-delay:0.3s">·</span>
-      <span class="hero-sparkle" style="top:45%;right:10%;animation-delay:0.9s">·</span>
-      <div class="index">
-        <span><span class="n">01</span>连衣裙</span>
-        <span class="on"><span class="n">02</span>套装系列</span>
-        <span><span class="n">03</span>精致配饰</span>
-      </div>
-    </div>
+    <aside class="hero-side" aria-label="quick facts">
+      <h6><span data-tx-zh="速览" data-tx-en="At a glance">速览</span></h6>
+      <ul>
+        <li><span class="key" data-tx-zh="角色" data-tx-en="Role">角色</span><span data-tx-zh="AI 化基础设施" data-tx-en="AI-Native Infra">AI 化基础设施<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        <li><span class="key" data-tx-zh="在做" data-tx-en="Now">在做</span><span data-tx-zh="OpenWork 多 agent 调度" data-tx-en="OpenWork multi-agent">OpenWork 多 agent 调度<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        <li><span class="key" data-tx-zh="语言" data-tx-en="Speaks">语言</span><span data-tx-zh="中 / 英" data-tx-en="ZH / EN">中 / 英</span></li>
+        <li><span class="key" data-tx-zh="状态" data-tx-en="Status">状态</span><span data-tx-zh="开放合作" data-tx-en="Open to collaboration">开放合作<span class="placeholder-tag" data-tx-zh="待核" data-tx-en="TODO">待核</span></span></li>
+      </ul>
+    </aside>
   </div>
 </section>
 
-<!-- ===== WIRE / TICKER ===== -->
-<section class="wire" aria-label="Global shipping — cities and customers">
-  <div class="container wire-inner">
-    <div class="wire-left">
-      <span class="wire-mark" aria-hidden="true"><span class="wire-pulse"></span></span>
-      <span class="wire-title"><b>From the world</b><span>23 cities · 6 continents</span></span>
-    </div>
-    <div class="wire-rows">
-      <div class="wire-row">
-        <div class="marquee-track" aria-hidden="true">
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Tokyo</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Shanghai</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Seoul</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Singapore</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Bangkok</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Hong Kong</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Sydney</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Dubai</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">London</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Paris</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Berlin</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">New York</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">San Francisco</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Toronto</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">São Paulo</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Mexico City</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Tokyo</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Shanghai</span></span>
-        </div>
-      </div>
-      <div class="wire-row reverse">
-        <div class="marquee-track">
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Sakura K. · Tokyo</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Michael R. · LA</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Sarah L. · London</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Alex T. · Seoul</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Marie D. · Paris</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Chen W. · Shanghai</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Sakura K. · Tokyo</span></span>
-          <span class="wire-item"><span class="wire-dot">·</span><span class="wire-name">Michael R. · LA</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CATEGORIES ===== -->
-<section id="categories">
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">II.</span>
-      <span class="meta-grp"><span>Categories</span><span class="dot-mark">•</span><span>Three Collections</span></span>
-      <span>002 / 009</span>
+      <span class="roman" data-tx-zh="一." data-tx-en="i.">一.</span>
+      <span class="meta-grp"><span data-tx-zh="关于" data-tx-en="About">关于</span><span class="dot-mark">·</span><span data-tx-zh="01 / 04" data-tx-en="01 / 04">01 / 04</span></span>
+      <span class="coord" data-tx-zh="个人简介 + 关键事实" data-tx-en="Bio + key facts">个人简介 + 关键事实</span>
     </div>
-    <div style="margin-bottom:48px;" data-reveal>
-      <span class="label">Explore</span>
-      <h2 class="display" style="margin-top:22px;font-size:clamp(40px,4.6vw,66px);">三大品类，为你的娃娃<br><em>找到完美搭配</em><span class="dot">.</span></h2>
-    </div>
-    <div class="cat-grid">
-      <a class="cat-card" href="#products" data-reveal style="--reveal-delay:0ms">
-        <div class="cat-card-img"><span>👗</span><span class="badge">48 designs</span></div>
-        <div class="cat-card-body">
-          <span class="tag">Collection</span>
-          <div class="cat-card-title">连衣裙</div>
-          <div class="cat-card-desc">优雅精致的娃娃连衣裙，从梦幻到复古，48款精选设计。</div>
-        </div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="cat-card" href="#products" data-reveal style="--reveal-delay:90ms">
-        <div class="cat-card-img"><span>🎀</span><span class="badge">36 designs</span></div>
-        <div class="cat-card-body">
-          <span class="tag">Collection</span>
-          <div class="cat-card-title">套装系列</div>
-          <div class="cat-card-desc">精心搭配的套装组合，一件搞定全身造型，36款选择。</div>
-        </div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="cat-card" href="#products" data-reveal style="--reveal-delay:180ms">
-        <div class="cat-card-img"><span>👑</span><span class="badge">52 designs</span></div>
-        <div class="cat-card-body">
-          <span class="tag">Collection</span>
-          <div class="cat-card-title">精致配饰</div>
-          <div class="cat-card-desc">发箍、斗篷、小包…点睛之笔让娃娃更出彩，52款配饰。</div>
-        </div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
+    <div class="about-grid">
+      <article class="about-text">
+        <p class="dropcap" data-tx-zh="我是 尹安都（Andrew Yin）。在国朗做 AI 化基础设施的技术与项目负责人。我在做的事很具体：把企业的日常运营 — 钉钉日报、ERP 流程、内部协作 — 一步步接进 AI-first 的工作流，让 AI 不只是玩具，而是基础设施层。" data-tx-en="I'm Andrew Yin. I lead the AI-native infrastructure team at Guolang. My work is concrete: take an enterprise's daily operations — DingTalk daily reports, ERP workflows, internal collaboration — and progressively route them through AI-first workflows, so AI stops being a toy and starts being infrastructure.">我是 尹安都（Andrew Yin）。在国朗做 AI 化基础设施的技术与项目负责人。我在做的事很具体：把企业的日常运营 — 钉钉日报、ERP 流程、内部协作 — 一步步接进 AI-first 的工作流，让 AI 不只是玩具，而是基础设施层。</p>
+        <p data-tx-zh="我更喜欢做"能跑的系统"而不是"好看的 PPT"。当前我手上主要的几个项目 — 国朗 AI 化基础设施、ERP 重构、钉钉日志清洗、OpenWork 调度 — 都在 GitHub 上能看、在生产环境能跑。" data-tx-en="I prefer shipping systems over polished decks. The projects I currently run — the Guolang AI-Native Infra, the ERP rework, the DingTalk log cleaner, OpenWork orchestrator — are all live in production and visible on GitHub.">我更喜欢做"能跑的系统"而不是"好看的 PPT"。当前我手上主要的几个项目 — 国朗 AI 化基础设施、ERP 重构、钉钉日志清洗、OpenWork 调度 — 都在 GitHub 上能看、在生产环境能跑。</p>
+        <p data-tx-zh="我是 [TODO: 一两句您对自己核心信念/价值观的描述]。" data-tx-en="I [TODO: one or two sentences on your core beliefs / values].">我是 [TODO: 一两句您对自己核心信念/价值观的描述]。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
+      </article>
+      <aside class="about-aside">
+        <h6 data-tx-zh="关键事实" data-tx-en="Key facts">关键事实</h6>
+        <dl>
+          <dt data-tx-zh="城市" data-tx-en="City">城市</dt><dd data-tx-zh="杭州" data-tx-en="Hangzhou">杭州</dd>
+          <dt data-tx-zh="公司" data-tx-en="Company">公司</dt><dd>Guolang 国朗</dd>
+          <dt data-tx-zh="角色" data-tx-en="Role">角色</dt><dd data-tx-zh="技术与项目负责人" data-tx-en="Tech / Project Lead">技术与项目负责人</dd>
+          <dt data-tx-zh="方向" data-tx-en="Focus">方向</dt><dd><span data-tx-zh="AI 化基础设施" data-tx-en="AI-native infra">AI 化基础设施<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></dd>
+          <dt data-tx-zh="专长" data-tx-en="Stack">专长</dt><dd><span data-tx-zh="全栈 + AI Agent + 钉钉/企业集成" data-tx-en="Full-stack + AI agents + DingTalk / enterprise integration">全栈 + AI Agent + 钉钉/企业集成<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></dd>
+          <dt data-tx-zh="语种" data-tx-en="Languages">语种</dt><dd><span data-tx-zh="中文 (母语) / English (流利)" data-tx-en="Chinese (native) / English (fluent)">中文 (母语) / English (流利)</span></dd>
+          <dt data-tx-zh="GitHub" data-tx-en="GitHub">GitHub</dt><dd><a href="https://github.com/andrewyin15-source" target="_blank" rel="noopener">@andrewyin15-source</a></dd>
+        </dl>
+      </aside>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCTS ===== -->
-<section id="products">
+<!-- ============ PROJECTS ============ -->
+<section class="projects-sec" id="projects">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">III.</span>
-      <span class="meta-grp"><span>Products</span><span class="dot-mark">•</span><span>Curated Selection</span></span>
-      <span>003 / 009</span>
+      <span class="roman" data-tx-zh="二." data-tx-en="ii.">二.</span>
+      <span class="meta-grp"><span data-tx-zh="作品" data-tx-en="Projects">作品</span><span class="dot-mark">·</span><span data-tx-zh="生产环境在跑" data-tx-en="Shipping in production">生产环境在跑</span></span>
+      <span class="coord">002 / 004</span>
     </div>
-    <div style="margin-bottom:48px;" data-reveal>
-      <span class="label">Featured</span>
-      <h2 class="display" style="margin-top:22px;font-size:clamp(40px,4.6vw,66px);">编辑甄选 <em>热门单品</em><span class="dot">.</span></h2>
-      <p class="lead" style="margin-top:16px;">全球娃娃收藏家都在选的爆款，每件均经手工质检。全部独立编号限量发行。</p>
+    <div class="projects-header">
+      <h2 data-tx-zh="几个<em>正在跑</em>的项目" data-tx-en="A few <em>shipping</em> projects.">几个<em>正在跑</em>的项目"</h2>
+      <div class="meta" data-tx-zh="每张卡片可加链接" data-tx-en="each card can take a link">每张卡片可加链接</div>
     </div>
-    <div class="product-grid">
-      <a class="product-card uvs-card" href="#" data-reveal style="--reveal-delay:0ms">
-        <span class="uvs-shine" aria-hidden="true"></span>
-        <div class="product-img d-1"><span>👗</span><span class="uvs-shine-tag">New</span></div>
-        <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">星之梦连衣裙</div><div class="product-stars">★★★★★<span class="count">(128)</span></div><div class="product-price"><span class="price-now">$24.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:70ms">
-        <div class="product-img d-2"><span>🎀</span><span class="product-badge">Hot</span></div>
-        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">樱花和服套装</div><div class="product-stars">★★★★★<span class="count">(96)</span></div><div class="product-price"><span class="price-now">$32.99</span><span class="price-old">$39.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:140ms">
-        <div class="product-img d-3"><span>🧙</span><span class="product-badge">New</span></div>
-        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">魔法少女斗篷</div><div class="product-stars">★★★★☆<span class="count">(73)</span></div><div class="product-price"><span class="price-now">$18.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:210ms">
-        <div class="product-img d-4"><span>🧚</span><span class="product-badge">Best</span></div>
-        <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">森林精灵裙</div><div class="product-stars">★★★★★<span class="count">(154)</span></div><div class="product-price"><span class="price-now">$28.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:280ms">
-        <div class="product-img d-1"><span>🎓</span><span class="product-badge">-15%</span></div>
-        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">学院风制服</div><div class="product-stars">★★★★☆<span class="count">(89)</span></div><div class="product-price"><span class="price-now">$26.99</span><span class="price-old">$31.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:350ms">
-        <div class="product-img d-2"><span>💜</span></div>
-        <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">梦幻蕾丝裙</div><div class="product-stars">★★★★★<span class="count">(201)</span></div><div class="product-price"><span class="price-now">$35.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:420ms">
-        <div class="product-img d-3"><span>🦄</span><span class="product-badge">New</span></div>
-        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">独角兽睡衣</div><div class="product-stars">★★★★☆<span class="count">(62)</span></div><div class="product-price"><span class="price-now">$22.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:490ms">
-        <div class="product-img d-4"><span>🍓</span></div>
-        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">草莓派对发箍</div><div class="product-stars">★★★★★<span class="count">(117)</span></div><div class="product-price"><span class="price-now">$12.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:560ms">
-        <div class="product-img d-1"><span>🌸</span><span class="product-badge">Hot</span></div>
-        <div class="product-body"><div class="product-cat">连衣裙</div><div class="product-name">樱花晨露裙</div><div class="product-stars">★★★★★<span class="count">(89)</span></div><div class="product-price"><span class="price-now">$29.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:630ms">
-        <div class="product-img d-2"><span>🦋</span></div>
-        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">蝴蝶结发带</div><div class="product-stars">★★★★☆<span class="count">(134)</span></div><div class="product-price"><span class="price-now">$9.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:700ms">
-        <div class="product-img d-3"><span>💎</span><span class="product-badge">New</span></div>
-        <div class="product-body"><div class="product-cat">套装</div><div class="product-name">宫廷茶会套装</div><div class="product-stars">★★★★★<span class="count">(56)</span></div><div class="product-price"><span class="price-now">$42.99</span><span class="price-old">$49.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-      <a class="product-card" href="#" data-reveal style="--reveal-delay:770ms">
-        <div class="product-img d-4"><span>🌙</span></div>
-        <div class="product-body"><div class="product-cat">配饰</div><div class="product-name">星月项链</div><div class="product-stars">★★★★★<span class="count">(198)</span></div><div class="product-price"><span class="price-now">$14.99</span></div></div>
-        <div class="arrow-mark"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- ===== WORK SECTION (angled cards with dark bg) ===== -->
-<section id="about" style="padding-top:0;">
-  <div class="work">
-    <div class="work-rule">
-      <span class="roman">IV.</span>
-      <span style="display:inline-flex;gap:24px;"><span>Why v-jay</span><span style="color:var(--coral);">•</span><span>Quality Promise</span></span>
-      <span>004 / 009</span>
-    </div>
-    <div class="work-grid">
-      <div class="work-copy" data-reveal>
-        <span class="label">Our Promise</span>
-        <h2>精工细作，<em>全球直邮</em>，给每个娃娃<em>最美的衣裳</em><span class="dot">.</span></h2>
-        <a class="uvs-tilt" href="#categories">Explore full collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <a class="work-card" href="#products" data-reveal>
-        <div class="label-row"><span class="small-label">Featured</span><span class="card-index">Nº 01</span></div>
-        <h3>连衣裙系列</h3>
-        <p>柔软亲肤面料，细腻手工刺绣。星星、樱花、蕾丝 — 每一件都是收藏品。</p>
-        <div class="card-img" style="background:linear-gradient(135deg,#fce4e0,#f8d0c8);">👗</div>
-        <div class="meta-row"><span class="year">48 款</span><span>COLLECTION</span></div>
-      </a>
-      <a class="work-card alt" href="#products" data-reveal>
-        <div class="label-row"><span class="small-label">Best Seller</span><span class="card-index">Nº 02</span></div>
-        <h3>套装系列</h3>
-        <p>精心搭配的上衣+裙装组合。和服、学院风、睡衣 — 风格百变，一件搞定。</p>
-        <div class="card-img" style="background:linear-gradient(135deg,#e8e4d8,#d8d0c0);">🎀</div>
-        <div class="meta-row"><span class="year">36 款</span><span>COLLECTION</span></div>
-      </a>
-    </div>
-    <div class="work-arrows">
-      <button class="nav-btn" onclick="location.href='#products'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6l-6 6 6 6"></path></svg></button>
-      <button class="nav-btn active" onclick="location.href='#products'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 6l6 6-6 6"></path></svg></button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== HOW IT WORKS (method-style steps) ===== -->
-<section>
-  <div class="container">
-    <div class="sec-rule">
-      <span class="roman">V.</span>
-      <span class="meta-grp"><span>How It Works</span><span class="dot-mark">•</span><span>From Order to Door</span></span>
-      <span>005 / 009</span>
-    </div>
-    <div style="margin-bottom:48px;" data-reveal>
-      <span class="label">Process</span>
-      <h2 class="display" style="margin-top:22px;font-size:clamp(40px,4.6vw,66px);">四步，把美衣送到<br><em>你的娃娃身边</em><span class="dot">.</span></h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;">
-      <div data-reveal style="--reveal-delay:0ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
-        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">01</div>
-        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">选购下单</h4>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">浏览连衣裙、套装和配饰三大系列，选择尺码和颜色，一键下单。</p>
-      </div>
-      <div data-reveal style="--reveal-delay:100ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
-        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">02</div>
-        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">手工精制</h4>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">独立设计师手工裁剪缝制，每件产品经过三道质检，确保完美品质。</p>
-      </div>
-      <div data-reveal style="--reveal-delay:200ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
-        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">03</div>
-        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">全球配送</h4>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">精美礼盒包装，国际物流配送，7-15 个工作日送达 200+ 国家和地区。</p>
-      </div>
-      <div data-reveal style="--reveal-delay:300ms;padding:28px 22px;background:var(--bone);border-radius:18px;box-shadow:var(--shadow);position:relative;">
-        <div style="font-family:var(--serif);font-style:italic;font-size:64px;color:var(--coral);line-height:.85;margin-bottom:18px;">04</div>
-        <h4 style="font-family:var(--sans);font-size:22px;font-weight:800;letter-spacing:-.014em;margin-bottom:12px;">终身陪伴</h4>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.6;">30 天无忧退换，加入收藏家社群分享搭配灵感，获得限量款优先购。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MATERIALS (info cards) ===== -->
-<section style="padding-top:0;">
-  <div class="container">
-    <div class="sec-rule">
-      <span class="roman">VI.</span>
-      <span class="meta-grp"><span>Materials</span><span class="dot-mark">•</span><span>Craft & Care</span></span>
-      <span>006 / 009</span>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;">
-      <div data-reveal style="background:var(--bone);border-radius:18px;padding:36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;">
-        <span style="font-size:40px;">🧵</span>
-        <h3 style="font-family:var(--sans);font-size:24px;font-weight:800;letter-spacing:-.014em;">面料与工艺</h3>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.7;">采用 OEKO-TEX 认证安全面料，棉涤混纺为主，柔软亲肤不伤娃娃表面。手工刺绣细节经得起放大镜检验，每件都是收藏级品质。</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">棉涤混纺</span>
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">手工刺绣</span>
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">OEKO-TEX</span>
+    <div class="projects">
+      <article class="project">
+        <div class="project-label"><span class="label" data-tx-zh="旗舰" data-tx-en="Flagship">旗舰</span><span class="index">Nº 01</span></div>
+        <h3><span data-tx-zh="国朗 <em>AI 化基础设施</em>" data-tx-en="Guolang <em>AI-native Infra</em>">国朗 <em>AI 化基础设施</em>"</span></h3>
+        <p class="summary" data-tx-zh="把企业内部的钉钉、ERP、协作、知识沉淀统一接进 AI 工作流。从一日一报到全自动 agent 调度 — 一个由 AI 跑的企业操作系统。" data-tx-en="Route DingTalk, ERP, internal collaboration and knowledge layers into a single AI-first workflow stack. From daily reports to fully autonomous agent orchestration — an enterprise OS run by AI.">把企业内部的钉钉、ERP、协作、知识沉淀统一接进 AI 工作流。从一日一报到全自动 agent 调度 — 一个由 AI 跑的企业操作系统。</p>
+        <div class="project-tags">
+          <span>AI Agent</span><span>DingTalk</span><span>OpenWork</span><span>ERP</span><span>MCP</span>
         </div>
-      </div>
-      <div data-reveal style="background:var(--bone);border-radius:18px;padding:36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;">
-        <span style="font-size:40px;">📐</span>
-        <h3 style="font-family:var(--sans);font-size:24px;font-weight:800;letter-spacing:-.014em;">尺码与保养</h3>
-        <p style="font-size:14px;color:var(--ink-mute);line-height:1.7;">覆盖三种娃娃尺寸：小号 10-15cm / 中号 16-25cm / 大号 26-40cm。建议手洗阴干，不用时存放于附赠的防尘袋中。</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">小号 10-15cm</span>
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">中号 16-25cm</span>
-          <span style="font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink-mute);">大号 26-40cm</span>
+        <div class="meta-row"><span class="year" data-tx-zh="2024 — 现在" data-tx-en="2024 — now">2024 — 现在</span><span data-tx-zh="技术 / 项目负责人" data-tx-en="Tech / Project Lead">技术 / 项目负责人</span><span><a href="#" data-tx-zh="[待补链接]" data-tx-en="[link TODO]">[待补链接]</a></span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-label"><span class="label" data-tx-zh="主项目" data-tx-en="Main">主项目</span><span class="index">Nº 02</span></div>
+        <h3><span data-tx-zh="国朗 <em>ERP</em>" data-tx-en="Guolang <em>ERP</em>">国朗 <em>ERP</em>"</span></h3>
+        <p class="summary" data-tx-zh="国朗内部的 ERP 系统。覆盖订单 / 库存 / 财务 / 项目管理。AI-agent 嵌入审批流 — 单据流转过程中自动校验、提示、起草。" data-tx-en="Guolang's in-house ERP. Covers orders, inventory, finance, project management. AI agents embed into the approval flow — auto-validate, prompt, and draft as documents flow through.">国朗内部的 ERP 系统。覆盖订单 / 库存 / 财务 / 项目管理。AI-agent 嵌入审批流 — 单据流转过程中自动校验、提示、起草。</p>
+        <div class="project-tags">
+          <span>ERP</span><span>AI 审批</span><span>审批流</span>
         </div>
-      </div>
+        <div class="meta-row"><span class="year" data-tx-zh="[待补：年份]" data-tx-en="[year TODO]">[待补：年份]</span><span data-tx-zh="架构 / 全栈" data-tx-en="Architect / Full-stack">架构 / 全栈</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-label"><span class="label" data-tx-zh="进行中" data-tx-en="Live">进行中</span><span class="index">Nº 03</span></div>
+        <h3><span data-tx-zh="钉钉<em>日志清洗</em>" data-tx-en="DingTalk <em>log cleaner</em>">钉钉<em>日志清洗</em>"</span></h3>
+        <p class="summary" data-tx-zh="把团队在钉钉里发的各类日报、周报、随手记、对话日志整理成结构化数据，对接国朗日报生成器与 OKR 跟踪。" data-tx-en="Convert DingTalk-spilled daily reports, weekly notes, scraps and conversation logs into structured data — feeds Guolang's daily-report builder and OKR tracker.">把团队在钉钉里发的各类日报、周报、随手记、对话日志整理成结构化数据，对接国朗日报生成器与 OKR 跟踪。</p>
+        <div class="project-tags">
+          <span>DingTalk OpenAPI</span><span>NLP</span><span>ETL</span>
+        </div>
+        <div class="meta-row"><span class="year" data-tx-zh="[待补：年份]" data-tx-en="[year TODO]">[待补：年份]</span><span data-tx-zh="主程" data-tx-en="Lead engineer">主程</span></div>
+      </article>
+
+      <article class="project">
+        <div class="project-label"><span class="label" data-tx-zh="进行中" data-tx-en="Live">进行中</span><span class="index">Nº 04</span></div>
+        <h3><span data-tx-zh="OpenWork <em>调度</em>" data-tx-en="OpenWork <em>orchestrator</em>">OpenWork <em>调度</em>"</span></h3>
+        <p class="summary" data-tx-zh="多 agent 协作的任务调度系统。给一组 agent 分任务、排时序、处理依赖、跨工具调用 — 像一位不会累的 PM。" data-tx-en="Multi-agent task orchestration. Assigns, sequences, and threads dependencies across agents and tools — like a tireless PM.">多 agent 协作的任务调度系统。给一组 agent 分任务、排时序、处理依赖、跨工具调用 — 像一位不会累的 PM。</p>
+        <div class="project-tags">
+          <span>Multi-agent</span><span>Scheduler</span><span>MCP</span><span>Task graph</span>
+        </div>
+        <div class="meta-row"><span class="year" data-tx-zh="2025 — 现在" data-tx-en="2025 — now">2025 — 现在</span><span data-tx-zh="架构 / 全栈" data-tx-en="Architect / Full-stack">架构 / 全栈</span></div>
+      </article>
     </div>
+
+    <!-- Hint for adding more -->
+    <p style="margin-top:32px;font-size:12.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.04em;text-align:center;" data-tx-zh="[编辑提示：HTML 中 <article class='project'>...</article> 即可新增卡片]" data-tx-en="[edit hint: duplicate <article class='project'>...</article> in HTML to add more cards]">[编辑提示：HTML 中 <article class="project">...</article> 即可新增卡片]</p>
   </div>
 </section>
 
-<!-- ===== TESTIMONIAL ===== -->
-<section class="testimonial" id="testimonials">
+<!-- ============ NOW ============ -->
+<section class="now" id="now">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">VII.</span>
-      <span class="meta-grp"><span>Collectors</span><span class="dot-mark">•</span><span>What They Say</span></span>
-      <span>007 / 009</span>
+      <span class="roman" data-tx-zh="三." data-tx-en="iii.">三.</span>
+      <span class="meta-grp"><span data-tx-zh="最近" data-tx-en="Now">最近</span><span class="dot-mark">·</span><span data-tx-zh="在读 / 在做" data-tx-en="Reading / Doing">在读 / 在做</span></span>
+      <span class="coord">003 / 004</span>
     </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-copy" data-reveal>
-        <span class="label">Collectors <span class="ix" style="font-family:var(--serif);font-style:italic;color:var(--ink-faint);font-size:14px;text-transform:none;letter-spacing:.04em;">· Nº 05</span></span>
-        <h2 style="margin-top:30px;">"v-jay 的衣服质量比我在日本买的还好！<em>像素刺绣</em>特别精致，娃娃穿上立刻<em>高级了十倍。</em>"</h2>
-        <div class="author"><span class="avatar">🌸</span><p>Sakura K.<br><span>Tokyo · 收藏家</span></p></div>
+    <div class="now-grid">
+      <div class="now-block">
+        <h6 class="label" style="margin-bottom:14px"><span data-tx-zh="最近在做" data-tx-en="Currently shipping">最近在做</span></h6>
+        <h4 data-tx-zh="OpenWork 多 agent 调度的实战化" data-tx-en="OpenWork multi-agent orchestrator — productionization">OpenWork 多 agent 调度的实战化</h4>
+        <p data-tx-zh="[TODO: 一段 (80-120 字) 您最近在做的核心工作进展描述]。" data-tx-en="[TODO: an 80-120 word update on what you're shipping right now].">[TODO: 一段 (80-120 字) 您最近在做的核心工作进展描述]。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
       </div>
-      <div class="testimonial-art" data-reveal="right">
-        <span>🧸✨</span>
+      <div class="now-block">
+        <h6 class="label" style="margin-bottom:14px"><span data-tx-zh="在读 / 在学" data-tx-en="Reading / Studying">在读 / 在学</span></h6>
+        <ul class="now-list">
+          <li><span class="yr" data-tx-zh="2025" data-tx-en="2025">2025</span><span data-tx-zh="[TODO: 您最近在读的书/文章/资料标题]" data-tx-en="[TODO: book / article title]">[TODO: 您最近在读的书 / 文章 / 资料标题]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+          <li><span class="yr" data-tx-zh="2025" data-tx-en="2025">2025</span><span data-tx-zh="[TODO: 第二条]" data-tx-en="[TODO: second one]">[TODO: 第二条]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+          <li><span class="yr" data-tx-zh="2024" data-tx-en="2024">2024</span><span data-tx-zh="[TODO: 第三条]" data-tx-en="[TODO: third one]">[TODO: 第三条]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA / NEWSLETTER ===== -->
-<section class="cta" id="contact">
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
   <div class="container">
     <div class="sec-rule">
-      <span class="roman">VIII.</span>
-      <span class="meta-grp"><span>Newsletter</span><span class="dot-mark">•</span><span>Stay Connected</span></span>
-      <span>008 / 009</span>
+      <span class="roman" data-tx-zh="四." data-tx-en="iv.">四.</span>
+      <span class="meta-grp"><span data-tx-zh="联系" data-tx-en="Contact">联系</span><span class="dot-mark">·</span><span data-tx-zh="最有用的入口" data-tx-en="Best channels">最有用的入口</span></span>
+      <span class="coord">004 / 004</span>
     </div>
-    <div class="cta-grid">
-      <div data-reveal>
-        <span class="label">Subscribe</span>
-        <h2 class="display">订阅 v-jay <em>通讯</em><span class="dot">.</span></h2>
-        <p class="lead" style="margin-bottom:28px;">第一时间获取新品发布、限量款式和独家折扣信息。加入全球娃娃收藏家社群。</p>
-        <form class="nl-form" onsubmit="event.preventDefault();alert('感谢订阅 v-jay！✨')">
-          <input type="email" placeholder="输入你的邮箱地址…" required />
-          <button type="submit" class="uvs-pulse"><span>Subscribe</span></button>
-        </form>
-        <div class="cta-foot">
-          <span class="stamp">● Live</span>
-          <span>Summer 2026 / v-jay.com</span>
-        </div>
-      </div>
-      <div class="cta-art" data-reveal="right">
-        <div class="cta-index">Nº 07</div>
-        🧸
-      </div>
+    <div class="projects-header" style="margin-bottom:48px">
+      <h2 data-tx-zh="如果您想<em>聊聊</em>。" data-tx-en="If you'd like to <em>chat</em>.">如果您想<em>聊聊</em>"。</h2>
+      <div class="meta" data-tx-zh="24h 内必回" data-tx-en="reply within 24h">24h 内必回<span class="placeholder-tag" data-tx-zh="待核" data-tx-en="TODO">待核</span></div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:[TODO: your email]">
+        <span class="label" data-tx-zh="首选 / 邮箱" data-tx-en="Preferred / Email">首选 / 邮箱</span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2z"></path><polyline points="22,8 12,14 2,8"></polyline></svg></span>
+        <b data-tx-zh="邮件" data-tx-en="Email">邮件</b>
+        <small data-tx-zh="[待补: 您的邮箱]" data-tx-en="[TODO: your email]">[待补: 您的邮箱]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+      </a>
+      <a class="contact-card" href="https://github.com/andrewyin15-source" target="_blank" rel="noopener">
+        <span class="label" data-tx-zh="代码" data-tx-en="Code">代码</span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></span>
+        <b>GitHub</b>
+        <small>@andrewyin15-source</small>
+      </a>
+      <a class="contact-card" href="#">
+        <span class="label" data-tx-zh="对话" data-tx-en="Chat">对话</span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
+        <b data-tx-zh="微信" data-tx-en="WeChat">微信</b>
+        <small data-tx-zh="[待补: 微信号]" data-tx-en="[TODO: WeChat ID]">[待补: 微信号]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+      </a>
+      <a class="contact-card" href="#">
+        <span class="label" data-tx-zh="职业" data-tx-en="Professional">职业</span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></span>
+        <b>LinkedIn</b>
+        <small data-tx-zh="[待补: 完整 URL]" data-tx-en="[TODO: full URL]">[待补: 完整 URL]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+</main>
+
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="#home" class="brand"><span class="brand-mark">V</span><span>v-jay</span></a>
-        <p style="margin-top:18px;">专为毛绒玩具娃娃打造的精美服装品牌。编辑纸质感与匠心设计的交融，每个娃娃都有属于自己的风格。全球直邮，收藏家之选。</p>
-      </div>
-      <div class="foot-col"><h5>Shop</h5><ul><li><a href="#products">连衣裙</a></li><li><a href="#products">套装系列</a></li><li><a href="#products">精致配饰</a></li><li><a href="#products">新品上市</a></li></ul></div>
-      <div class="foot-col"><h5>Service</h5><ul><li><a href="#">配送说明</a></li><li><a href="#">退换政策</a></li><li><a href="#">尺码指南</a></li><li><a href="#">常见问题</a></li></ul></div>
-      <div class="foot-col"><h5>About</h5><ul><li><a href="#">品牌故事</a></li><li><a href="#">设计师团队</a></li><li><a href="#">批发合作</a></li><li><a href="#">联系我们</a></li></ul></div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 v-jay. All rights reserved.</span>
-      <span class="right"><span>Made with ♥ for doll lovers</span><span style="color:var(--coral);">v-jay.com</span></span>
-    </div>
-    <div class="foot-mega">
-      <div class="word" data-reveal>v-jay <em>Doll</em> Couture.</div>
+      <span class="left">
+        <span data-tx-zh="© 2026 尹安都 · 个人站点" data-tx-en="© 2026 Andrew Yin · Personal site">© 2026 尹安都 · 个人站点</span>
+        <span>·</span>
+        <span data-tx-zh="建在杭州" data-tx-en="Built in Hangzhou">建在杭州</span>
+      </span>
+      <span class="right" data-tx-zh="v-jay.com · 由 Vercel 部署" data-tx-en="v-jay.com · deployed by Vercel">v-jay.com · 由 Vercel 部署</span>
     </div>
   </div>
 </footer>
 
-</div><!-- .shell -->
-
-<!-- ===== FLOATING TOOLBAR ===== -->
-<div class="float-tb" id="float-tb">
-  <!-- 在线咨询 -->
-  <button class="tb-btn" id="tb-consult" title="在线咨询" aria-label="在线咨询">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2z"></path></svg>
-    <span class="tb-dot"></span>
-    <span class="tb-tip">在线咨询</span>
-  </button>
-
-  <!-- 客服微信 -->
-  <button class="tb-btn wechat" id="tb-wechat" title="客服微信" aria-label="客服微信">
-    <svg viewBox="0 0 24 24"><path d="M8.5 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 2C6.477 2 2 6.015 2 10.9c0 2.71 1.44 5.168 3.704 6.802L5 21l3.652-2.033c1.071.284 2.192.433 3.348.433 5.523 0 10-4.015 10-8.9S17.523 2 12 2z"></path></svg>
-    <span class="tb-tip">客服微信</span>
-  </button>
-
-  <!-- 联系电话 -->
-  <button class="tb-btn" id="tb-phone" title="联系电话" aria-label="联系电话">
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
-    <span class="tb-tip">400-888-8888</span>
-  </button>
-
-  <!-- 定制方案 -->
-  <button class="tb-btn" id="tb-custom" title="定制方案" aria-label="定制方案">
-    <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-    <span class="tb-tip">定制方案</span>
-  </button>
-
-  <!-- 返回顶部 -->
-  <button class="tb-btn back-top" id="tb-back-top" title="返回顶部" aria-label="返回顶部">
-    <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"></path></svg>
-    <span class="tb-tip">返回顶部</span>
+<!-- ============ FLOATING TOOLBAR (minimal) ============ -->
+<div class="float-tb" id="float-tb" role="toolbar" aria-label="quick actions">
+  <a class="tb-btn" href="mailto:[TODO: your email]" id="tb-email" title="Email" aria-label="Email">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2z"></path><polyline points="22,8 12,14 2,8"></polyline></svg>
+    <span class="tb-tip" data-tx-zh="发邮件" data-tx-en="Email">发邮件</span>
+  </a>
+  <a class="tb-btn" href="https://github.com/andrewyin15-source" target="_blank" rel="noopener" id="tb-github" title="GitHub" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    <span class="tb-tip">GitHub</span>
+  </a>
+  <button class="tb-btn back-top" id="tb-back-top" title="Back to top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"></path></svg>
+    <span class="tb-tip" data-tx-zh="回到顶部" data-tx-en="Back to top">回到顶部</span>
   </button>
 </div>
 
-<!-- ===== WECHAT QR OVERLAY ===== -->
-<div class="wx-overlay" id="wx-overlay">
-  <div class="wx-popup">
-    <button class="pu-close" id="wx-close" aria-label="关闭">
-      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-    </button>
-    <div class="wx-qr-wrap" id="wx-qr-wrap">
-      <div class="wx-qr-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><path d="M14 14h3v3h-3zM17 14h4v3h-4zM14 17h3v4h-3z"></path></svg>
-        <span>请替换为<br>您的微信二维码</span>
-      </div>
-    </div>
-    <h4>扫码添加客服微信</h4>
-    <p class="wx-sub">一对一咨询 · 专属定制 · 售后无忧</p>
-    <span class="wx-id">微信号: v-jay-doll</span>
-  </div>
-</div>
-
-<!-- ===== CONTACT OVERLAY ===== -->
-<div class="wx-overlay" id="cn-overlay">
-  <div class="cn-popup">
-    <button class="pu-close" id="cn-close" aria-label="关闭">
-      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-    </button>
-    <h4>联系我们</h4>
-    <p class="cn-sub">选择你喜欢的方式，我们随时为你服务</p>
-    <div class="cn-options">
-      <a class="cn-opt" href="mailto:hello@v-jay.com">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        邮件咨询
-      </a>
-      <button class="cn-opt wx-opt" id="cn-wechat-btn">
-        <svg viewBox="0 0 24 24"><path d="M8.5 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 2C6.477 2 2 6.015 2 10.9c0 2.71 1.44 5.168 3.704 6.802L5 21l3.652-2.033c1.071.284 2.192.433 3.348.433 5.523 0 10-4.015 10-8.9S17.523 2 12 2z"></path></svg>
-        微信客服
-      </button>
-      <a class="cn-opt" href="#contact">
-        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-        定制方案
-      </a>
-      <a class="cn-opt" href="tel:400-888-8888">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
-        电话咨询
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================
-     v-jay GSAP upgrade 2026-08-26: SplitText hero entrance.
-     Required scripts loaded synchronously so they parse before
-     the inline engine below. CDN: jsdelivr (free, all-in-one).
-     ============================================================ -->
+<!-- ============ GSAP + SplitText (CDN) ============ -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
 <script>
 /* ============================================================
-   BIDIRECTIONAL CONTINUOUS SCROLL ENGINE
-   上滑/下滑都持续响应，永不变静态
+   v0.3 — bilingual toggle, GSAP integration, smooth scroll UX
+   Pre-delivery compliance baked in.
    ============================================================ */
 
-/* scroll-progress bar */
-(function(){
-  var bar = document.createElement('div');
-  bar.id = 'scroll-progress';
-  bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--coral);z-index:200;width:0;transition:width 80ms linear;will-change:width';
-  document.body.appendChild(bar);
-  window.addEventListener('scroll', function(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
-  }, {passive:true});
+/* ---------- i18n ---------- */
+const i18n = (function(){
+  function set(lang){
+    const isEn = lang === 'en';
+    document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+    document.body.dataset.lang = lang;
+    document.querySelectorAll('[data-tx-zh]').forEach(function(el){
+      const text = el.dataset[isEn ? 'txEn' : 'txZh'];
+      if (text === undefined) return;
+      // leave nested HTML children alone for h1 (has <em>, <br>)
+      if (el.children.length > 0) return;
+      el.textContent = text;
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      const active = b.dataset.targetLang === lang;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', String(active));
+    });
+    try { localStorage.setItem('v-jay-lang', lang); } catch (_) {}
+  }
+  function init(){
+    let saved = 'zh-CN';
+    try { saved = localStorage.getItem('v-jay-lang') || 'zh-CN'; } catch (_) {}
+    set(saved);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ set(btn.dataset.targetLang); });
+    });
+  }
+  return { set: set, init: init };
 })();
+i18n.init();
 
-/* headroom nav */
-(function(){
-  var nav = document.querySelector('header.nav');
-  if(!nav) return;
-  var SHOW = 100, DELTA = 6, lastY = window.scrollY || 0;
-  window.addEventListener('scroll', function(){
-    var y = window.scrollY || 0, d = y - lastY;
-    if(y <= SHOW) nav.classList.remove('is-hidden');
-    else if(d > DELTA) nav.classList.add('is-hidden');
-    else if(d < -DELTA) nav.classList.remove('is-hidden');
-    lastY = y;
-  }, {passive:true});
-})();
-
-/* ============================================================
-   MAIN BIDIRECTIONAL SCROLL LOOP
-   ============================================================ */
-(function(){
-  var ticking = false, lastScrollY = 0;
-  var vh = window.innerHeight;
-  window.addEventListener('resize', function(){ vh = window.innerHeight; });
-
-  /* collect elements */
-  var heroArt = document.querySelector('.hero-art');
-  var heroCopy = document.querySelector('.hero-copy');
-  var heroSection = document.querySelector('.hero');
-  var heroH1 = heroSection ? heroSection.querySelector('h1') : null;
-  var heroLead = heroSection ? heroSection.querySelector('.lead') : null;
-  var heroActions = heroSection ? heroSection.querySelector('.hero-actions') : null;
-  var heroStats = heroSection ? heroSection.querySelector('.hero-stats') : null;
-  var sideRail = document.querySelector('.side-rail.right');
-
-  /* all [data-reveal] elements use continuous tracking, not one-shot */
-  var revealEls = document.querySelectorAll('[data-reveal]');
-  /* all product/category cards */
-  var cardEls = document.querySelectorAll('.product-card, .cat-card');
-
-  /* mouse */
-  var mx = 0, my = 0, tmx = 0, tmy = 0;
-  document.addEventListener('mousemove', function(e){
-    tmx = (e.clientX / vh - 0.5) * 3;
-    tmy = (e.clientY / vh - 0.5) * 3;
+/* ---------- skip-link / smooth scroll for the nav links ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var t = document.getElementById(id);
+    if (!t) return;
+    e.preventDefault();
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    t.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', '#' + id);
   });
+});
 
-  function lerp(a,b,t){ return a + (b-a)*t; }
-  function clamp(v,min,max){ return v<min?min:v>max?max:v; }
-  function mapRange(v,inMin,inMax,outMin,outMax){
-    var t = clamp((v-inMin)/(inMax-inMin),0,1);
-    return outMin + (outMax-outMin)*t;
-  }
-
-  function getViewportProgress(el){
-    /* returns -1 to 1: -1=below viewport, 0=centered, 1=above viewport */
-    var r = el.getBoundingClientRect();
-    var mid = r.top + r.height/2;
-    return (mid - vh/2) / (vh/2 + r.height/2);
-  }
-
+/* ---------- back-to-top visibility + smooth scroll for #hero ---------- */
+(function(){
+  var bt = document.getElementById('tb-back-top');
+  var fbar = document.getElementById('float-tb');
+  var heroEl = document.getElementById('hero');
   function tick(){
-    ticking = false;
-    var scrollY = window.scrollY || 0;
-    var scrollDir = scrollY - lastScrollY; /* positive=down, negative=up */
-    lastScrollY = scrollY;
-
-    mx = lerp(mx, tmx, 0.05);
-    my = lerp(my, tmy, 0.05);
-
-    /* ---- HERO: bidirectional parallax + fade ---- */
-    if(heroSection && heroArt){
-      var ht = heroSection.getBoundingClientRect().top;
-      var hh = heroSection.offsetHeight;
-      var hp = clamp(-ht / (hh - vh), 0, 1); /* 0=visible, 1=scrolled past */
-
-      /* hero-art floats continuously — up when scrolling down, back when up */
-      if(ht < vh && ht + hh > 0){
-        var artY = ht * -0.15 + my * 8;
-        var artX = mx * 5;
-        heroArt.style.transform = 'translate3d('+artX.toFixed(1)+'px,'+artY.toFixed(1)+'px,0)';
-      }
-
-      /* hero text fades — reversible (comes back when scrolling up) */
-      [heroH1,heroLead,heroActions,heroStats].forEach(function(el,i){
-        if(!el) return;
-        var start = 0.05 + i*0.03;
-        var end = 0.42 + i*0.04;
-        el.style.opacity = clamp(1 - (hp-start)/(end-start), 0, 1).toFixed(2);
-      });
-    }
-
-    /* ---- SIDE RAIL: bidirectional fade ---- */
-    if(sideRail){
-      sideRail.style.opacity = clamp(1 - scrollY/600, 0.15, 1).toFixed(2);
-    }
-
-    /* ---- CONTINUOUS REVEAL: elements track viewport position bidirectionally ---- */
-    for(var i=0;i<revealEls.length;i++){
-      var el = revealEls[i];
-      var vp = getViewportProgress(el);
-      /* vp > 0.5 = below, vp < -0.5 = above, vp ~ 0 = centered */
-      /* transform: shift up as element enters (positive vp), settle at 0 when centered */
-      var shift = clamp(vp * 40, -40, 40);
-      var opacity = clamp(1 - Math.abs(vp) * 1.2, 0, 1);
-      el.style.opacity = opacity.toFixed(2);
-      el.style.transform = 'translate3d(0,'+shift.toFixed(1)+'px,0)';
-    }
-
-    /* ---- CARDS: subtle enter/leave float ---- */
-    for(var j=0;j<cardEls.length;j++){
-      var card = cardEls[j];
-      var cr = card.getBoundingClientRect();
-      if(cr.bottom > -100 && cr.top < vh + 100){
-        var cp = getViewportProgress(card);
-        var cShift = cp * 18;
-        /* preserve hover transform */
-        var base = '';
-        card.style.transform = 'translate3d(0,'+cShift.toFixed(1)+'px,0)';
-      }
+    var y = window.scrollY || 0;
+    if (bt) bt.classList.toggle('visible', y > 600);
+    if (fbar && heroEl){
+      var doc = document.documentElement;
+      var visible = y + window.innerHeight < doc.scrollHeight - 220;
+      fbar.classList.toggle('is-hidden', !visible);
     }
   }
-
-  window.addEventListener('scroll', function(){
-    if(!ticking){ ticking = true; requestAnimationFrame(tick); }
-  }, {passive:true});
-
-  document.addEventListener('mousemove', function(){
-    if(!ticking){ ticking = true; requestAnimationFrame(tick); }
-  }, {passive:true});
-
-  /* initial call — set all elements to their scroll positions */
+  if (bt){
+    bt.addEventListener('click', function(){
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+  }
+  window.addEventListener('scroll', tick, { passive: true });
   tick();
 })();
 
-/* ============================================================
-   FLOATING TOOLBAR INTERACTIONS
-   ============================================================ */
+/* ---------- GSAP: hero SplitText entrance (one-shot) ---------- */
 (function(){
-  var floatTb = document.getElementById('float-tb');
-  var wxOverlay = document.getElementById('wx-overlay');
-  var cnOverlay = document.getElementById('cn-overlay');
-  var backTop = document.getElementById('tb-back-top');
+  if (!window.gsap || !window.SplitText) return;
+  var h1 = document.getElementById('hero-h1');
+  if (!h1) return;
 
-  // ---- WeChat QR popup ----
-  document.getElementById('tb-wechat').addEventListener('click', function(){
-    wxOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-  document.getElementById('wx-close').addEventListener('click', function(){
-    wxOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-  wxOverlay.addEventListener('click', function(e){
-    if(e.target === wxOverlay){ wxOverlay.classList.remove('open'); document.body.style.overflow = ''; }
-  });
-
-  // ---- Contact popup ----
-  function openContact(){
-    cnOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  document.getElementById('tb-consult').addEventListener('click', openContact);
-  document.getElementById('tb-custom').addEventListener('click', openContact);
-  document.getElementById('cn-close').addEventListener('click', function(){
-    cnOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-  cnOverlay.addEventListener('click', function(e){
-    if(e.target === cnOverlay){ cnOverlay.classList.remove('open'); document.body.style.overflow = ''; }
-  });
-  // "微信客服" inside contact popup swaps to WeChat QR
-  var cnWechatBtn = document.getElementById('cn-wechat-btn');
-  if(cnWechatBtn){
-    cnWechatBtn.addEventListener('click', function(){
-      cnOverlay.classList.remove('open');
-      wxOverlay.classList.add('open');
-    });
-  }
-
-  // ---- ESC to close ----
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-      wxOverlay.classList.remove('open');
-      cnOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
-  // ---- Back to top visibility + smooth scroll ----
-  function updateBackTop(){
-    var scrollY = window.scrollY || 0;
-    if(scrollY > 600){
-      backTop.classList.add('visible');
-    } else {
-      backTop.classList.remove('visible');
-    }
-    // Hide toolbar near footer
-    var docH = document.documentElement.scrollHeight;
-    var winH = window.innerHeight;
-    if(floatTb){
-      floatTb.classList.toggle('is-hidden', scrollY + winH > docH - 200);
-    }
-  }
-  backTop.addEventListener('click', function(){
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  window.addEventListener('scroll', updateBackTop, {passive:true});
-  updateBackTop();
-})();
-
-/* ============================================================
-   v-jay GSAP upgrade 2026-08-26
-   - SplitText character reveal on hero h1
-   - shine-card mouse tracking for UIverse-style product cards
-   ============================================================ */
-(function(){
-  /* ---- mouse-tracking shine for UIverse cards ---- */
-  var shineCards = document.querySelectorAll('.uvs-card');
-  for(var i=0;i<shineCards.length;i++){
-    shineCards[i].addEventListener('mousemove', function(e){
-      var r = this.getBoundingClientRect();
-      this.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-      this.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-    });
-  }
-
-  /* ---- GSAP SplitText hero entrance ---- */
-  if(!window.gsap || !window.SplitText) return;
-  function runHeroSplit(){
-    var h1 = document.getElementById('gsap-hero');
-    if(!h1 || h1.dataset.gsapSplitDone) return;
+  function run(){
+    if (h1.dataset.gsapDone) return;
+    h1.dataset.gsapDone = '1';
     try {
-      var split = new window.SplitText(h1, {type:'chars,words,lines', aria:'auto'});
-      h1.dataset.gsapSplitDone = '1';
-      gsap.from(split.chars, {
-        opacity: 0, y: 22, rotateX: -45,
+      var split = new window.SplitText(h1, { type: 'chars,words,lines', aria: 'auto' });
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced){
+        // Even under reduced-motion we set final state to ensure no broken state
+        gsap.set(split.chars, { opacity: 1, y: 0, rotateX: 0 });
+        return;
+      }
+      gsap.set(split.chars, { opacity: 0, y: 18, rotateX: -45 });
+      gsap.to(split.chars, {
+        opacity: 1, y: 0, rotateX: 0,
         duration: 0.7, stagger: 0.022, ease: 'power3.out',
         delay: 0.25
       });
       gsap.from(split.lines, {
-        opacity: 0,
         duration: 0.6, stagger: 0.08, ease: 'power2.out',
         delay: 0.45
       });
-    } catch(e){
-      /* SplitText can fail if fonts not yet ready — fail silently,
-         the existing vanilla engine still controls the h1's reveal */
-    }
+    } catch (_){ /* SplitText requires fonts; fail silently */ }
   }
-  /* wait for fonts so SplitText measures correctly */
-  if(document.fonts && document.fonts.ready){
-    document.fonts.ready.then(runHeroSplit);
+
+  // guard: re-run SplitText whenever the user toggles language
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.dataset.targetLang;
+      i18n.set(lang);
+      // after language swap, restart GSAP for the new chars
+      if (!window.gsap || !window.SplitText) return;
+      h1.dataset.gsapDone = '';
+      // microtask so textContent has updated
+      Promise.resolve().then(function(){
+        // Don't actually re-split — only re-animate the headline if it hasn't been touched yet
+        // (lang swap preserves HTML, so original DOM nodes still tagged)
+        run();
+      });
+    });
+  });
+
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(run);
   } else {
-    window.addEventListener('load', runHeroSplit);
+    window.addEventListener('load', run);
   }
 })();
 </script>
