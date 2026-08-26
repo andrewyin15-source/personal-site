@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title data-tx-zh="尹安都 · 把企业 AI 化做成基础设施" data-tx-en="Andrew Yin · AI-Native Infrastructure">尹安都 · 把企业 AI 化做成基础设施</title>
-<meta name="description" data-tx-zh="尹安都，国朗 AI 化基础设施负责人。带团队把钉钉、ERP、协作接进 AI-first 工作流。" data-tx-en="Andrew Yin leads AI infrastructure at Guolang — turning DingTalk, ERP, and daily ops into AI-first workflows.">
-<meta name="author" content="Andrew Yin / 尹安都" />
+<title data-tx-zh="个人作品集 · 模板" data-tx-en="Personal Site · Template">个人作品集 · 模板</title>
+<meta name="description" data-tx-zh="个人简介 / 作品集模板。Editorial Grid 调子 + 中英双语切换 + 无障碍兼容 + GSAP 动效。" data-tx-en="Personal profile / portfolio template. Editorial Grid style, bilingual toggle, accessibility baked-in, GSAP motion.">
+<meta name="author" content="" data-tx-zh="—" data-tx-en="—" />
 <meta property="og:type" content="website" />
-<meta property="og:title" data-tx-zh="尹安都 · 个人站点" data-tx-en="Andrew Yin · Personal Site" />
+<meta property="og:title" data-tx-zh="个人作品集 · 模板" data-tx-en="Personal Site · Template" />
 <meta name="theme-color" content="#f8f5ef" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1817'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Playfair Display,serif' font-weight='700' font-style='italic' font-size='20' fill='%23f8f5ef'%3EAy%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1817'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23f8f5ef'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,25 +18,27 @@
 
 <style>
 /* ============================================================
-   v0.3 (2026-08-26) — Personal Intro / Editorial Grid
-   v-jay.com re-purpose: doll-clothing store → Andrew Yin's profile
-   Style: Editorial Grid / Magazine (ui-ux-pro-max styles.css).
-   Token layer is reset; old :root variables from v0.2 are gone.
-   Bilingual via JS toggle, persisted to localStorage.
+   v0.4 (2026-08-26) — anonymized template, all PII removed
+   Personal-identifying content scrubbed: name, location, company,
+   project names, social handles. Structure preserved:
+   - Editorial Grid style (ui-ux-pro-max styles.csv)
+   - 5-section layout: Hero / About / Projects / Now / Contact
+   - CN/EN bilingual toggle (localStorage persistence)
+   - GSAP 3.13.0 + SplitText hero entrance
+   - Pre-delivery: focus-visible, prefers-reduced-motion, skip-link,
+     inline-SVG-only icons (no emoji), 4.5:1 contrast minimum
    ============================================================ */
 
 :root{
-  /* paper-feel warm editorial palette */
   --paper:#f8f5ef;
   --paper-deep:#ede5d3;
-  --paper-mid:#e4dcc8;
   --ink:#1a1817;
   --ink-soft:#4a4642;
   --ink-mute:#6b6259;
   --ink-faint:#9b9388;
-  --accent:#b8482e;          /* deep terracotta */
+  --accent:#b8482e;
   --accent-hover:#9a3a23;
-  --accent-2:#d4a574;         /* muted gold */
+  --accent-2:#d4a574;
   --accent-2-soft:#e8c89c;
   --line:rgba(26,24,23,.18);
   --line-soft:rgba(26,24,23,.10);
@@ -57,8 +59,6 @@ body{
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;position:relative;
 }
-
-/* Editorial grain — subtle paper texture */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
   background-image:
@@ -70,11 +70,9 @@ body::before{
 .shell{position:relative;z-index:2}
 .container{max-width:1280px;margin:0 auto;padding:0 56px}
 
-/* ---------- skip link ---------- */
 .skip-link{position:absolute;top:0;left:0;padding:8px 14px;background:var(--ink);color:var(--paper);font-size:13px;text-decoration:none;z-index:999;transform:translateY(-100%);transition:transform .2s ease}
 .skip-link:focus{transform:translateY(0)}
 
-/* ---------- typography ---------- */
 .label{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
 .label::before{content:'';width:22px;height:1px;background:var(--accent);display:inline-block}
 .display{font-family:var(--sans);font-weight:700;letter-spacing:-.028em;line-height:1.02;color:var(--ink)}
@@ -83,7 +81,6 @@ body::before{
 .lead{font-size:18px;line-height:1.65;color:var(--ink-soft);max-width:36ch}
 .coord{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-mute)}
 
-/* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.005em;text-decoration:none;border:1px solid transparent;transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;cursor:pointer;white-space:nowrap;background:none;color:var(--ink)}
 .btn-primary{background:var(--accent);color:var(--paper)}
 .btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
@@ -92,21 +89,14 @@ body::before{
 .btn .arrow{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center}
 .btn .arrow svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
 
-/* ---------- section rule / dividers ---------- */
 .sec-rule{border-top:1px solid var(--line);padding-top:14px;margin-bottom:64px;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
 .sec-rule .meta-grp{display:inline-flex;gap:26px;align-items:center}
 .sec-rule .roman{font-family:var(--serif);font-style:italic;text-transform:none;font-size:14px;letter-spacing:.04em;color:var(--accent)}
 section{position:relative;padding:120px 0}
 section.tight{padding:80px 0}
 
-/* ============================================================
-   PRE-DELIVERY (ui-ux-pro-max checklist baked-in)
-   ============================================================ */
-
-/* focus visible everywhere */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-/* reduced motion respect */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms !important;
@@ -114,18 +104,13 @@ section.tight{padding:80px 0}
     transition-duration:.01ms !important;
     scroll-behavior:auto !important;
   }
-  /* GSAP-driven animations get guarded in JS too */
 }
 
-/* ============================================================
-   NAV HEADER
-   ============================================================ */
-
+/* ===== NAV ===== */
 .nav-row{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 56px}
 .brand{display:inline-flex;align-items:center;gap:14px;font-family:var(--sans);font-weight:600;letter-spacing:.01em;color:var(--ink);text-decoration:none;font-size:15px}
 .brand-mark{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ink);border-radius:50%;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);line-height:1}
-.brand-mark em{font-style:italic;font-weight:600}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{color:var(--ink-soft);font-family:var(--sans);font-size:13.5px;font-weight:500;letter-spacing:.005em;text-decoration:none;transition:color .18s ease;position:relative}
 .nav-links a:hover{color:var(--accent)}
@@ -137,10 +122,7 @@ section.tight{padding:80px 0}
 .lang-toggle button.active{background:var(--ink);color:var(--paper)}
 .lang-toggle span{padding:0 4px;color:var(--ink-faint);font-size:10px}
 
-/* ============================================================
-   HERO
-   ============================================================ */
-
+/* ===== HERO ===== */
 .hero{min-height:calc(100vh - 80px);display:flex;align-items:flex-end;padding:80px 0 100px}
 .hero-grid{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:end;width:100%}
 .hero-copy{max-width:760px}
@@ -159,13 +141,9 @@ section.tight{padding:80px 0}
 .hero-side li{margin-bottom:6px;display:flex;gap:10px}
 .hero-side li .key{color:var(--ink-mute);min-width:64px}
 .hero-side .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;display:inline-block;margin-left:6px}
-
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ============================================================
-   ABOUT
-   ============================================================ */
-
+/* ===== ABOUT ===== */
 .about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:80px;align-items:start}
 .about-text{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:60ch}
 .about-text p{margin-bottom:22px}
@@ -176,18 +154,13 @@ section.tight{padding:80px 0}
 .about-aside dt{color:var(--ink-mute);font-family:var(--sans);letter-spacing:.04em}
 .about-aside dd{color:var(--ink);font-weight:500}
 .about-aside dd .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;margin-left:6px}
-
 .lang-en .dropcap::first-letter{display:none}
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
-
+/* ===== PROJECTS ===== */
 .projects-header{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:end;margin-bottom:64px}
 .projects-header h2{font-family:var(--sans);font-weight:700;font-size:clamp(36px,5vw,72px);line-height:1.04;letter-spacing:-.028em}
 .projects-header h2 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent)}
 .projects-header .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.08em;text-align:right;padding-bottom:8px}
-
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
 .project{border:1px solid var(--line);padding:36px 32px;position:relative;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;display:flex;flex-direction:column;background:var(--paper)}
 .project:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--ink)}
@@ -202,10 +175,7 @@ section.tight{padding:80px 0}
 .project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .project-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-soft);padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--paper-deep)}
 
-/* ============================================================
-   NOW
-   ============================================================ */
-
+/* ===== NOW ===== */
 .now-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .now-block{padding:32px 0;border-top:1px solid var(--ink)}
 .now-block .label{margin-bottom:14px}
@@ -216,10 +186,7 @@ section.tight{padding:80px 0}
 .now-list li{padding:6px 0;border-bottom:1px dashed var(--line-soft);display:flex;gap:12px}
 .now-list li .yr{font-family:var(--mono);font-size:11px;color:var(--accent);min-width:62px;letter-spacing:.04em}
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
-
+/* ===== CONTACT ===== */
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .contact-card{display:flex;flex-direction:column;gap:6px;padding:24px;border:1px solid var(--line);background:var(--paper);text-decoration:none;color:inherit;transition:transform .2s ease,border-color .2s ease,background .2s ease;position:relative}
 .contact-card:hover{transform:translateY(-2px);border-color:var(--ink);background:var(--paper-deep)}
@@ -230,17 +197,13 @@ section.tight{padding:80px 0}
 .contact-card small{font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);letter-spacing:.04em;word-break:break-all}
 .contact-card .placeholder-tag{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--accent);background:var(--accent-2-soft);padding:2px 7px;border-radius:3px;margin-left:6px}
 
-/* ============================================================
-   FOOTER (minimal)
-   ============================================================ */
+/* ===== FOOTER ===== */
 footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
 .foot-grid{display:flex;justify-content:space-between;align-items:start;gap:24px;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
 .foot-grid .left{display:inline-flex;gap:24px;align-items:center}
 .foot-grid .right{font-family:var(--mono);text-transform:none;letter-spacing:.04em}
 
-/* ============================================================
-   FLOATING TOOLBAR (minimal: 3 buttons)
-   ============================================================ */
+/* ===== FLOATING TOOLBAR (anonymized) ===== */
 .float-tb{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:99;display:flex;flex-direction:column;gap:6px;transition:opacity .36s ease}
 .float-tb.is-hidden{opacity:0;pointer-events:none}
 .tb-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;text-decoration:none;color:var(--ink-mute);transition:all .22s ease;backdrop-filter:blur(4px)}
@@ -252,9 +215,6 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
 .tb-btn .tb-tip::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--ink);border-right:none}
 .tb-btn:hover .tb-tip{opacity:1;transform:translateY(-50%) translateX(-4px)}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width:980px){
   .container{padding:0 32px}
   .nav-inner{padding:14px 32px}
@@ -281,12 +241,11 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
 
 <a class="skip-link" href="#main" data-tx-zh="跳到正文" data-tx-en="Skip to content">跳到正文</a>
 
-<!-- ============ NAV ============ -->
 <header class="nav-row">
   <div class="nav-inner">
     <a href="#hero" class="brand" aria-label="home">
-      <span class="brand-mark"><em>Ay</em></span>
-      <span data-tx-zh="尹安都" data-tx-en="Andrew Yin">尹安都</span>
+      <span class="brand-mark">·</span>
+      <span data-tx-zh="个人作品集" data-tx-en="Personal Site">个人作品集</span>
     </a>
     <nav aria-label="primary">
       <ul class="nav-links">
@@ -310,17 +269,16 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
 <section class="hero" id="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="hero-eyebrow" data-tx-zh="个人站点 · 个人简介" data-tx-en="Personal site · Profile">个人站点 · 个人简介</span>
-      <h1 id="hero-h1" data-tx-zh="把企业<br><em>AI 化</em><br>做成<em>基础设施</em>" data-tx-en="AI-native <em>infrastructure</em><br>for the <em>enterprise</em>.">把企业<br><em>AI 化</em><br>做成<em>基础设施</em>"</h1>
-      <p class="lead" data-tx-zh="我是尹安都。在国朗带 AI 化基础设施团队，把钉钉、ERP、日常运营接进 AI-first 工作流。">我是尹安都。在国朗带 AI 化基础设施团队，把钉钉、ERP、日常运营接进 AI-first 工作流。</p>
+      <span class="hero-eyebrow" data-tx-zh="个人简介 / 作品集 · 模板" data-tx-en="Profile / portfolio · template">个人简介 / 作品集 · 模板</span>
+      <h1 id="hero-h1" data-tx-zh="这是<em>个人作品集</em><br>模板" data-tx-en="A <em>personal site</em><br>template.">这是<em>个人作品集</em><br>模板"</h1>
+      <p class="lead" data-tx-zh="一个干净的、Editorial Grid 风格的个人作品集模板。中英双语切换、无障碍兼容、GSAP 文字入场动效。" data-tx-en="A clean Editorial Grid-style personal site template. Bilingual toggle, accessibility baked-in, GSAP entrance motion.">一个干净的、Editorial Grid 风格的个人作品集模板。中英双语切换、无障碍兼容、GSAP 文字入场动效。</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact" data-tx-zh="联系合作 →" data-tx-en="Get in touch →">联系合作 →<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+        <a class="btn btn-primary" href="#contact" data-tx-zh="联系入口 →" data-tx-en="Get in touch →">联系入口 →<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
         <a class="btn btn-ghost" href="#projects" data-tx-zh="看作品" data-tx-en="See work">看作品<span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 19L19 5M19 5H8M19 5v11"></path></svg></span></a>
       </div>
       <div class="hero-foot">
-        <span><span class="dot" aria-hidden="true"></span><span data-tx-zh="目前在杭州 · 国朗" data-tx-en="Currently Hangzhou · Guolang">目前在杭州 · 国朗</span></span>
+        <span><span class="dot" aria-hidden="true"></span><span data-tx-zh="[占位] · 在某地做某事" data-tx-en="[Placeholder] · doing something somewhere">[占位] · 在某地做某事</span></span>
         <span class="right">
-          <span class="coord" data-tx-zh="自 2018 — 至今" data-tx-en="Since 2018 — present">自 2018 — 至今</span>
           <span class="coord">v-jay.com</span>
         </span>
       </div>
@@ -328,10 +286,10 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
     <aside class="hero-side" aria-label="quick facts">
       <h6><span data-tx-zh="速览" data-tx-en="At a glance">速览</span></h6>
       <ul>
-        <li><span class="key" data-tx-zh="角色" data-tx-en="Role">角色</span><span data-tx-zh="AI 化基础设施" data-tx-en="AI-Native Infra">AI 化基础设施<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
-        <li><span class="key" data-tx-zh="在做" data-tx-en="Now">在做</span><span data-tx-zh="OpenWork 多 agent 调度" data-tx-en="OpenWork multi-agent">OpenWork 多 agent 调度<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
-        <li><span class="key" data-tx-zh="语言" data-tx-en="Speaks">语言</span><span data-tx-zh="中 / 英" data-tx-en="ZH / EN">中 / 英</span></li>
-        <li><span class="key" data-tx-zh="状态" data-tx-en="Status">状态</span><span data-tx-zh="开放合作" data-tx-en="Open to collaboration">开放合作<span class="placeholder-tag" data-tx-zh="待核" data-tx-en="TODO">待核</span></span></li>
+        <li><span class="key" data-tx-zh="姓名" data-tx-en="Name">姓名</span><span data-tx-zh="[占位]" data-tx-en="[Placeholder]">[占位]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        <li><span class="key" data-tx-zh="角色" data-tx-en="Role">角色</span><span data-tx-zh="[占位]" data-tx-en="[Placeholder]">[占位]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        <li><span class="key" data-tx-zh="在做" data-tx-en="Now">在做</span><span data-tx-zh="[占位]" data-tx-en="[Placeholder]">[占位]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+        <li><span class="key" data-tx-zh="状态" data-tx-en="Status">状态</span><span data-tx-zh="[占位]" data-tx-en="[Placeholder]">[占位]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
       </ul>
     </aside>
   </div>
@@ -343,24 +301,24 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
     <div class="sec-rule">
       <span class="roman" data-tx-zh="一." data-tx-en="i.">一.</span>
       <span class="meta-grp"><span data-tx-zh="关于" data-tx-en="About">关于</span><span class="dot-mark">·</span><span data-tx-zh="01 / 04" data-tx-en="01 / 04">01 / 04</span></span>
-      <span class="coord" data-tx-zh="个人简介 + 关键事实" data-tx-en="Bio + key facts">个人简介 + 关键事实</span>
+      <span class="coord" data-tx-zh="[占位: 一行能力描述]" data-tx-en="[placeholder: one-line tagline]">[占位: 一行能力描述]</span>
     </div>
     <div class="about-grid">
       <article class="about-text">
-        <p class="dropcap" data-tx-zh="我是 尹安都（Andrew Yin）。在国朗做 AI 化基础设施的技术与项目负责人。我在做的事很具体：把企业的日常运营 — 钉钉日报、ERP 流程、内部协作 — 一步步接进 AI-first 的工作流，让 AI 不只是玩具，而是基础设施层。" data-tx-en="I'm Andrew Yin. I lead the AI-native infrastructure team at Guolang. My work is concrete: take an enterprise's daily operations — DingTalk daily reports, ERP workflows, internal collaboration — and progressively route them through AI-first workflows, so AI stops being a toy and starts being infrastructure.">我是 尹安都（Andrew Yin）。在国朗做 AI 化基础设施的技术与项目负责人。我在做的事很具体：把企业的日常运营 — 钉钉日报、ERP 流程、内部协作 — 一步步接进 AI-first 的工作流，让 AI 不只是玩具，而是基础设施层。</p>
-        <p data-tx-zh="我更喜欢做"能跑的系统"而不是"好看的 PPT"。当前我手上主要的几个项目 — 国朗 AI 化基础设施、ERP 重构、钉钉日志清洗、OpenWork 调度 — 都在 GitHub 上能看、在生产环境能跑。" data-tx-en="I prefer shipping systems over polished decks. The projects I currently run — the Guolang AI-Native Infra, the ERP rework, the DingTalk log cleaner, OpenWork orchestrator — are all live in production and visible on GitHub.">我更喜欢做"能跑的系统"而不是"好看的 PPT"。当前我手上主要的几个项目 — 国朗 AI 化基础设施、ERP 重构、钉钉日志清洗、OpenWork 调度 — 都在 GitHub 上能看、在生产环境能跑。</p>
-        <p data-tx-zh="我是 [TODO: 一两句您对自己核心信念/价值观的描述]。" data-tx-en="I [TODO: one or two sentences on your core beliefs / values].">我是 [TODO: 一两句您对自己核心信念/价值观的描述]。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
+        <p class="dropcap" data-tx-zh="[占位] 这是 About 段落。写您是谁、做什么、关注什么。建议 150-200 字，避免泛泛而谈；这里用一个示意 drop-cap。" data-tx-en="[Placeholder] This is the About paragraph. Describe who you are, what you do, what you care about. Aim for 150-200 words; avoid generic statements.">[占位] 这是 About 段落。写您是谁、做什么、关注什么。建议 150-200 字，避免泛泛而谈；这里用一个示意 drop-cap。</p>
+        <p data-tx-zh="[占位] 第二段：突出最近一个阶段在做什么、用的什么技术栈、解决了什么具体问题。带数据更好。" data-tx-en="[Placeholder] Paragraph 2: highlight what you're currently shipping, what stack you're using, what problems you've solved lately. Numbers help.">[占位] 第二段：突出最近一个阶段在做什么、用的什么技术栈、解决了什么具体问题。带数据更好。</p>
+        <p data-tx-zh="[占位] 第三段（可选）：工作原则、价值观，或一句座右铭。" data-tx-en="[Placeholder] Paragraph 3 (optional): one principle you hold, one value you defend, or one motto.">[占位] 第三段（可选）：工作原则、价值观，或一句座右铭。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
       </article>
       <aside class="about-aside">
         <h6 data-tx-zh="关键事实" data-tx-en="Key facts">关键事实</h6>
         <dl>
-          <dt data-tx-zh="城市" data-tx-en="City">城市</dt><dd data-tx-zh="杭州" data-tx-en="Hangzhou">杭州</dd>
-          <dt data-tx-zh="公司" data-tx-en="Company">公司</dt><dd>Guolang 国朗</dd>
-          <dt data-tx-zh="角色" data-tx-en="Role">角色</dt><dd data-tx-zh="技术与项目负责人" data-tx-en="Tech / Project Lead">技术与项目负责人</dd>
-          <dt data-tx-zh="方向" data-tx-en="Focus">方向</dt><dd><span data-tx-zh="AI 化基础设施" data-tx-en="AI-native infra">AI 化基础设施<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></dd>
-          <dt data-tx-zh="专长" data-tx-en="Stack">专长</dt><dd><span data-tx-zh="全栈 + AI Agent + 钉钉/企业集成" data-tx-en="Full-stack + AI agents + DingTalk / enterprise integration">全栈 + AI Agent + 钉钉/企业集成<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></dd>
-          <dt data-tx-zh="语种" data-tx-en="Languages">语种</dt><dd><span data-tx-zh="中文 (母语) / English (流利)" data-tx-en="Chinese (native) / English (fluent)">中文 (母语) / English (流利)</span></dd>
-          <dt data-tx-zh="GitHub" data-tx-en="GitHub">GitHub</dt><dd><a href="https://github.com/andrewyin15-source" target="_blank" rel="noopener">@andrewyin15-source</a></dd>
+          <dt data-tx-zh="城市" data-tx-en="City">城市</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
+          <dt data-tx-zh="公司 / 学校" data-tx-en="Affiliation">公司 / 学校</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
+          <dt data-tx-zh="角色" data-tx-en="Role">角色</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
+          <dt data-tx-zh="方向" data-tx-en="Focus">方向</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
+          <dt data-tx-zh="栈 / 专长" data-tx-en="Stack">栈 / 专长</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
+          <dt data-tx-zh="语种" data-tx-en="Languages">语种</dt><dd><span data-tx-zh="[占位]" data-tx-en="[placeholder]">[占位]</span></dd>
+          <dt data-tx-zh="GitHub" data-tx-en="GitHub">GitHub</dt><dd><span data-tx-zh="@[占位]" data-tx-en="@[placeholder]">@[占位]</span><span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></dd>
         </dl>
       </aside>
     </div>
@@ -372,58 +330,57 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
   <div class="container">
     <div class="sec-rule">
       <span class="roman" data-tx-zh="二." data-tx-en="ii.">二.</span>
-      <span class="meta-grp"><span data-tx-zh="作品" data-tx-en="Projects">作品</span><span class="dot-mark">·</span><span data-tx-zh="生产环境在跑" data-tx-en="Shipping in production">生产环境在跑</span></span>
+      <span class="meta-grp"><span data-tx-zh="作品" data-tx-en="Projects">作品</span><span class="dot-mark">·</span><span data-tx-zh="4 张占位卡片" data-tx-en="4 placeholder cards">4 张占位卡片</span></span>
       <span class="coord">002 / 004</span>
     </div>
     <div class="projects-header">
-      <h2 data-tx-zh="几个<em>正在跑</em>的项目" data-tx-en="A few <em>shipping</em> projects.">几个<em>正在跑</em>的项目"</h2>
-      <div class="meta" data-tx-zh="每张卡片可加链接" data-tx-en="each card can take a link">每张卡片可加链接</div>
+      <h2 data-tx-zh="几个<em>示例</em>作品卡" data-tx-en="A few <em>sample</em> cards.">几个<em>示例</em>作品卡"</h2>
+      <div class="meta" data-tx-zh="替换为您真实作品" data-tx-en="replace with your real work">替换为您真实作品</div>
     </div>
 
     <div class="projects">
       <article class="project">
-        <div class="project-label"><span class="label" data-tx-zh="旗舰" data-tx-en="Flagship">旗舰</span><span class="index">Nº 01</span></div>
-        <h3><span data-tx-zh="国朗 <em>AI 化基础设施</em>" data-tx-en="Guolang <em>AI-native Infra</em>">国朗 <em>AI 化基础设施</em>"</span></h3>
-        <p class="summary" data-tx-zh="把企业内部的钉钉、ERP、协作、知识沉淀统一接进 AI 工作流。从一日一报到全自动 agent 调度 — 一个由 AI 跑的企业操作系统。" data-tx-en="Route DingTalk, ERP, internal collaboration and knowledge layers into a single AI-first workflow stack. From daily reports to fully autonomous agent orchestration — an enterprise OS run by AI.">把企业内部的钉钉、ERP、协作、知识沉淀统一接进 AI 工作流。从一日一报到全自动 agent 调度 — 一个由 AI 跑的企业操作系统。</p>
+        <div class="project-label"><span class="label" data-tx-zh="示例 A" data-tx-en="Sample A">示例 A</span><span class="index">Nº 01</span></div>
+        <h3><span data-tx-zh="作品 <em>标题</em>" data-tx-en="Project <em>title</em>">作品 <em>标题</em>"</span></h3>
+        <p class="summary" data-tx-zh="[占位] 一段说明，讲清楚这个项目是什么、解决了什么问题、您的角色、能验证成果的数据或截图。" data-tx-en="[Placeholder] One paragraph: what it is, what problem it solved, your role, and any data or screenshots that prove the result.">[占位] 一段说明，讲清楚这个项目是什么、解决了什么问题、您的角色、能验证成果的数据或截图。</p>
         <div class="project-tags">
-          <span>AI Agent</span><span>DingTalk</span><span>OpenWork</span><span>ERP</span><span>MCP</span>
+          <span>[tag]</span><span>[tag]</span><span>[tag]</span>
         </div>
-        <div class="meta-row"><span class="year" data-tx-zh="2024 — 现在" data-tx-en="2024 — now">2024 — 现在</span><span data-tx-zh="技术 / 项目负责人" data-tx-en="Tech / Project Lead">技术 / 项目负责人</span><span><a href="#" data-tx-zh="[待补链接]" data-tx-en="[link TODO]">[待补链接]</a></span></div>
+        <div class="meta-row"><span class="year">[年份]</span><span data-tx-zh="[角色]" data-tx-en="[role]">[角色]</span><span><a href="#" data-tx-zh="[链接]" data-tx-en="[link]">[链接]</a></span></div>
       </article>
 
       <article class="project">
-        <div class="project-label"><span class="label" data-tx-zh="主项目" data-tx-en="Main">主项目</span><span class="index">Nº 02</span></div>
-        <h3><span data-tx-zh="国朗 <em>ERP</em>" data-tx-en="Guolang <em>ERP</em>">国朗 <em>ERP</em>"</span></h3>
-        <p class="summary" data-tx-zh="国朗内部的 ERP 系统。覆盖订单 / 库存 / 财务 / 项目管理。AI-agent 嵌入审批流 — 单据流转过程中自动校验、提示、起草。" data-tx-en="Guolang's in-house ERP. Covers orders, inventory, finance, project management. AI agents embed into the approval flow — auto-validate, prompt, and draft as documents flow through.">国朗内部的 ERP 系统。覆盖订单 / 库存 / 财务 / 项目管理。AI-agent 嵌入审批流 — 单据流转过程中自动校验、提示、起草。</p>
+        <div class="project-label"><span class="label" data-tx-zh="示例 B" data-tx-en="Sample B">示例 B</span><span class="index">Nº 02</span></div>
+        <h3><span data-tx-zh="作品 <em>标题</em>" data-tx-en="Project <em>title</em>">作品 <em>标题</em>"</span></h3>
+        <p class="summary" data-tx-zh="[占位] 一段说明。" data-tx-en="[Placeholder] One paragraph.">[占位] 一段说明。</p>
         <div class="project-tags">
-          <span>ERP</span><span>AI 审批</span><span>审批流</span>
+          <span>[tag]</span><span>[tag]</span>
         </div>
-        <div class="meta-row"><span class="year" data-tx-zh="[待补：年份]" data-tx-en="[year TODO]">[待补：年份]</span><span data-tx-zh="架构 / 全栈" data-tx-en="Architect / Full-stack">架构 / 全栈</span></div>
+        <div class="meta-row"><span class="year">[年份]</span><span data-tx-zh="[角色]" data-tx-en="[role]">[角色]</span></div>
       </article>
 
       <article class="project">
-        <div class="project-label"><span class="label" data-tx-zh="进行中" data-tx-en="Live">进行中</span><span class="index">Nº 03</span></div>
-        <h3><span data-tx-zh="钉钉<em>日志清洗</em>" data-tx-en="DingTalk <em>log cleaner</em>">钉钉<em>日志清洗</em>"</span></h3>
-        <p class="summary" data-tx-zh="把团队在钉钉里发的各类日报、周报、随手记、对话日志整理成结构化数据，对接国朗日报生成器与 OKR 跟踪。" data-tx-en="Convert DingTalk-spilled daily reports, weekly notes, scraps and conversation logs into structured data — feeds Guolang's daily-report builder and OKR tracker.">把团队在钉钉里发的各类日报、周报、随手记、对话日志整理成结构化数据，对接国朗日报生成器与 OKR 跟踪。</p>
+        <div class="project-label"><span class="label" data-tx-zh="示例 C" data-tx-en="Sample C">示例 C</span><span class="index">Nº 03</span></div>
+        <h3><span data-tx-zh="作品 <em>标题</em>" data-tx-en="Project <em>title</em>">作品 <em>标题</em>"</span></h3>
+        <p class="summary" data-tx-zh="[占位] 一段说明。" data-tx-en="[Placeholder] One paragraph.">[占位] 一段说明。</p>
         <div class="project-tags">
-          <span>DingTalk OpenAPI</span><span>NLP</span><span>ETL</span>
+          <span>[tag]</span><span>[tag]</span>
         </div>
-        <div class="meta-row"><span class="year" data-tx-zh="[待补：年份]" data-tx-en="[year TODO]">[待补：年份]</span><span data-tx-zh="主程" data-tx-en="Lead engineer">主程</span></div>
+        <div class="meta-row"><span class="year">[年份]</span><span data-tx-zh="[角色]" data-tx-en="[role]">[角色]</span></div>
       </article>
 
       <article class="project">
-        <div class="project-label"><span class="label" data-tx-zh="进行中" data-tx-en="Live">进行中</span><span class="index">Nº 04</span></div>
-        <h3><span data-tx-zh="OpenWork <em>调度</em>" data-tx-en="OpenWork <em>orchestrator</em>">OpenWork <em>调度</em>"</span></h3>
-        <p class="summary" data-tx-zh="多 agent 协作的任务调度系统。给一组 agent 分任务、排时序、处理依赖、跨工具调用 — 像一位不会累的 PM。" data-tx-en="Multi-agent task orchestration. Assigns, sequences, and threads dependencies across agents and tools — like a tireless PM.">多 agent 协作的任务调度系统。给一组 agent 分任务、排时序、处理依赖、跨工具调用 — 像一位不会累的 PM。</p>
+        <div class="project-label"><span class="label" data-tx-zh="示例 D" data-tx-en="Sample D">示例 D</span><span class="index">Nº 04</span></div>
+        <h3><span data-tx-zh="作品 <em>标题</em>" data-tx-en="Project <em>title</em>">作品 <em>标题</em>"</span></h3>
+        <p class="summary" data-tx-zh="[占位] 一段说明。" data-tx-en="[Placeholder] One paragraph.">[占位] 一段说明。</p>
         <div class="project-tags">
-          <span>Multi-agent</span><span>Scheduler</span><span>MCP</span><span>Task graph</span>
+          <span>[tag]</span><span>[tag]</span>
         </div>
-        <div class="meta-row"><span class="year" data-tx-zh="2025 — 现在" data-tx-en="2025 — now">2025 — 现在</span><span data-tx-zh="架构 / 全栈" data-tx-en="Architect / Full-stack">架构 / 全栈</span></div>
+        <div class="meta-row"><span class="year">[年份]</span><span data-tx-zh="[角色]" data-tx-en="[role]">[角色]</span></div>
       </article>
     </div>
 
-    <!-- Hint for adding more -->
-    <p style="margin-top:32px;font-size:12.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.04em;text-align:center;" data-tx-zh="[编辑提示：HTML 中 <article class='project'>...</article> 即可新增卡片]" data-tx-en="[edit hint: duplicate <article class='project'>...</article> in HTML to add more cards]">[编辑提示：HTML 中 <article class="project">...</article> 即可新增卡片]</p>
+    <p style="margin-top:32px;font-size:12.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.04em;text-align:center;" data-tx-zh="[编辑提示：HTML 中复制 <article class='project'>...</article> 即可新增/删除卡片]" data-tx-en="[edit hint: duplicate <article class='project'>...</article> in HTML to add or remove cards]">[编辑提示：HTML 中复制 <article class="project">...</article> 即可新增/删除卡片]</p>
   </div>
 </section>
 
@@ -438,15 +395,15 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
     <div class="now-grid">
       <div class="now-block">
         <h6 class="label" style="margin-bottom:14px"><span data-tx-zh="最近在做" data-tx-en="Currently shipping">最近在做</span></h6>
-        <h4 data-tx-zh="OpenWork 多 agent 调度的实战化" data-tx-en="OpenWork multi-agent orchestrator — productionization">OpenWork 多 agent 调度的实战化</h4>
-        <p data-tx-zh="[TODO: 一段 (80-120 字) 您最近在做的核心工作进展描述]。" data-tx-en="[TODO: an 80-120 word update on what you're shipping right now].">[TODO: 一段 (80-120 字) 您最近在做的核心工作进展描述]。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
+        <h4 data-tx-zh="[占位] 当前阶段在做的事" data-tx-en="[Placeholder] What you're shipping right now">[占位] 当前阶段在做的事</h4>
+        <p data-tx-zh="[占位] 80-120 字描述最近一个阶段在做的事。讲清楚目标、方法、可见进展。" data-tx-en="[Placeholder] 80-120 words on what you're shipping right now. Goal, method, visible progress.">[占位] 80-120 字描述最近一个阶段在做的事。讲清楚目标、方法、可见进展。<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></p>
       </div>
       <div class="now-block">
         <h6 class="label" style="margin-bottom:14px"><span data-tx-zh="在读 / 在学" data-tx-en="Reading / Studying">在读 / 在学</span></h6>
         <ul class="now-list">
-          <li><span class="yr" data-tx-zh="2025" data-tx-en="2025">2025</span><span data-tx-zh="[TODO: 您最近在读的书/文章/资料标题]" data-tx-en="[TODO: book / article title]">[TODO: 您最近在读的书 / 文章 / 资料标题]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
-          <li><span class="yr" data-tx-zh="2025" data-tx-en="2025">2025</span><span data-tx-zh="[TODO: 第二条]" data-tx-en="[TODO: second one]">[TODO: 第二条]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
-          <li><span class="yr" data-tx-zh="2024" data-tx-en="2024">2024</span><span data-tx-zh="[TODO: 第三条]" data-tx-en="[TODO: third one]">[TODO: 第三条]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+          <li><span class="yr" data-tx-zh="[年]" data-tx-en="[yr]">[年]</span><span data-tx-zh="[占位] 标题" data-tx-en="[Placeholder] Title">[占位] 标题<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+          <li><span class="yr" data-tx-zh="[年]" data-tx-en="[yr]">[年]</span><span data-tx-zh="[占位] 标题" data-tx-en="[Placeholder] Title">[占位] 标题<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
+          <li><span class="yr" data-tx-zh="[年]" data-tx-en="[yr]">[年]</span><span data-tx-zh="[占位] 标题" data-tx-en="[Placeholder] Title">[占位] 标题<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></span></li>
         </ul>
       </div>
     </div>
@@ -463,32 +420,32 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
     </div>
     <div class="projects-header" style="margin-bottom:48px">
       <h2 data-tx-zh="如果您想<em>聊聊</em>。" data-tx-en="If you'd like to <em>chat</em>.">如果您想<em>聊聊</em>"。</h2>
-      <div class="meta" data-tx-zh="24h 内必回" data-tx-en="reply within 24h">24h 内必回<span class="placeholder-tag" data-tx-zh="待核" data-tx-en="TODO">待核</span></div>
+      <div class="meta" data-tx-zh="[占位] 回复时间" data-tx-en="[Placeholder] response time">[占位] 回复时间<span class="placeholder-tag" data-tx-zh="待核" data-tx-en="TODO">待核</span></div>
     </div>
     <div class="contact-grid">
-      <a class="contact-card" href="mailto:[TODO: your email]">
+      <a class="contact-card" href="#" id="cc-email">
         <span class="label" data-tx-zh="首选 / 邮箱" data-tx-en="Preferred / Email">首选 / 邮箱</span>
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2z"></path><polyline points="22,8 12,14 2,8"></polyline></svg></span>
         <b data-tx-zh="邮件" data-tx-en="Email">邮件</b>
-        <small data-tx-zh="[待补: 您的邮箱]" data-tx-en="[TODO: your email]">[待补: 您的邮箱]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+        <small data-tx-zh="[占位] 邮箱" data-tx-en="[Placeholder] your-email">[占位] 邮箱<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
       </a>
-      <a class="contact-card" href="https://github.com/andrewyin15-source" target="_blank" rel="noopener">
+      <a class="contact-card" href="#" id="cc-github">
         <span class="label" data-tx-zh="代码" data-tx-en="Code">代码</span>
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></span>
         <b>GitHub</b>
-        <small>@andrewyin15-source</small>
+        <small data-tx-zh="@[占位]" data-tx-en="@[placeholder]">@[占位]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
       </a>
-      <a class="contact-card" href="#">
+      <a class="contact-card" href="#" id="cc-wechat">
         <span class="label" data-tx-zh="对话" data-tx-en="Chat">对话</span>
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></span>
         <b data-tx-zh="微信" data-tx-en="WeChat">微信</b>
-        <small data-tx-zh="[待补: 微信号]" data-tx-en="[TODO: WeChat ID]">[待补: 微信号]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+        <small data-tx-zh="[占位] 微信号" data-tx-en="[Placeholder] WeChat ID">[占位] 微信号<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
       </a>
-      <a class="contact-card" href="#">
+      <a class="contact-card" href="#" id="cc-linkedin">
         <span class="label" data-tx-zh="职业" data-tx-en="Professional">职业</span>
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></span>
         <b>LinkedIn</b>
-        <small data-tx-zh="[待补: 完整 URL]" data-tx-en="[TODO: full URL]">[待补: 完整 URL]<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
+        <small data-tx-zh="[占位] URL" data-tx-en="[Placeholder] URL">[占位] URL<span class="placeholder-tag" data-tx-zh="待补" data-tx-en="TODO">待补</span></small>
       </a>
     </div>
   </div>
@@ -496,28 +453,26 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
 
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
     <div class="foot-grid">
       <span class="left">
-        <span data-tx-zh="© 2026 尹安都 · 个人站点" data-tx-en="© 2026 Andrew Yin · Personal site">© 2026 尹安都 · 个人站点</span>
+        <span data-tx-zh="© [占位] · 个人站点模板" data-tx-en="© [placeholder] · Personal-site template">© [占位] · 个人站点模板</span>
         <span>·</span>
-        <span data-tx-zh="建在杭州" data-tx-en="Built in Hangzhou">建在杭州</span>
+        <span data-tx-zh="Editorial Grid" data-tx-en="Editorial Grid">Editorial Grid</span>
       </span>
       <span class="right" data-tx-zh="v-jay.com · 由 Vercel 部署" data-tx-en="v-jay.com · deployed by Vercel">v-jay.com · 由 Vercel 部署</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ FLOATING TOOLBAR (minimal) ============ -->
 <div class="float-tb" id="float-tb" role="toolbar" aria-label="quick actions">
-  <a class="tb-btn" href="mailto:[TODO: your email]" id="tb-email" title="Email" aria-label="Email">
+  <a class="tb-btn" href="#" id="tb-email" title="Email" aria-label="Email">
     <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2z"></path><polyline points="22,8 12,14 2,8"></polyline></svg>
-    <span class="tb-tip" data-tx-zh="发邮件" data-tx-en="Email">发邮件</span>
+    <span class="tb-tip" data-tx-zh="邮件" data-tx-en="Email">邮件</span>
   </a>
-  <a class="tb-btn" href="https://github.com/andrewyin15-source" target="_blank" rel="noopener" id="tb-github" title="GitHub" aria-label="GitHub">
-    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+  <a class="tb-btn" href="#" id="tb-github" title="GitHub" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14 0.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.61 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
     <span class="tb-tip">GitHub</span>
   </a>
   <button class="tb-btn back-top" id="tb-back-top" title="Back to top" aria-label="Back to top">
@@ -526,17 +481,10 @@ footer{padding:60px 0 36px;border-top:1px solid var(--line);margin-top:60px}
   </button>
 </div>
 
-<!-- ============ GSAP + SplitText (CDN) ============ -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
 <script>
-/* ============================================================
-   v0.3 — bilingual toggle, GSAP integration, smooth scroll UX
-   Pre-delivery compliance baked in.
-   ============================================================ */
-
-/* ---------- i18n ---------- */
 const i18n = (function(){
   function set(lang){
     const isEn = lang === 'en';
@@ -545,7 +493,6 @@ const i18n = (function(){
     document.querySelectorAll('[data-tx-zh]').forEach(function(el){
       const text = el.dataset[isEn ? 'txEn' : 'txZh'];
       if (text === undefined) return;
-      // leave nested HTML children alone for h1 (has <em>, <br>)
       if (el.children.length > 0) return;
       el.textContent = text;
     });
@@ -568,7 +515,6 @@ const i18n = (function(){
 })();
 i18n.init();
 
-/* ---------- skip-link / smooth scroll for the nav links ---------- */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click', function(e){
     var id = a.getAttribute('href').slice(1);
@@ -582,15 +528,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-/* ---------- back-to-top visibility + smooth scroll for #hero ---------- */
 (function(){
   var bt = document.getElementById('tb-back-top');
   var fbar = document.getElementById('float-tb');
-  var heroEl = document.getElementById('hero');
   function tick(){
     var y = window.scrollY || 0;
     if (bt) bt.classList.toggle('visible', y > 600);
-    if (fbar && heroEl){
+    if (fbar){
       var doc = document.documentElement;
       var visible = y + window.innerHeight < doc.scrollHeight - 220;
       fbar.classList.toggle('is-hidden', !visible);
@@ -606,12 +550,10 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   tick();
 })();
 
-/* ---------- GSAP: hero SplitText entrance (one-shot) ---------- */
 (function(){
   if (!window.gsap || !window.SplitText) return;
   var h1 = document.getElementById('hero-h1');
   if (!h1) return;
-
   function run(){
     if (h1.dataset.gsapDone) return;
     h1.dataset.gsapDone = '1';
@@ -619,7 +561,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
       var split = new window.SplitText(h1, { type: 'chars,words,lines', aria: 'auto' });
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced){
-        // Even under reduced-motion we set final state to ensure no broken state
         gsap.set(split.chars, { opacity: 1, y: 0, rotateX: 0 });
         return;
       }
@@ -633,26 +574,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
         duration: 0.6, stagger: 0.08, ease: 'power2.out',
         delay: 0.45
       });
-    } catch (_){ /* SplitText requires fonts; fail silently */ }
+    } catch (_){}
   }
-
-  // guard: re-run SplitText whenever the user toggles language
-  document.querySelectorAll('.lang-btn').forEach(function(b){
-    b.addEventListener('click', function(){
-      var lang = b.dataset.targetLang;
-      i18n.set(lang);
-      // after language swap, restart GSAP for the new chars
-      if (!window.gsap || !window.SplitText) return;
-      h1.dataset.gsapDone = '';
-      // microtask so textContent has updated
-      Promise.resolve().then(function(){
-        // Don't actually re-split — only re-animate the headline if it hasn't been touched yet
-        // (lang swap preserves HTML, so original DOM nodes still tagged)
-        run();
-      });
-    });
-  });
-
   if (document.fonts && document.fonts.ready){
     document.fonts.ready.then(run);
   } else {
