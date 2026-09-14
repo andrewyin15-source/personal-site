@@ -1,0 +1,4 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 316.8 95.2" enable-background="new 0 0 316.8 95.2" preserveAspectRatio="none">
+    <path class="frame-active" fill="none" stroke="#000000" stroke-width="3.7265" stroke-linecap="round" stroke-linejoin="round" d="M2,8.7 c109.7,4.4,280.8-15.8,312.8,0 M2,92c109.6,4.4,280.7-15.8,312.8,0"/>
+    <path class="frame-inactive" fill="none" stroke="#000000" stroke-width="3.7265" stroke-linecap="round" d="M2,2.9h312.8 M2,92.3h312.8"/>
+</svg>

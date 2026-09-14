@@ -1,0 +1,599 @@
+{
+  "siteKey": "www-marvis-com-3203d997",
+  "pageKey": "en-7a4ba3ba",
+  "generatedAt": "2026-09-13T15:50:03.036Z",
+  "source": "https://www.marvis.com/en/",
+  "attribution": "Brand assets (c) Ludovico Martelli S.p.A. — used for structural study only, not for republishing.",
+  "entries": [
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/arrow-down.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-48d53d5e-arrow-down.svg",
+      "kind": "image",
+      "bytes": 523,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/arrow-link.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-e8122df6-arrow-link.svg",
+      "kind": "image",
+      "bytes": 904,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/hexagon-smooth.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-a1f45a86-hexagon-smooth.svg",
+      "kind": "image",
+      "bytes": 430,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/facebook-2.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-0ec8de46-facebook-2.svg",
+      "kind": "image",
+      "bytes": 582,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/logos/marvis-logo-invert.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-b5ee79c0-marvis-logo-invert.svg",
+      "kind": "image",
+      "bytes": 45591,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/logos/marvis-logo.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-63e3bdaa-marvis-logo.svg",
+      "kind": "image",
+      "bytes": 44972,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/09/instagram.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-d1811b31-instagram.svg",
+      "kind": "image",
+      "bytes": 1647,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/close-border.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-67be1be4-close-border.svg",
+      "kind": "image",
+      "bytes": 528,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-cta-default-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-a2318cd1-frame-cta-default-after.svg",
+      "kind": "image",
+      "bytes": 1503,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-cta-default-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-20c9fbd2-frame-cta-default-before.svg",
+      "kind": "image",
+      "bytes": 1511,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-cta-default-background-morphing.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-d968aca5-frame-cta-default-background-morphing.svg",
+      "kind": "image",
+      "bytes": 558,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-02-background.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-6b495b30-frame-02-background.svg",
+      "kind": "image",
+      "bytes": 511,
+      "refs": [
+        "net-images.txt",
+        "span.link-frame.link-frame--2",
+        "a.link-frame.link-frame--2"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-02-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-8e85db98-frame-02-before.svg",
+      "kind": "image",
+      "bytes": 1513,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-02-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-782f9376-frame-02-after.svg",
+      "kind": "image",
+      "bytes": 1505,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/arrow-right.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-5031644f-arrow-right.svg",
+      "kind": "image",
+      "bytes": 510,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-menu-background.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-53ccc1c6-frame-01-menu-background.svg",
+      "kind": "image",
+      "bytes": 511,
+      "refs": [
+        "net-images.txt",
+        "span.link-frame.link-frame--1-menu"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-menu-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-4129154b-frame-01-menu-before.svg",
+      "kind": "image",
+      "bytes": 1528,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-menu-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-5cc74f77-frame-01-menu-after.svg",
+      "kind": "image",
+      "bytes": 1520,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-05-background.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-7389b2f3-frame-05-background.svg",
+      "kind": "image",
+      "bytes": 511,
+      "refs": [
+        "net-images.txt",
+        "span.link-frame.link-frame--5"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-05-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-5853145f-frame-05-before.svg",
+      "kind": "image",
+      "bytes": 1513,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-05-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-7e7ba7c8-frame-05-after.svg",
+      "kind": "image",
+      "bytes": 1520,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-04-background.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-f1e0509c-frame-04-background.svg",
+      "kind": "image",
+      "bytes": 511,
+      "refs": [
+        "net-images.txt",
+        "span.link-frame.link-frame--4"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-04-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-92c7e10f-frame-04-before.svg",
+      "kind": "image",
+      "bytes": 1513,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-04-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-8571e28b-frame-04-after.svg",
+      "kind": "image",
+      "bytes": 1505,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-light-background.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-8c1bf0a3-frame-01-light-background.svg",
+      "kind": "image",
+      "bytes": 511,
+      "refs": [
+        "net-images.txt",
+        "a.link-frame.link-frame--1-light"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-light-before.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-784b16a0-frame-01-light-before.svg",
+      "kind": "image",
+      "bytes": 1528,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/icons/frames/frame-01-light-after.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-c86e50ce-frame-01-light-after.svg",
+      "kind": "image",
+      "bytes": 1520,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/classic-strong-mint-no-shadow_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-06bba099-classic-strong-mint-no-shadow_v01.png",
+      "kind": "image",
+      "bytes": 91310,
+      "refs": [
+        "net-images.txt",
+        "186x611 @88,1488"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/whitening-mint-no-shadow_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-0feb919b-whitening-mint-no-shadow_v01.png",
+      "kind": "image",
+      "bytes": 118858,
+      "refs": [
+        "net-images.txt",
+        "186x609 @354,1488"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/09/marvis-jasmin-mint-cap-only_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-f86d7b0a-marvis-jasmin-mint-cap-only_v01.png",
+      "kind": "image",
+      "bytes": 17114,
+      "refs": [
+        "net-images.txt",
+        "186x611 @621,1488"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/marvis-icon-black-bg.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-e522c00f-marvis-icon-black-bg.svg",
+      "kind": "image",
+      "bytes": 46643,
+      "refs": [
+        "net-images.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/aquatic-mint-no-shadow_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-8edb1c53-aquatic-mint-no-shadow_v01.png",
+      "kind": "image",
+      "bytes": 93260,
+      "refs": [
+        "net-images.txt",
+        "186x609 @887,1488"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/homepage-hero-canvas-blank_v01.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-1f8b3a72-homepage-hero-canvas-blank_v01.jpg",
+      "kind": "image",
+      "bytes": 29159,
+      "refs": [
+        "net-images.txt",
+        "step 0 MARVEL/nYOUR ROUTINE"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/09/marvis-jasmin-mint-no-cap_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-8eb9d405-marvis-jasmin-mint-no-cap_v01.png",
+      "kind": "image",
+      "bytes": 362896,
+      "refs": [
+        "net-images.txt",
+        "186x611 @621,1488"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/10/bocca-3250px.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-acb6a134-bocca-3250px.png",
+      "kind": "image",
+      "bytes": 1142871,
+      "refs": [
+        "net-images.txt",
+        "378x378 @525,449"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/homepage-hero-canvas-blank-mobile_v01.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-54843455-homepage-hero-canvas-blank-mobile_v01.jpg",
+      "kind": "image",
+      "bytes": 5123,
+      "refs": [
+        "net-images.txt",
+        "step 0 MARVEL/nYOUR ROUTINE"
+      ]
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-97312486-QGYvz_MVcBeNP4NJtEtq.woff2",
+      "kind": "font",
+      "bytes": 32292,
+      "refs": [
+        "net-fonts.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Whitening_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-07e991d2-03_Whitening_675-_-1200_INT.jpg",
+      "kind": "image",
+      "bytes": 386475,
+      "refs": [
+        "net-images.txt",
+        "step 1"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2023/10/amarelli-licorice-no-shadow_v01.png",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-a7198a4d-amarelli-licorice-no-shadow_v01.png",
+      "kind": "image",
+      "bytes": 103010,
+      "refs": [
+        "net-images.txt",
+        "186x609 @1154,1488"
+      ]
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsunDXbtM.woff2",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-414bf66e-nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsunDXbtM.woff2",
+      "kind": "font",
+      "bytes": 22372,
+      "refs": [
+        "net-fonts.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Jasmin_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-ad8c77f9-03_Jasmin_675-_-1200_INT.jpg",
+      "kind": "image",
+      "bytes": 462544,
+      "refs": [
+        "net-images.txt",
+        "step 3"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/form/arrow-border.svg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/bg-6fb69cb2-arrow-border.svg",
+      "kind": "bg",
+      "bytes": 369,
+      "refs": [
+        "select.large.mw-320"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-bold-webfont.woff",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-face-9c208d0e-novaresestd-bold-webfont.woff",
+      "kind": "font-face",
+      "bytes": 31056,
+      "refs": [
+        "NovareseBold"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-bold-webfont.woff2",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-ee27da94-novaresestd-bold-webfont.woff2",
+      "kind": "font",
+      "bytes": 24016,
+      "refs": [
+        "net-fonts.txt",
+        "NovareseBold"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Whitening_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-31d7e66a-06_Whitening_2560-_-1920_INT.jpg",
+      "kind": "image",
+      "bytes": 2448201,
+      "refs": [
+        "net-images.txt",
+        "step 1"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-bold-webfont.ttf",
+      "local": null,
+      "kind": "font-face",
+      "error": "too small: 0"
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-medium-webfont.woff2",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-face-bafa1837-novaresestd-medium-webfont.woff2",
+      "kind": "font-face",
+      "bytes": 24084,
+      "refs": [
+        "NovareseMedium"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-medium-webfont.woff",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-face-0636e798-novaresestd-medium-webfont.woff",
+      "kind": "font-face",
+      "bytes": 31108,
+      "refs": [
+        "NovareseMedium"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Jasmin_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/image-0ffa7722-06_Jasmin_2560-_-1920_INT.jpg",
+      "kind": "image",
+      "bytes": 2933164,
+      "refs": [
+        "net-images.txt",
+        "step 3"
+      ]
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_gGUXtHA-Q.woff2",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/font-11554dc0-nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_gGUXtHA-Q.woff2",
+      "kind": "font",
+      "bytes": 21812,
+      "refs": [
+        "net-fonts.txt"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/fonts/novaresestd-medium-webfont.ttf",
+      "local": null,
+      "kind": "font-face",
+      "error": "too small: 0"
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/favicon/apple-touch-icon.png?v=24022023",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/favicon-2aa80336-apple-touch-icon.png",
+      "kind": "favicon",
+      "bytes": 6051,
+      "refs": [
+        "apple-touch-icon"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/favicon/favicon-16x16.png?v=24022023",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/favicon-b7382ffb-favicon-16x16.png",
+      "kind": "favicon",
+      "bytes": 305,
+      "refs": [
+        "icon"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/favicon/favicon-32x32.png?v=24022023",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/favicon-b9e0eb20-favicon-32x32.png",
+      "kind": "favicon",
+      "bytes": 737,
+      "refs": [
+        "icon"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/favicon/favicon.ico?v=24022023",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/favicon-1ac97280-favicon.ico",
+      "kind": "favicon",
+      "bytes": 15086,
+      "refs": [
+        "shortcut icon"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/themes/MARVIS/assets/img/favicon/safari-pinned-tab.svg?v=24022023",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/favicon-744aa99e-safari-pinned-tab.svg",
+      "kind": "favicon",
+      "bytes": 31309,
+      "refs": [
+        "mask-icon"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Aquatic_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-mobile-6ff0df30-03_Aquatic_675-_-1200_INT.jpg",
+      "kind": "hero-mobile",
+      "bytes": 553910,
+      "refs": [
+        "step 5"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Ginger_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-mobile-787874b1-03_Ginger_675-_-1200_INT.jpg",
+      "kind": "hero-mobile",
+      "bytes": 428050,
+      "refs": [
+        "step 4"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Ginger_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-desktop-c9827ea6-06_Ginger_2560-_-1920_INT.jpg",
+      "kind": "hero-desktop",
+      "bytes": 1754699,
+      "refs": [
+        "step 4"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Strong-Mint_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-mobile-3e8a78fb-03_Strong-Mint_675-_-1200_INT.jpg",
+      "kind": "hero-mobile",
+      "bytes": 476627,
+      "refs": [
+        "step 2"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/03_Cinnamon_675-%C3%97-1200_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-mobile-fa761f3b-03_Cinnamon_675-_-1200_INT.jpg",
+      "kind": "hero-mobile",
+      "bytes": 437556,
+      "refs": [
+        "step 6"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Aquatic_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-desktop-0a348317-06_Aquatic_2560-_-1920_INT.jpg",
+      "kind": "hero-desktop",
+      "bytes": 3560392,
+      "refs": [
+        "step 5"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Cinnamon_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-desktop-5911c7b3-06_Cinnamon_2560-_-1920_INT.jpg",
+      "kind": "hero-desktop",
+      "bytes": 2231133,
+      "refs": [
+        "step 6"
+      ]
+    },
+    {
+      "url": "https://www.marvis.com/en/wp-content/uploads/sites/3/2025/12/06_Strong-Mint_2560-%C3%97-1920_INT.jpg",
+      "local": "public/sites/www-marvis-com-3203d997/en-7a4ba3ba/hero-desktop-d7530adf-06_Strong-Mint_2560-_-1920_INT.jpg",
+      "kind": "hero-desktop",
+      "bytes": 2959655,
+      "refs": [
+        "step 2"
+      ]
+    }
+  ]
+}
