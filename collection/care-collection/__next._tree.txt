@@ -1,5 +1,5 @@
 :HL["/_next/static/chunks/28-zhytt0i0mu.css","style"]
-:HL["/_next/static/chunks/1-gxq_0e7p5z4.css","style"]
+:HL["/_next/static/chunks/21qrx5pjgaxxj.css","style"]
 :HL["/_next/static/media/1b99372b3eaef0c8-s.p.1gsd1jahc5dg_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/1f7573c2581eef1f-s.p.2ex97fs_a21tw.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/968dffb9c0d84832-s.p.3vuieiiujr7kl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -7,4 +7,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/156-marvis-sensitive-gums-gentle-mint_v01.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/158-marvis-whitening-mint_v01.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/157-marvis-smokers-whitening-mint_v01.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"collection","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"care-collection","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"2ia0J7IEQWoexms8WZUNU"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"collection","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"care-collection","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ZOZjTMamhZzk8XBi3wICH"}
