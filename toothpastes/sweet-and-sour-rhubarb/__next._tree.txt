@@ -1,5 +1,5 @@
 :HL["/_next/static/chunks/28-zhytt0i0mu.css","style"]
-:HL["/_next/static/chunks/26ehf4sv871lq.css","style"]
+:HL["/_next/static/chunks/1-gxq_0e7p5z4.css","style"]
 :HL["/_next/static/media/1b99372b3eaef0c8-s.p.1gsd1jahc5dg_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/1f7573c2581eef1f-s.p.2ex97fs_a21tw.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/968dffb9c0d84832-s.p.3vuieiiujr7kl.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -7,4 +7,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/arrow-swiper-prev.svg","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/817-sweet-and-sour-rhubarb-hero_v01.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/992-marvis-cap-yes-fluoro.svg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"toothpastes","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"sweet-and-sour-rhubarb","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"swbQMX2_nHe81JbzB-2S_"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"toothpastes","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"sweet-and-sour-rhubarb","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ZWzaCpj0wtmFoBjg5n-Rp"}
