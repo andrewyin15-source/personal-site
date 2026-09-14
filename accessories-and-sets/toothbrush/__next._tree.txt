@@ -7,4 +7,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/arrow-swiper-prev.svg","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/861-marvis-toothbrush-white_v01-1.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/860-marvis-toothbrush-black_v01-1.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"accessories-and-sets","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"toothbrush","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ZWzaCpj0wtmFoBjg5n-Rp"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"accessories-and-sets","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"toothbrush","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"2ia0J7IEQWoexms8WZUNU"}
