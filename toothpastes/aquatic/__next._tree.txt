@@ -10,4 +10,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/marvis-m-label.svg","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/1198-aquatic-travel-size_25.webp","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/989-hand-horizontal_v02.svg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"toothpastes","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"aquatic","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ePkVuPW71e7hL_S36ewEG"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"toothpastes","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"aquatic","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"swbQMX2_nHe81JbzB-2S_"}

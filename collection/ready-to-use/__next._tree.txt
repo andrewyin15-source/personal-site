@@ -8,4 +8,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/1392-marvis-jasmin-400_v02.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/1394-marvis-whitening-400_v02.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/1393-marvis-sensitive-400_v02.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"collection","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"ready-to-use","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ePkVuPW71e7hL_S36ewEG"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"collection","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"ready-to-use","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"swbQMX2_nHe81JbzB-2S_"}

@@ -12,4 +12,4 @@
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/528-marvis-holder-blue_v01.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/533-marvis-holder-white_v01.png","image"]
 :HL["/sites/www-marvis-com-3203d997/en-7a4ba3ba/media/529-marvis-holder-green_v01.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"accessories-and-sets","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"holder","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"ePkVuPW71e7hL_S36ewEG"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"accessories-and-sets","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"holder","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"swbQMX2_nHe81JbzB-2S_"}
